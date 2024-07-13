@@ -8,7 +8,7 @@
       <nav>
         <ul>
           <li>
-            <router-link to="/" class="active">
+            <router-link to="/dashboard" class="active">
               <i class="fa-solid fa-chart-simple"></i> Dashboard
             </router-link>
           </li>
@@ -23,7 +23,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/">
+            <router-link to="/empleados">
               <i class="fa-solid fa-person"></i> Empleados
             </router-link>
           </li>
@@ -33,12 +33,12 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/">
+            <router-link to="/proveedores">
               <i class="fa-solid fa-user-group"></i> Proveedores
             </router-link>
           </li>
           <li>
-            <router-link to="/">
+            <router-link to="/inventario">
               <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
             </router-link>
           </li>

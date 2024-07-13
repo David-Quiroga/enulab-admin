@@ -4,6 +4,7 @@
     <router-link :to="'/crear/' + routePrefix">
       <button>Agregar {{ title }}</button>
     </router-link>
+    <br>
     <router-link :to="'/ver/' + routePrefix">
       <button>Ver Menú de {{ title }}</button>
     </router-link>

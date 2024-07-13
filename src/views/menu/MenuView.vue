@@ -2,34 +2,32 @@
   <div class="menus">
     <p class="sopas">Sopas</p>
     <MenuCategory 
+      title="Sopas"
       description="Lorem ipsum dolor sit amet consectetur." 
       routePrefix="sopas" 
     />
     <img src="../../assets/img/sopas.png" class="imagen" alt="Imagen de la categoría">
-    <p class="sopas">Sopas</p>
+    <p class="sopas">Entradas</p>
     <MenuCategory 
       title="Entradas" 
       description="Lorem ipsum dolor sit amet consectetur."  
       routePrefix="entradas" 
-      image="@/assets/entradas.jpg" 
     />
-    <img src="../../assets/img/sopas.png" class="imagen" alt="Imagen de la categoría">
-    <p class="sopas">Sopas</p>
+    <img src="../../assets/img/entrada1.png" class="imagen" alt="Imagen de la categoría">
+    <p class="sopas">Bebidas</p>
     <MenuCategory 
-      title="Postres" 
-      description="Lorem ipsum dolor sit amet consectetur."  
-      routePrefix="postres" 
-      image="@/assets/postres.jpg" 
+    title="Postres" 
+    description="Lorem ipsum dolor sit amet consectetur."  
+    routePrefix="postres" 
     />
-    <img src="../../assets/img/sopas.png" class="imagen" alt="Imagen de la categoría">
-    <p class="sopas">Sopas</p>
+    <img src="../../assets/img/bebidas.png" class="imagen" alt="Imagen de la categoría">
+    <p class="sopas">Postres</p>
     <MenuCategory 
-      title="Bebidas" 
-      description="Lorem ipsum dolor sit amet consectetur."  
-      routePrefix="bebidas" 
-      image="@/assets/bebidas.jpg" 
+    title="Bebidas" 
+    description="Lorem ipsum dolor sit amet consectetur."  
+    routePrefix="bebidas" 
     />
-    <img src="../../assets/img/sopas.png" class="imagen" alt="Imagen de la categoría">
+    <img src="../../assets/img/postres.png" class="imagen" alt="Imagen de la categoría">
   </div>
 </template>
   
@@ -54,7 +52,8 @@
   }
   .imagen{
     position: relative;
-    top: -10px;
+    border-radius: 10px;
+    top: -29px;
     left: 30px;
     width: 40%;
   }
