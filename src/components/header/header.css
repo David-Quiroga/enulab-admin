@@ -1,0 +1,98 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* Ajusta el padding según sea necesario */
+    background-color: #2C2E3A;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 2em; /* Ajusta el tamaño de la fuente del logo */
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+    width: 250px; /* Ajusta el ancho de la barra de búsqueda según sea necesario */
+    margin: 0 auto; /* Centra la barra de búsqueda horizontalmente */
+  }
+  
+  .search-bar input {
+    width: 100%; /* Hace que el input ocupe todo el ancho disponible dentro de .search-bar */
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    font-size: 1em;
+  }
+  
+  .notification-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px; /* Ajusta el margen izquierdo según sea necesario */
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    position: relative; /* Añadido para posicionar correctamente el menú desplegable */
+    cursor: pointer; /* Cambia el cursor al hacer hover sobre el perfil */
+  }
+  
+  .user-profile img {
+    border-radius: 50%;
+    margin-left: 10px; /* Ajusta el margen izquierdo según sea necesario */
+    margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+    width: 50px; /* Ajusta el tamaño de la imagen del perfil */
+    height: 50px; /* Ajusta el tamaño de la imagen del perfil */
+  }
+  
+  .profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: none;
+  }
+  
+  .user-profile:hover .profile-menu {
+    display: block;
+  }
+  
+  .profile-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .profile-menu ul li {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .profile-menu ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .profile-menu ul li a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .user-profile span {
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente del nombre de usuario */
+  }
