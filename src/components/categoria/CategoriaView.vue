@@ -12,7 +12,7 @@
       </router-link>
       <router-link :to="'/ver/' + routePrefix">
         <button class="button-2">Ver Menú de {{ title }}</button>
-        <h1>NO tenemos ninguna {{ title }} en lista</h1>
+        
       </router-link>
     </div>
   </div>
