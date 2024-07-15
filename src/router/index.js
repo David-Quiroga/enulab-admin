@@ -7,6 +7,7 @@ import InventarioView from "../views/inventario/InventarioView.vue"
 import EmpleadosView from "../views/empleados/EmpleadosView.vue";
 import ProveedoresView from "../views/proveedores/ProveedoresView.vue"
 import CreateMenu from '../views/menu/MenuAgregarView.vue';
+import AgregarInventario from '../views/inventario/InventarioAgregarView.vue'
 
 const routes = [
     {
@@ -33,7 +34,15 @@ const routes = [
         name: "proveedores",
         component: ProveedoresView
     },
-    { path: '/crear/:categoria', component: CreateMenu, props: true },
+    {   path: '/crear/:categoria', 
+        component: CreateMenu, 
+        props: true 
+    },
+    {
+        path: '/agregar',
+        component: AgregarInventario,
+        props: true
+    }
 
 ];
 

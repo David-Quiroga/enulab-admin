@@ -16,7 +16,9 @@
       <div class="header">
         <h2>Inventario</h2>
         <div class="superior">
+          <router-link to="/agregar">
             <button>Agregar item</button>
+          </router-link>
         </div>
       </div>
       <div class="table-container">
@@ -72,12 +74,12 @@
     </div>
     </template>
   
-    <style>
-      .content {
-        margin-left: 50px;
-        padding: 20px;
-        width: calc(100% - 270px);
-      }
+<style scoped>
+.content {
+    margin-left: 50px;
+    padding: 20px;
+    width: calc(100% - 270px);
+}
 .superior {
     display: flex;
     width: 100%;
@@ -101,8 +103,8 @@
     margin-left: auto;
     color: white;
 }
-    .header {
-        background-color: #e0e4e8;
+    .header { 
+        background-color: #75787b;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -149,6 +151,7 @@
       th, td {
         padding: 15px;
         text-align: left;
+
       }
   
       th {
