@@ -1,19 +1,61 @@
 .menu-category {
-    display: block;
-    position: relative;
-    top: 10%;
-    left: 84px;
-}
-.menu-category p {
-    margin-bottom: 20px;
-    position: relative;
-    top: 50%;
-    left: 70%;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .category-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinear elementos al inicio verticalmente */
+    justify-content: center; /* Centrar elementos horizontalmente */
+    width: 100%;
+  }
+  
+  .category-description {
+    flex: 1; /* Ocupa todo el espacio restante */
+    margin-right: 170px; /* Espacio entre la descripción y los botones */
+    color: black; 
+  }
+  
+  .category-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar los botones horizontalmente */
+    justify-content: flex-start; /* Alinear los botones al inicio verticalmente */
+    margin-bottom: 60px
+  }
+  
+  .button, .button-2 {
+    margin-top: 5px; /* Espacio entre los botones */
+    padding: 10px 20px; /* Ajuste de relleno */
+    background-color: #FF7A00; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; 
+    margin-left: 400px;/* Transición suave del color de fondo */
+    width: 150px;
+  }
 
-.menu-category button {
-    position: relative;
-    left: 230%;
-    top: 0%;
-    margin-bottom: 10px;
+  
+  .button {
+    background-color: #FF7A00;
+  }
+  
+  .button:hover {
+    background-color: #ff6600; /* Cambia el color de fondo al pasar el cursor */
+  }
+  
+  .button-2 {
+    background-color: #0094FF; /* Color diferente para el segundo botón */
+  }
+  
+  .button-2:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor */
+  }
+  #h1 {
+    color: black;
 }

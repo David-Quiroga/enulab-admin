@@ -12,7 +12,7 @@
         </button>
         <div class="user-profile" @click="toggleProfileMenu">
           <img src="../../assets/img/perfil.png" alt="Perfil" />
-          <span>Usuario</span>
+          <span class="usuario">Usuario</span>
           <div v-if="showProfileMenu" class="profile-menu">
             <ul>
               <li><a href="#">Politicas de privacida</a></li>

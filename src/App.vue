@@ -72,14 +72,20 @@ body {
 
 #app {
   display: flex;
-  min-height: 100vh; 
-  background-color: #f0f5fb;
+  min-height: 100vh;
+  background-color: #141313;
 }
 
 .sidebar {
-  flex: 0 0 215px; 
+  flex: 0 0 215px;
   background-color: #2C2E3A;
   padding-top: 100px;
+}
+
+.main-content {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  padding: 500px; /* Ajusta el espaciado según sea necesario */
+  margin-left: 500px; /* Asegura que el contenido no se solape con el sidebar */
 }
 
 nav ul {
@@ -90,7 +96,7 @@ nav ul {
 nav ul li {
   padding: 10px;
   padding-left: 20px;
-  transition: transform 0.3s ease; /* Añadir transición a los elementos del menú */
+  transition: transform 0.3s ease;
 }
 
 nav ul li a {
@@ -98,7 +104,7 @@ nav ul li a {
   color: #6c757d;
   display: flex;
   align-items: center;
-  font-size: 16px; /* Tamaño de fuente aumentado para elementos de menú */
+  font-size: 16px;
 }
 
 nav ul li a i {
@@ -106,9 +112,6 @@ nav ul li a i {
 }
 
 nav ul li:hover {
-  transform: translateX(10px); /* Desplazar hacia la derecha al pasar el mouse */
+  transform: translateX(10px);
 }
-
-
-
 </style>
