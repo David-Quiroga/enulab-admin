@@ -12,8 +12,20 @@ import ListarMenu from '../views/menu/ListarMenuView.vue'
 import AgregarEmpleado from "../views/empleados/EmpleadosAgregarView.vue"
 import MetodosPago from "../views/mPagos/mPagosView.vue"
 import VisualizarMenu from "../views/visualizar/VisualizarView.vue"
+import LoginView from "../views/login/LoginView.vue";
+import RegistroView from "@/views/login/RegistroView.vue";
 
 const routes = [
+    {
+        path: "/",
+        name: "login",
+        component: LoginView
+    },
+    {
+        path: "/registro",
+        name: "registro",
+        component: RegistroView
+    },
     {
         path: "/dashboard",
         name: "dashboard",

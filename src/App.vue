@@ -1,10 +1,9 @@
 <template>
-  <HeaderView />
+  <router-view></router-view>
+</template>
+<!-- <HeaderView />
 <div id="app">
 <aside class="sidebar">
-  <!-- <div class="logo">
-    <h1><span class="open">Open</span><span class="blind">Blind</span></h1>
-  </div> -->
   <nav>
     <ul>
       <li>
@@ -47,7 +46,7 @@
 </aside>
 </div>
 <router-view/>
-</template>
+
 
 <script>
   import HeaderView from './components/header/HeaderView.vue';
@@ -57,7 +56,7 @@
     HeaderView
   }
 }
-</script>
+</script> -->
 
 <style>
 * {

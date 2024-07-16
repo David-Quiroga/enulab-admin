@@ -1,76 +1,117 @@
 <template>
+    <HeaderView/>
+  <aside class="sidebar">
+  <nav>
+    <ul>
+      <li>
+        <router-link to="/dashboard" class="active">
+          <i class="fa-solid fa-chart-simple"></i> Dashboard
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/menus">
+          <i class="fa-solid fa-envelope"></i> Menu
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/visualizar">
+          <i class="fa-solid fa-table-cells-large"></i> Visualizar
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/empleados">
+          <i class="fa-solid fa-person"></i> Empleados
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/pagos">
+          <i class="fa-regular fa-credit-card"></i> Metodos de pago
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/proveedores">
+          <i class="fa-solid fa-user-group"></i> Proveedores
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/inventario">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+        </router-link>
+      </li>
+    </ul>
+  </nav>
+</aside>
+<!-- ! Termina el SIDEBAR -->
   <div class="menus">
-   <div class="cont_menus">
-    <h1>GESTION DE MENUS</h1>
-    <!-- Contenedor de Sopas -->
-     <div class="category-container">
-       <div class="category-content">
-         <div class="category-image-container">
-           
-           <img src="../../assets/img/sopas.png" class="category-image" alt="Imagen de la categoría">
-         </div>
-         <MenuCategory
-           title="Sopas"
-           description="Las sopas son platos líquidos o semi-líquidos que se preparan mediante la cocción de diversos ingredientes en un caldo. Pueden ser calientes o frías y se sirven típicamente como entrante o primer plato. Las sopas pueden contener carnes, verduras, legumbres, y granos, y son muy apreciadas por su sabor reconfortante y nutritivo. Ejemplos incluyen sopa de pollo, sopa de tomate y gazpacho."
-           routePrefix="sopas"
-         />
-       </div>
-     </div>
+    <div class="cont_menus">
+      <h1>GESTION DE MENUS</h1>
+  <!-- Contenedor de Sopas -->
+    <div class="category-container">
+      <div class="category-content">
+        <div class="category-image-container">
+          <img src="../../assets/img/sopas.png" class="category-image" alt="Imagen de la categoría">
+        </div>
+        <MenuCategory
+          title="Sopas"
+          description="Las sopas son platos líquidos o semi-líquidos que se preparan mediante la cocción de diversos ingredientes en un caldo. Pueden ser calientes o frías y se sirven típicamente como entrante o primer plato. Las sopas pueden contener carnes, verduras, legumbres, y granos, y son muy apreciadas por su sabor reconfortante y nutritivo. Ejemplos incluyen sopa de pollo, sopa de tomate y gazpacho."
+          routePrefix="sopas"
+        />
+      </div>
+    </div>
 
-    <!-- Contenedor de Entradas -->
-     <div class="category-container">
-       <div class="category-content">
-         <div class="category-image-container">
-           
-           <img src="../../assets/img/entrada1.png" class="category-image" alt="Imagen de la categoría">
-         </div>
-         <MenuCategory
-           title="Entradas"
-           description="Las entradas son pequeños platos que se sirven antes del plato principal para abrir el apetito. Pueden ser frías o calientes y varían ampliamente en cuanto a ingredientes y preparación. Las entradas pueden incluir ensaladas, aperitivos, tapas y pequeños bocados. Ejemplos comunes son ensalada César, bruschettas, y croquetas."
-           routePrefix="entradas"
-         />
-       </div>
-     </div>
+  <!-- Contenedor de Entradas -->
+    <div class="category-container">
+      <div class="category-content">
+        <div class="category-image-container">
+          <img src="../../assets/img/entrada1.png" class="category-image" alt="Imagen de la categoría">
+        </div>
+        <MenuCategory
+          title="Entradas"
+          description="Las entradas son pequeños platos que se sirven antes del plato principal para abrir el apetito. Pueden ser frías o calientes y varían ampliamente en cuanto a ingredientes y preparación. Las entradas pueden incluir ensaladas, aperitivos, tapas y pequeños bocados. Ejemplos comunes son ensalada César, bruschettas, y croquetas."
+          routePrefix="entradas"
+        />
+      </div>
+    </div>
 
-    <!-- Contenedor de Bebidas -->
-     <div class="category-container">
-       <div class="category-content">
-         <div class="category-image-container">
-           
-           <img src="../../assets/img/bebidas.png" class="category-image" alt="Imagen de la categoría">
-         </div>
-         <MenuCategory
+  <!-- Contenedor de Bebidas -->
+    <div class="category-container">
+      <div class="category-content">
+        <div class="category-image-container">
+          <img src="../../assets/img/bebidas.png" class="category-image" alt="Imagen de la categoría">
+        </div>
+        <MenuCategory
           title="Bebidas"
           description="Las bebidas son líquidos que se sirven para acompañar las comidas o simplemente para disfrutar. Pueden ser alcohólicas o no alcohólicas y varían desde refrescos y jugos hasta vinos y cócteles. Las bebidas se eligen a menudo para complementar el sabor de la comida. Ejemplos incluyen agua, refrescos, vinos, cervezas, jugos naturales y cócteles como margaritas o mojitos."
           routePrefix="bebidas"
-         />
-       </div>
-     </div>
+        />
+      </div>
+    </div>
 
-    <!-- Contenedor de Postres -->
-     <div class="category-container">
-       <div class="category-content">
-         <div class="category-image-container">
-           
-           <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría">
-         </div>
-         <MenuCategory
+  <!-- Contenedor de Postres -->
+    <div class="category-container">
+      <div class="category-content">
+        <div class="category-image-container">
+          <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría">
+        </div>
+        <MenuCategory
           title="Postres"
           description="Los helados son postres congelados hechos principalmente a base de crema, leche y azúcar, a los que se les añaden diferentes sabores y a menudo ingredientes adicionales como frutas, chocolate, nueces, y otros. Son una opción popular especialmente en climas cálidos y se disfrutan por su textura cremosa y su dulzura refrescante. Ejemplos incluyen helado de vainilla, helado de chocolate y sorbetes de frutas."
           routePrefix="postres"
-         />
-       </div>
-     </div>
-   </div>
-   </div>
+        />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import HeaderView from '@/components/header/HeaderView.vue';
 import MenuCategory from '../../components/categoria/CategoriaView.vue';
 
 export default {
   name: 'MenuListView',
   components: {
+    HeaderView,
     MenuCategory
   }
 };

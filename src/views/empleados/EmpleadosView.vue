@@ -1,18 +1,48 @@
 <template>
+      <HeaderView/>
+        <aside class="sidebar">
+<nav>
+    <ul>
+        <li>
+            <router-link to="/dashboard" class="active">
+                <i class="fa-solid fa-chart-simple"></i> Dashboard
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/menus">
+                <i class="fa-solid fa-envelope"></i> Menu
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/visualizar">
+            <i class="fa-solid fa-table-cells-large"></i> Visualizar
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/empleados">
+                <i class="fa-solid fa-person"></i> Empleados
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/pagos">
+                <i class="fa-regular fa-credit-card"></i> Metodos de pago
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/proveedores">
+                <i class="fa-solid fa-user-group"></i> Proveedores
+            </router-link>
+        </li>
+        <li>
+            <router-link to="/inventario">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+            </router-link>
+        </li>
+        </ul>
+    </nav>
+</aside>
+<!-- ! Termina el SIDEBAR -->
     <div class="content">
-      <!-- <div class="header-container">
-        <h1>Registro de Estaciones del Metro</h1>
-        <div class="user-info">
-          <span>Uroos Fatima</span>
-          <img src="https://via.placeholder.com/40" alt="User Image">
-        </div>
-      </div> -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
       <div class="header">
         <h2>Empleados</h2>
         <div class="superior">
@@ -75,8 +105,19 @@
         </table>
       </div>
     </div>
-    </template>
-  
+</template>
+
+<script>
+import HeaderView from '@/components/header/HeaderView.vue';
+
+export default {
+  name: 'MenuListView',
+  components: {
+    HeaderView
+  }
+};
+</script>
+
     <style>
       .content {
         margin-left: 50px;
