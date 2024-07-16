@@ -15,7 +15,7 @@
   
   .category-description {
     flex: 1; /* Ocupa todo el espacio restante */
-    margin-right: 170px; /* Espacio entre la descripción y los botones */
+    margin-right: 0 0 200px; /* Espacio entre la descripción y los botones */
     color: black; 
   }
   
@@ -56,6 +56,8 @@
   .button-2:hover {
     background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor */
   }
-  #h1 {
-    color: black;
+  h1 {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 250px;
 }

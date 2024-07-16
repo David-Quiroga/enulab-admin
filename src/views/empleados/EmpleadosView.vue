@@ -16,7 +16,9 @@
       <div class="header">
         <h2>Empleados</h2>
         <div class="superior">
-            <button>Agregar Empleado</button>
+            <router-link to="/añadir">
+              <button>Agregar Empleado</button>
+            </router-link>
         </div>
       </div>
       <div class="table-container">

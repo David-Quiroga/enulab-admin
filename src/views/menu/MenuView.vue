@@ -11,7 +11,7 @@
          </div>
          <MenuCategory
            title="Sopas"
-           description="Lorem ipsum dolor sit amet consectetur."
+           description="Las sopas son platos líquidos o semi-líquidos que se preparan mediante la cocción de diversos ingredientes en un caldo. Pueden ser calientes o frías y se sirven típicamente como entrante o primer plato. Las sopas pueden contener carnes, verduras, legumbres, y granos, y son muy apreciadas por su sabor reconfortante y nutritivo. Ejemplos incluyen sopa de pollo, sopa de tomate y gazpacho."
            routePrefix="sopas"
          />
        </div>
@@ -26,7 +26,7 @@
          </div>
          <MenuCategory
            title="Entradas"
-           description="Lorem ipsum dolor sit amet consectetur."
+           description="Las entradas son pequeños platos que se sirven antes del plato principal para abrir el apetito. Pueden ser frías o calientes y varían ampliamente en cuanto a ingredientes y preparación. Las entradas pueden incluir ensaladas, aperitivos, tapas y pequeños bocados. Ejemplos comunes son ensalada César, bruschettas, y croquetas."
            routePrefix="entradas"
          />
        </div>
@@ -41,7 +41,7 @@
          </div>
          <MenuCategory
           title="Bebidas"
-          description="Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.  "
+          description="Las bebidas son líquidos que se sirven para acompañar las comidas o simplemente para disfrutar. Pueden ser alcohólicas o no alcohólicas y varían desde refrescos y jugos hasta vinos y cócteles. Las bebidas se eligen a menudo para complementar el sabor de la comida. Ejemplos incluyen agua, refrescos, vinos, cervezas, jugos naturales y cócteles como margaritas o mojitos."
           routePrefix="bebidas"
          />
        </div>
@@ -56,7 +56,7 @@
          </div>
          <MenuCategory
           title="Postres"
-          description="Lorem ipsum dolor sit amet consectetur."
+          description="Los helados son postres congelados hechos principalmente a base de crema, leche y azúcar, a los que se les añaden diferentes sabores y a menudo ingredientes adicionales como frutas, chocolate, nueces, y otros. Son una opción popular especialmente en climas cálidos y se disfrutan por su textura cremosa y su dulzura refrescante. Ejemplos incluyen helado de vainilla, helado de chocolate y sorbetes de frutas."
           routePrefix="postres"
          />
        </div>
