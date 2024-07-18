@@ -64,8 +64,9 @@ const routes = [
         props: true
     },
     {
-        path: '/añadir',
+        path: '/add',
         component: AgregarEmpleado,
+        props: true
     },
     {
         path: '/pagos',
@@ -75,7 +76,6 @@ const routes = [
         path: '/visualizar',
         component: VisualizarMenu,
     }
-
 ];
 
 const router = createRouter({

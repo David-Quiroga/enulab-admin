@@ -1,14 +1,47 @@
 <template>
-    <div id="app">
-      <!-- Barra superior con logo y navegación -->
-      <div class="logo-container">
-        <div class="logo">
-          <img src="logotipo.png" alt="Logotipo">
-        </div>
-    
-          <img src="usuario.jpg" alt="Usuario">
-      </div>
-  
+    <HeaderView/>
+        <aside class="sidebar">
+    <nav>
+        <ul>
+            <li>
+                <router-link to="/dashboard" class="active">
+                    <i class="fa-solid fa-chart-simple"></i> Dashboard
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/menus">
+                    <i class="fa-solid fa-envelope"></i> Menu
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/visualizar">
+                <i class="fa-solid fa-table-cells-large"></i> Visualizar
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/empleados">
+                    <i class="fa-solid fa-person"></i> Empleados
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/pagos">
+                    <i class="fa-regular fa-credit-card"></i> Metodos de pago
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/proveedores">
+                    <i class="fa-solid fa-user-group"></i> Proveedores
+                </router-link>
+            </li>
+            <li>
+                <router-link to="/inventario">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+                </router-link>
+            </li>
+        </ul>
+    </nav>
+</aside>
+<!-- ! Termina el SIDEBAR -->
       <!-- Contenido principal -->
       <main>
         <div class="hero">
@@ -30,7 +63,6 @@
           <div class="nombre3">
             <h4>Genero</h4>
             <input class="boton3" id="comida-select">
-         
   
           <div class="nombre4">
             <h4>Cargo</h4>
@@ -47,12 +79,12 @@
       </main>
   
       <!-- Información adicional -->
-       <div class="horario">
-        <h3>Horario laboral</h3>
-       </div>
-       <div class="hora1">
+      <div class="horario">
+        <h4>Horario laboral</h4>
+      </div>
+      <div class="hora1">
         <h3>De:</h3>
-       </div>
+      </div>
     <div class="hora2">
       <h3>A:</h3>
     </div>
@@ -75,40 +107,19 @@
           <div class="de"> 
             <input class="text2">
           </div>
-    </div>
   </template>
   
   <script>
+  import HeaderView from '@/components/header/HeaderView.vue';
   export default {
-    data() {
-      return {
-        name: '',
-        description: '',
-        price: null,
-        status: 'disponible',
-        image: null,
-        category: this.$route.params.category
-      };
-    },
-    methods: {
-      handleImageUpload(event) {
-        this.image = event.target.files[0];
-      },
-      handleSubmit() {
-        const formData = new FormData();
-        formData.append('name', this.name);
-        formData.append('description', this.description);
-        formData.append('price', this.price);
-        formData.append('status', this.status);
-        formData.append('image', this.image);
-        // Aquí puedes enviar formData a tu backend usando una petición HTTP
-        console.log('Form data ready to be sent:', formData);
-      }
-    }
-  };
-  </script>
-  
-  <style scoped>
+  name: 'App',
+  components: {
+    HeaderView
+  }
+}
+</script>
+
+  <style >
   /* Estilos generales */
   * {
     margin: 0;
@@ -119,38 +130,21 @@
   body {
     background-color: #141313;
   }
-  
-  
-  /* Contenedor principal */
-  #app {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* Estilos para la barra de navegación */
-  .container {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  nav {
-    text-align: right;
-    padding: 10px 15px 0 0;
-    font-size: 45px;
-  }
-  
   /* Estilos para el contenido principal */
   .main {
     padding: 20px;
   }
   
   .hero {
-    margin-top: 100px;
-    color: #fff;
+    margin-top: 240px;
   }
-  
+.titulo{
+  background-color: #00000000;
+  width: 350px;
+  box-shadow: none;
+  position: absolute;
+  left: 300px;
+}
   .formulario {
     margin-top: 50px;
     margin-left: 80px;
@@ -189,105 +183,96 @@
   }
   
   .atras1 {
-    background-color: #bbb7b7;
+    background-color: #BBB7B7;
     color: #000000;
   }
   
   .continuar {
     background-color: #ff7a00;
     color: #ffffff;
-  }
-  
-  /* Estilos para la información adicional */
-  .informacion-adicional {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    padding: 20px;
-    color: #6c6c6c;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.5;
-  }
-  
-  
-  .boton4 {
-    width: 500px;
-    height: 30px;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-  }
-  .izq1 {
-      width: 100px;
-      height: 30px;
-      margin-left: 70px; 
-      margin-top: 270px;
-      margin-bottom: 30px;
-      color: #6C6C6C;
-      text-align: left; 
-      line-height: 30px; 
-      position: relative;
-      z-index: 9999; 
-  }
-  
-  
-  .iz1 {
-      width: 500px;
-      height: 30px;
-      border-radius: 10px;
-      margin-top: 0px;
-      margin-left: -5px;
-      margin-bottom: 30px;
-      background-color: #ffffff; 
-      color: #000; 
-      text-align: left; 
-      line-height: 30px; 
-      position: relative; 
-      z-index: 9999; 
-  }
-  
-  .izq2 {
-      width: 200px;
-      height: 30px;
-      margin-left: -100px; 
-      margin-top: 360px;
-      margin-bottom: 30px;
-      color: #6C6C6C;
-      text-align: left;
-      line-height: 30px; 
-      position: relative; 
-      z-index: 9999; 
-  }
-  
-  
-  .iz2 {
-      width: 500px;
-      height: 30px;
-      border-radius: 10px;
-      margin-top: 0px;
-      margin-left: -5px;
-      margin-bottom: 30px;
-      background-color: #ffffff; 
-      color: #000; 
-      text-align: left;
-      line-height: 30px; 
-      position: relative; 
-      z-index: 9999;
-  }
-  
-  .izq3 {
-      width: 100px;
-      height: 30px;
-      margin-left: -200px; 
-      margin-top: 450px;
-      margin-bottom: 30px;
-      color: #6C6C6C;
-      text-align: left; 
-      line-height: 30px; 
-      position: relative; 
-      z-index: 9999; 
-  }
+}
+/* Estilos para la información adicional */
+.informacion-adicional {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  padding: 20px;
+  color: #6c6c6c;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+}
+.boton4 {
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.izq1 {
+  width: 100px;
+  height: 30px;
+  margin-left: 70px; 
+  margin-top: 330px;
+  margin-bottom: 30px;
+  color: #6C6C6C;
+  text-align: left; 
+  line-height: 30px; 
+  position: relative;
+  z-index: 9999; 
+}
+.iz1 {
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  top: -3px;
+  margin-left: -5px;
+  margin-bottom: 30px;
+  background-color: #ffffff; 
+  color: #000; 
+  text-align: left; 
+  line-height: 30px; 
+  position: relative; 
+  z-index: 9999; 
+}
+.izq2 {
+  width: 200px;
+  height: 30px;
+  margin-left: -100px; 
+  margin-top: 420px;
+  margin-bottom: 30px;
+  color: #6C6C6C;
+  text-align: left;
+  line-height: 30px; 
+  position: relative; 
+  z-index: 9999; 
+}
+.iz2 {
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 0px;
+  margin-left: -5px;
+  margin-bottom: 30px;
+  background-color: #ffffff; 
+  color: #000; 
+  text-align: left;
+  line-height: 30px; 
+  position: relative; 
+  z-index: 9999;
+}
+.izq3 {
+  width: 100px;
+  height: 30px;
+  margin-left: -200px; 
+  margin-top: 500px;
+  margin-bottom: 30px;
+  color: #6C6C6C;
+  text-align: left; 
+  line-height: 30px; 
+  position: relative; 
+  z-index: 9999; 
+}
   
   
   .iz3 {
@@ -319,72 +304,68 @@
   
   .text1{
     width: 170px;
-      height: 30px;
-      border-radius: 10px;
-      margin-top: 0px;
-      margin-left: -5px;
-      margin-bottom: 30px;
-      background-color: #ffffff; 
-      color: #000; 
-      text-align: left; 
-      line-height: 30px; 
-      position: relative;
-      z-index: 9999;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: -5px;
+    margin-bottom: 30px;
+    background-color: #ffffff; 
+    color: #000; 
+    text-align: left; 
+    line-height: 30px; 
+    position: relative;
+    z-index: 9999;
   }
   
   .de {
     width: 100px;
-      height: 30px;
-      margin-left: -380px; 
-      margin-top: 213px;
-      margin-bottom: 30px;
-      color: #6C6C6C;
-      text-align: left; 
-      line-height: 30px; 
-      position: relative; 
-      z-index: 9999; 
+    height: 30px;
+    margin-left: -390px; 
+    margin-top: 213px;
+    margin-bottom: 30px;
+    color: #6C6C6C;
+    text-align: left; 
+    line-height: 30px; 
+    position: relative; 
+    z-index: 9999; 
   }
   
   .text2{
     width: 170px;
-      height: 30px;
-      border-radius: 10px;
-      margin-top: 0px;
-      margin-left: -5px;
-      margin-bottom: 30px;
-      background-color: #ffffff; 
-      color: #000; 
-      text-align: left; 
-      line-height: 30px; 
-      position: relative;
-      z-index: 9999;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: -5px;
+    margin-bottom: 30px;
+    background-color: #ffffff; 
+    color: #000; 
+    text-align: left; 
+    line-height: 30px; 
+    position: relative;
+    z-index: 9999;
   }
   
   .horario {
       position: absolute;
-      top: 185px; 
-      left: 720px; 
+      top: 240px; 
+      left: 860px; 
       z-index: 9999; 
       color: #6c6c6c;
   }
   
   .hora1 {
       position: absolute;
-      top: 220px; 
-      left: 720px; 
+      top: 270px; 
+      left: 860px; 
       z-index: 9999; 
       color: #6c6c6c;
   }
   
-  .hora2 {
-      position: absolute;
-      top: 220px; 
-      left: 1000px; 
-      z-index: 9999; 
-      color: #6c6c6c;
-  }
-  
-  
-  
-  </style>
-  
+.hora2 {
+  position: absolute;
+  top: 268px; 
+  left: 1150px; 
+  z-index: 9999; 
+  color: #6c6c6c;
+}
+</style>
