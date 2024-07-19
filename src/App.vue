@@ -59,7 +59,12 @@
 </script> -->
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -72,7 +77,7 @@ font-family: Arial, sans-serif;
 #app {
 display: flex;
 min-height: 100vh;
-background-color: #141313;
+background-color: #ffffff;
 }
 
 .sidebar {
@@ -100,7 +105,7 @@ transition: transform 0.3s ease;
 
 nav ul li a {
 text-decoration: none;
-color: #6c757d;
+color: #ffffff;
 display: flex;
 align-items: center;
 font-size: 16px;
@@ -112,5 +117,8 @@ margin-right: 10px;
 
 nav ul li:hover {
 transform: translateX(10px);
+background-color: #505053;
+width: 205px;
+border-radius: 10px;
 }
 </style>

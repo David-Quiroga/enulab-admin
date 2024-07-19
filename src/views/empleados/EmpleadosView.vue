@@ -47,7 +47,7 @@
     <h2>Empleados</h2>
     <div class="superior">
         <router-link to="/add">
-          <button class="add">Agregar Empleado</button>
+          <button >Añadir Empleado</button>
         </router-link>
     </div>
   </div>
@@ -118,46 +118,43 @@ HeaderView
 };
 </script>
 
-<style>
-
+<style scoped>
+.content {
+    margin-left: 50px;
+    padding: 20px;
+    width: calc(100% - 270px);
+}
 .superior h1{
 color: dark;
 font-weight: bold;
 font-size: 50px;
 }
 .superior {
-top: -130px;
-padding: 0 30px;
-box-sizing: border-box;
-position: relative; 
+    display: flex;
+    width: 100%;
+    height: 15%;
+    padding: 0 30px;
 }
 
 .superior button {
-background-color: #FF7A00;
-border: none;
-border-radius: 20px;
-height: 30px;
-padding: 0 60px;
-color: white;
-position: absolute; 
-top: 120px; 
-left: 800px; 
-z-index: 1000;
+    background-color: #FF7A00;
+    border: none;
+    border-radius: 20px;
+    height: 39px;
+    padding: 0 60px;
+    margin-left: 740px;
 }
-
 .titulo {
-    background-color: #e0e4e8;
-    height: 70px;
-    width: 1200px;
-    position: absolute;
-    top: 120px;
-    padding: 2px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background-color: #75787b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  justify-content: space-between;
+  margin-top: 100px
 }
 .header h2 {
     margin: 0;
@@ -180,95 +177,52 @@ z-index: 1000;
 }
 
 .table-container {
-  position: absolute;
-  top: 220px;   
-  width: 1200px;
-  background-color: #fff;
+  background-color: #d6d6d659;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding: 20px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-
-  th, td {
-    padding: 15px;
-    text-align: left;
-  }
-
-  th {
-    background-color: #f0f2f5;
-    color: #333;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f9fafb;
-  }
-
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-
-  .actions i {
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 200px;
+  border-radius: 10px;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+th {
+  background-color: #bebebe;
+  color: #333;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
+.actions i {
     margin-right: 10px;
     cursor: pointer;
-  }
-
-  .actions i:hover {
-    color: #007bff;
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
-    align-items: center;
-  }
-
-  .pagination button {
-    background-color: #e0e4e8;
-    border: none;
-    padding: 10px 15px;
-    margin-left: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .pagination button.active {
-    background-color: #007bff;
-    color: white;
-  }
-
-  .pagination p {
-    margin: 0;
-    margin-right: auto;
-    color: #666;
-  }
-
-  .status {
-    color: #28a745;
-    font-weight: bold;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #d1d8dd;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .header-container h1 {
-    margin: 0;
-    font-size: 24px;
-  }
+}
+.actions i:hover {
+  color: #FF0000;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d1d8dd;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header-container h1 {
+  margin: 0;
+  font-size: 24px;
+}
 </style>

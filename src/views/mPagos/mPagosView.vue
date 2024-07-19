@@ -108,16 +108,14 @@
     margin-top: 100px;
     margin-bottom: 40px;
     margin-left: 200px; /* Ajusta este valor según tu preferencia */
-  
-    color: #6C6C6C;
-    font-family: 'Montserrat';
+    color: #000000;
   }
   
   .manage-payment-methods {
     width: 800px;
     margin: -25px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #e6e6e6;
     border-radius: 8px;
     margin-left: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 

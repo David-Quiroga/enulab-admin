@@ -43,11 +43,13 @@
 </aside>
 <!-- ! Termina el SIDEBAR -->
     <div class="content">
-    <div class="header">
-        <h2>Lista de Proveedores</h2>
-            <div class="superior">
-                <button>Agregar Proveedor</button>
-            </div>
+        <div class="top">
+            <h2>Proveedores</h2>
+        <div class="superior">
+            <router-link to="/agregar">
+                <button>Agregar item</button>
+            </router-link>
+        </div>
     </div>
     <div class="table-container">
         <table>
@@ -110,19 +112,20 @@ export default {
   }
 };
 </script>
-<style>
-.content {
-        margin-left: 50px;
-        padding: 20px;
-        width: calc(100% - 270px);
-}
+<style scoped>
 .imgP{
     width: 50px;
 }
+.content {
+    margin-left: 50px;
+    padding: 20px;
+    width: calc(100% - 270px);
+}
 .superior {
     display: flex;
-    width: 100%;
-    height: 15%;
+    margin-top: 10px;
+    width: 90%;
+    height: 10%;
     align-items: center;
     justify-content: space-between; /* Distribuye los elementos horizontalmente */
     padding: 0 30px;
@@ -139,16 +142,20 @@ export default {
     border-radius: 20px;
     height: 30px;
     padding: 0 60px;
-    margin-left: auto;
+    margin-left: 740px;
     color: white;
 }
-.header {
-    background-color: #e0e4e8;
+.top { 
+    background-color: #75787b;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    display: flex;
     align-items: center;
+    margin-top: 100px;
+    width: 1200px;
+    height: 80px;
     justify-content: space-between;
 }
 .header h2 {
@@ -171,7 +178,7 @@ th, td {
     text-align: left;
 }
 th {
-    background-color: #F0CA91;
+    background-color: #bebebe;
     color: #333;
     font-weight: bold;
 }

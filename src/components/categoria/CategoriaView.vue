@@ -1,7 +1,7 @@
 <template>
   <div class="menu-category">
     <div>
-      <h1> {{title}}</h1>
+      <h1>{{title}}</h1>
     </div>
     <div class="category-description">
       <p>{{ description }}</p>
@@ -11,7 +11,7 @@
         <button class="button">Agregar {{ title }}</button>
       </router-link>
       <router-link :to="'/ver/' + routePrefix">
-        <button class="button-2">Ver Menú de {{ title }}</button>
+        <button class="button-2">Ver Menú de {{title}}</button>
         
       </router-link>
     </div>

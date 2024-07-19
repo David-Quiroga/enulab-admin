@@ -47,8 +47,6 @@
       <br>
       <br>
       <br>
-      <br>
-      <br>
       <div class="top">
         <h2>Inventario</h2>
         <div class="superior">
@@ -145,78 +143,72 @@
     border-radius: 20px;
     height: 30px;
     padding: 0 60px;
-    margin-left: auto;
+    margin-left: 740px;
     color: white;
 }
 .top { 
-        background-color: #75787b;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-  
-      .header h2 {
-        margin: 0;
-        font-size: 24px;
-      }
-  
-      .search-box {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 5px 10px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-      }
-  
-      .search-box input {
-        border: none;
-        outline: none;
-        margin-left: 5px;
-      }
-  
-      .table-container {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        padding: 20px;
-      }
-  
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
-  
-      th, td {
-        padding: 15px;
-        text-align: left;
+  background-color: #75787b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  justify-content: space-between;
+}
 
-      }
-  
-      th {
-        background-color: #f0f2f5;
-        color: #333;
-        font-weight: bold;
-      }
-  
-      tr:nth-child(even) {
-        background-color: #f9fafb;
-      }
-  
-      tr:hover {
-        background-color: #f1f1f1;
-      }
-  
-      .actions i {
-        margin-right: 10px;
-        cursor: pointer;
-      }
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.search-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+.table-container {
+  background-color: #d6d6d659;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+th {
+  background-color: #bebebe;
+  color: #333;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
+.actions i {
+  margin-right: 10px;
+  cursor: pointer;
+}
   
       .actions i:hover {
         color: #FF0000;

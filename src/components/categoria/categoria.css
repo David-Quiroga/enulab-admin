@@ -6,16 +6,16 @@
   }
   
   .category-content {
-    display: flex;
     flex-direction: row;
     align-items: flex-start; /* Alinear elementos al inicio verticalmente */
     justify-content: center; /* Centrar elementos horizontalmente */
     width: 100%;
+    margin-top: 100px;
   }
   
   .category-description {
     flex: 1; /* Ocupa todo el espacio restante */
-    margin-right: 0 0 200px; /* Espacio entre la descripción y los botones */
+    margin-right: 0 0 100px; /* Espacio entre la descripción y los botones */
     color: black; 
   }
   
@@ -29,7 +29,7 @@
   
   .button, .button-2 {
     margin-top: 5px; /* Espacio entre los botones */
-    padding: 10px 20px; /* Ajuste de relleno */
+    padding: 10px 10px; /* Ajuste de relleno */
     background-color: #FF7A00; /* Color de fondo */
     color: white; /* Color del texto */
     border: none; /* Sin borde */
@@ -59,5 +59,6 @@
   h1 {
     color: rgb(0, 0, 0);
     position: absolute;
-    left: 250px;
+    left: 400px;
+    margin-top: -40px;
 }

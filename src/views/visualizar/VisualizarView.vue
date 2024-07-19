@@ -57,7 +57,7 @@
                         <p>Alitas BBQ <span>15.00</span></p>
                         <p>Costillas <span>15.00</span></p>
                     </div>
-                    <img src="../../assets/img/entrada1.png" alt="">
+                    <img src="../../assets/img/ceviche.jpg" alt="" class="imagen1">
                 </div>
 
                 <h4>Entradas Calientes</h4>
@@ -75,7 +75,7 @@
                         <p>Alitas BBQ <span>15.00</span></p>
                         <p>Costillas <span>15.00</span></p>
                     </div>
-                    <img src="../../assets/img/entrada.png" alt="">
+                    <img src="../../assets/img/hamburguer.jpg" alt="" class="imagen2">
                 </div>
 
                 <h4>Snacks</h4>
@@ -99,7 +99,6 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Costillas <span>15.00</span></p>
                         </div>
-                        <img src="../../assets/img/bebidas.png" alt="">
                     </div>
 
                     <h4>Con alcohol</h4>
@@ -107,10 +106,10 @@
                         <div class="bebida-texto">
                         <p>Alitas BBQ <span>15.00</span></p>
                         <p>Costillas <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
+                        <p>Alitas BBQ <span>15.00</span></p>
                         <p>Costillas <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/trago.jpg" alt="" class="imagen3">
                     </div>
                     
                 </div>
@@ -123,6 +122,8 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/brownie.jpg" alt="" class="imagen4">
+
                     </div>
 
                     <h4>Calientes</h4>
@@ -144,6 +145,7 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/entrada1.png" alt="" >
                     </div>
                     <h4>Cremas</h4>
                     <div class="sopa-seccion">
@@ -151,12 +153,14 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/sopas.png" alt="" >
                     </div>
                     <h4>Caldos</h4>
                     <div class="sopa-seccion">
                         <div class="sopa-texto">
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/sopas1.png" alt="" >
                     </div>
                 </div>
                 <div class="bloque5">
@@ -167,6 +171,8 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
+                        <img src="../../assets/img/helado.jpg" alt="" >
+
                     </div>
                     <h4>Especiales</h4>
                     <div class="helado-seccion">
@@ -197,25 +203,26 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Peralta&display=swap');
 
 .container {
-    width: 100%;
+    width: 85%;
 }
 
 .container h1 {
-    color: #6C6C6C;
-    margin-top: 80px;
-    padding-left: 50px;
+    color: #000000;
+    margin-top: 90px;
+    padding-left: 60px;
 }
 
 .content {
     display: flex;
     justify-content: space-between;
     margin-left: 30px;
+    margin: auto;
+    width: 95%;
 }
 
 .izquierda, .medio, .derecha {
     height: 600px; /* Ajusta esta altura según tus necesidades */
     width: 700px;
-    box-sizing: border-box;
     margin-left: 10px;
 }
 
@@ -224,22 +231,26 @@ export default {
 }
 .izquierda h1{
     color: #FFFBF0;
-    font-size: 120px;
+    font-size: 110px;
     padding: 0 0 0 10px;
     margin: 0;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
 }
-
 .medio {
     background-color: #353535;
+    width: 700px;
 }
 
 .derecha {
     background-color: #353535;
+    width: 700px;
 }
 
 .bloque1{
     height: 70%;
 }
+
 .entrada-seccion {
     display: flex;
     height: 70px;
@@ -251,19 +262,23 @@ export default {
     height: 70px;
     margin-bottom: -30px;
 
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 .postre-seccion {
     display: flex;
-    justify-content: space-between;
+    margin-bottom: -35px;
+    /* justify-content: space-between; */
 }
 .sopa-seccion {
     display: flex;
-    justify-content: space-between;
+    margin: 0;
+    margin-bottom: -38px;
+    /* justify-content: space-between; */
 }
 .helado-seccion {
     display: flex;
-    justify-content: space-between;
+    margin-bottom: -35px;
+    /* justify-content: space-between; */
 }
 .bloque1 h3{
     text-align: center;
@@ -272,6 +287,8 @@ export default {
     background-color: red;
     width: 50%;
     height: 25px;
+    position: relative;
+    left: -77px;
     margin: auto;
     margin-bottom: -25px;
 
@@ -288,18 +305,49 @@ export default {
     text-align: center;
     font-size: 20px;
 }
-.bloque1 img{
+.imagen1{
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
+    margin: auto;
     border: 5px solid #FFFFFF;
+    filter: brightness(0.8);
 }
-.bloque2 img{
+.imagen2{
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    margin: auto;
     border: 5px solid #FFFFFF;
+    filter: brightness(0.8);
+    margin-left: 90px;
+    width: 110px;
+    height: 110px;
 }
+
+.imagen3{
+    border-radius: 100%;
+    width: 110px;
+    height: 110px;
+    margin-left: 70px;
+    border: 5px solid #FFFFFF;
+    filter: brightness(0.8);    
+}
+.imagen4{
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin-left: 40px;
+    border: 5px solid #FFFFFF;
+    filter: brightness(0.8);    
+}
+.bloque4 img, .bloque5 img{
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    margin-left: 100px;
+    border: 5px solid #FFFFFF;
+    filter: brightness(0.8);
+}
+
 .bloque2, .bloque3, .bloque4, .bloque5{
     height: 50%;
     margin-top: -38px;
@@ -307,6 +355,8 @@ export default {
 .bloque1 h4, .bloque2 h4,.bloque3 h4,.bloque4 h4,.bloque5 h4{
     margin-top: 35px;
     margin-left: 20px;
+    text-decoration: underline #FFFFFF;
+    text-underline-offset: 6px; /* Ajusta el valor según sea necesario */
     font-family: "Peralta", sans-serif;
 }
 .bloque1 p, .bloque2 p,.bloque3 p,.bloque4 p,.bloque5 p{
@@ -316,6 +366,7 @@ export default {
 }
 .bloque1 span, .bloque2 span,.bloque3 span,.bloque4 span,.bloque5 span{
     color: #FFFBF0;
+    margin-left: 25px;
     font-weight: bold;
 }
 .bloque1 h4{

@@ -5,7 +5,7 @@
     padding: 20px 40px; /* Ajusta el padding según sea necesario */
     background-color: #2C2E3A;
     color: #000;
-    width: 100%;
+    width: 101%;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +19,7 @@
   }
 
   .usuario {
-    color: azure;
+    color: rgb(255, 255, 255);
   }
   
   .header-right {
@@ -68,7 +68,6 @@
     right: 0;
     background-color: #141313;
     border: 1px solid #000;
-    border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 100;
     display: none;

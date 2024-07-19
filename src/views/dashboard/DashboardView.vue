@@ -98,18 +98,18 @@
         </div>
         <div class="redes">
           <h3>Redes Sociales</h3>
-          <i class="fa-brands fa-youtube" style="color: #787d87;"></i>
-          <i class="fa-brands fa-tiktok" style="color: #787d87;"></i>
-          <i class="fa-brands fa-telegram" style="color: #787d87;"></i>
-          <i class="fa-brands fa-linkedin" style="color: #787d87;"></i>
-          <i class="fa-brands fa-instagram" style="color: #787d87;"></i>
-          <i class="fa-brands fa-x-twitter" style="color: #787d87;"></i>
+          <i class="fa-brands fa-youtube" style="color: #000;"></i>
+          <i class="fa-brands fa-tiktok" style="color: #000;"></i>
+          <i class="fa-brands fa-telegram" style="color: #000;"></i>
+          <i class="fa-brands fa-linkedin" style="color: #000;"></i>
+          <i class="fa-brands fa-instagram" style="color: #000;"></i>
+          <i class="fa-brands fa-x-twitter" style="color: #000;"></i>
         </div>
       </div>
 
       <div class="derecha">
         <div class="anuncio">
-          <h2>Digital Waiter <br>es tu mejor acompanante <br>a la hora de <br>administar tu restaurante...</h2>
+          <h2>Digital Waiter <br>tu mejor compañero<br>a la hora de <br>administar tu restaurante...</h2>
         </div>
         <div class="empleados">
           <h3>Empleados</h3>
@@ -166,12 +166,12 @@ body{
   width: 100%;
 }
 .container h1{
-  color: #6C6C6C;
+  color: #000000;
   margin-left: 30px; 
-  margin-top: 100px
+  margin-top: 90px
 }
 .tarjetas{
-  background-color: #2E2C2C;
+  background-color: #bebcbc;
   display: flex;
   width: 95%;
   height: 20%;
@@ -199,7 +199,7 @@ body{
 .tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3{
   color: #FFFFFF;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 7px;
   font-weight: 400;
   font-size: 15px;
 }
@@ -245,15 +245,16 @@ body{
   width: 75%;
 }
 .categorias{
-  background-color: #2A2A2A;
+  background-color: #bebcbc;
   border-radius: 10px;
   width: 96%;
   height: 55%;
   margin: auto;
+  margin-left: 3px;
   margin-top: 20px;
 }
 .categorias h3{
-  color: #979797;
+  color: #000;
   padding: 5px 10px;
 }
 .tarjetas-container{
@@ -300,15 +301,16 @@ body{
   cursor: pointer;
 }
 .redes{
-  width: 95%;
+  width: 96%;
   margin: auto;
   margin-top: 20px;
+  margin-left: 3px;
   height: 30%;
-  border: 4px solid #BDBDBD;
-  border-radius: 20px;
+  border: 4px solid #000000;
+  border-radius: 10px;
 }
 .redes h3{
-  color: #979797;
+  color: #000000;
   padding: 5px 10px;
 }
 .redes i{
@@ -318,30 +320,32 @@ body{
   margin-top: 10px;
   padding: 0 30px;
   cursor: pointer;
+  color: #000000;
 }
 .derecha{
   width: 25%;
 }
 .anuncio{
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/img/restaurante.png") no-repeat center / cover;
-  width: 300px;
+  width: 310px;
   height: 200px;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: auto;
   margin-top: 20px;
+  margin-left: 1px;
 }
 .anuncio h2{
   color: #A7A7A7;
   padding: 20px;
 }
 .empleados{
-  background-color: #323232;
-  margin-top: 15px;
+  background-color: #bebcbc;
+  margin-top: 11px;
   height: 48%;
   border-radius: 10px;
 }
 .empleados h3{
-  color: #979797;
+  color: #000;
   padding: 10px 10px;
 }
 
