@@ -14,6 +14,8 @@ import MetodosPago from "../views/mPagos/mPagosView.vue"
 import VisualizarMenu from "../views/visualizar/VisualizarView.vue"
 import LoginView from "../views/login/LoginView.vue";
 import RegistroView from "@/views/login/RegistroView.vue";
+import RestaunranteView from "@/views/restaurante/RestauranteView.vue"
+import FormularioView from "@/views/restaurante/RestaraunteFromView.vue"
 
 const routes = [
     {
@@ -75,6 +77,14 @@ const routes = [
     {
         path: '/visualizar',
         component: VisualizarMenu,
+    },
+    {
+        path: '/restaurante',
+        component: RestaunranteView
+    },
+    {
+        path: "/formulario",
+        component: FormularioView
     }
 ];
 

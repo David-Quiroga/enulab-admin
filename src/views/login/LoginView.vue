@@ -15,7 +15,7 @@
                 <input type="password" required>
                 <label>Password</label>
             </div>
-              <router-link to="/dashboard">
+              <router-link to="/restaurante">
                 <button type="submit">Sign me In</button>
               </router-link>
             <div class="form-help"> 
@@ -44,15 +44,11 @@ export default {name: 'LoginView'};
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-body {
-    background: #000;
-}
 body::before {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    opacity: 0.5;
     width: 100%;
     height: 100%;
     background: url("../../assets/img/login.jpg");
@@ -97,7 +93,7 @@ h1{
     left: 81%;
     top: 30%;
     width: 587px;
-    height: 1100px;
+    height: 1115px;
     border-radius: 4px;
     padding: 70px;
     transform: translate(-50%, -50%);

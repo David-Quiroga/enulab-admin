@@ -47,7 +47,7 @@
             <h2>Proveedores</h2>
         <div class="superior">
             <router-link to="/agregar">
-                <button>Agregar item</button>
+                <button>Agregar Proveedor</button>
             </router-link>
         </div>
     </div>
@@ -132,7 +132,6 @@ export default {
     box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 .superior h1{
-    color: dark;
     font-weight: bold;
     font-size: 50px;
 }
@@ -144,6 +143,7 @@ export default {
     padding: 0 60px;
     margin-left: 740px;
     color: white;
+    white-space: nowrap;
 }
 .top { 
     background-color: #75787b;

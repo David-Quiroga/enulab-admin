@@ -125,7 +125,6 @@ HeaderView
     width: calc(100% - 270px);
 }
 .superior h1{
-color: dark;
 font-weight: bold;
 font-size: 50px;
 }
@@ -143,6 +142,8 @@ font-size: 50px;
     height: 39px;
     padding: 0 60px;
     margin-left: 740px;
+    color: white;
+    white-space: nowrap;
 }
 .titulo {
   background-color: #75787b;

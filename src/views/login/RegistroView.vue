@@ -1,9 +1,8 @@
 <template>
   <body>
-    <h1>HOLA</h1>
-    <h1 class="titulo1">DE NUEVO!</h1>
-    <p class="comm">"La creacion es la expresion de la vida"</p>
-    <p class="autor">-Rollo May</p>
+    <h1>Digital Waiter</h1>
+    <p class="comm">"El arte de crear es el arte de descubrir." </p>
+    <p class="autor">-Pablo Picasso</p>
       <div class="form-wrapper">
           <h2>Formulario de Registro</h2>
           <form action="#">
@@ -66,7 +65,6 @@
       position: absolute;
       left: 0;
       top: 0;
-      opacity: 0.5;
       width: 100%;
       height: 100%;
       background: url("../../assets/img/login.jpg");
@@ -74,7 +72,7 @@
   }
   h1{
     position: absolute;
-    top: 220px;
+    top: 100px;
     left: 40px;
     color: #fff;
     font-size: 90px
@@ -105,27 +103,27 @@
     left: 40px;
     color: #fff;
     font-size: 90px
-  }
-  .form-wrapper {
-      position: absolute;
-      left: 81%;
-      top: 30%;
-      width: 587px;
-      height: 1100px;
-      border-radius: 4px;
-      padding: 70px;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, .75);
-  }
-  .form-wrapper h2 {
-      color: #fff;
-      top: 450px;
-      position: absolute;
-      font-size: 2rem;
-  }
-  .form-wrapper form {
-      margin: 500px 0 65px;
-  }
+}
+.form-wrapper {
+    position: absolute;
+    left: 81%;
+    top: 30%;
+    width: 587px;
+    height: 1115px;
+    border-radius: 4px;
+    padding: 70px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .75);
+}
+.form-wrapper h2 {
+    color: #fff;
+    top: 450px;
+    position: absolute;
+    font-size: 2rem;
+}
+.form-wrapper form {
+    margin: 500px 0 65px;
+}
   form .form-control {
       height: 50px;
       position: relative;
