@@ -155,7 +155,7 @@ font-size: 50px;
   align-items: center;
   width: 1200px;
   justify-content: space-between;
-  margin-top: 100px
+  margin-top: 1px
 }
 .header h2 {
     margin: 0;

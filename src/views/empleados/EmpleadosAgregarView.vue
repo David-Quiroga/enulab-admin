@@ -50,7 +50,7 @@
   
         <!-- Formulario de información del restaurante -->
         <div class="formulario">
-          <div class="nombre">
+          <div>
             <h4>Nombre del Empleado</h4>
             <input class="boton1" placeholder="">
           </div>
@@ -144,6 +144,11 @@
   box-shadow: none;
   position: absolute;
   left: 300px;
+  top: 140px;
+  white-space: nowrap;
+}
+h4{
+  color: #000;
 }
   .formulario {
     margin-top: 50px;
@@ -159,6 +164,8 @@
   .boton4 {
     width: 500px;
     height: 30px;
+    border: none;
+    background-color: #d3d1d1;
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -184,12 +191,14 @@
   
   .atras1 {
     background-color: #BBB7B7;
+    border: none;
     color: #000000;
   }
   
   .continuar {
     background-color: #ff7a00;
-    color: #ffffff;
+    border: none;
+    color: #000;
 }
 /* Estilos para la información adicional */
 .informacion-adicional {
@@ -198,7 +207,6 @@
   right: 0;
   width: 300px;
   padding: 20px;
-  color: #6c6c6c;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;
 }
@@ -215,7 +223,6 @@
   margin-left: 70px; 
   margin-top: 330px;
   margin-bottom: 30px;
-  color: #6C6C6C;
   text-align: left; 
   line-height: 30px; 
   position: relative;
@@ -225,11 +232,11 @@
   width: 500px;
   height: 30px;
   border-radius: 10px;
-  top: -3px;
+  top: 7px;
   margin-left: -5px;
   margin-bottom: 30px;
-  background-color: #ffffff; 
-  color: #000; 
+  background-color: #d3d1d1;
+  border: none;
   text-align: left; 
   line-height: 30px; 
   position: relative; 
@@ -239,7 +246,7 @@
   width: 200px;
   height: 30px;
   margin-left: -100px; 
-  margin-top: 420px;
+  margin-top: 440px;
   margin-bottom: 30px;
   color: #6C6C6C;
   text-align: left;
@@ -254,7 +261,8 @@
   margin-top: 0px;
   margin-left: -5px;
   margin-bottom: 30px;
-  background-color: #ffffff; 
+  background-color: #d3d1d1; 
+  border: none;
   color: #000; 
   text-align: left;
   line-height: 30px; 
@@ -265,9 +273,9 @@
   width: 100px;
   height: 30px;
   margin-left: -200px; 
-  margin-top: 500px;
+  margin-top: 530px;
   margin-bottom: 30px;
-  color: #6C6C6C;
+  color: #d3d1d1;
   text-align: left; 
   line-height: 30px; 
   position: relative; 
@@ -277,13 +285,13 @@
   
   .iz3 {
       width: 500px;
-      height: 30px;
+      height: 35px;
+      border: none;
+      background-color: #d3d1d1;
       border-radius: 10px;
       margin-top: 0px;
       margin-left: -5px;
       margin-bottom: 30px;
-      background-color: #ffffff; 
-      color: #000; 
       text-align: left; 
       line-height: 30px; 
       position: relative;
@@ -309,7 +317,8 @@
     margin-top: 50px;
     margin-left: -5px;
     margin-bottom: 30px;
-    background-color: #ffffff; 
+    background-color: #d3d1d1;
+    border: none; 
     color: #000; 
     text-align: left; 
     line-height: 30px; 
@@ -337,7 +346,8 @@
     margin-top: 50px;
     margin-left: -5px;
     margin-bottom: 30px;
-    background-color: #ffffff; 
+    background-color: #d3d1d1;
+    border: none;
     color: #000; 
     text-align: left; 
     line-height: 30px; 
@@ -345,27 +355,26 @@
     z-index: 9999;
   }
   
-  .horario {
-      position: absolute;
-      top: 240px; 
-      left: 860px; 
-      z-index: 9999; 
-      color: #6c6c6c;
-  }
-  
-  .hora1 {
-      position: absolute;
-      top: 270px; 
-      left: 860px; 
-      z-index: 9999; 
-      color: #6c6c6c;
-  }
-  
+.horario {
+  position: absolute;
+  top: 240px; 
+  left: 860px; 
+  z-index: 9999; 
+  color: #6c6c6c;
+}
+.hora1 {
+  position: absolute;
+  top: 270px; 
+  left: 860px; 
+  z-index: 9999; 
+  color: #000;
+
+}
 .hora2 {
   position: absolute;
   top: 268px; 
   left: 1150px; 
   z-index: 9999; 
-  color: #6c6c6c;
+  color: #000;
 }
 </style>

@@ -1,64 +1,75 @@
 .menu-category {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .category-content {
-    flex-direction: row;
-    align-items: flex-start; /* Alinear elementos al inicio verticalmente */
-    justify-content: center; /* Centrar elementos horizontalmente */
-    width: 100%;
-    margin-top: 100px;
-  }
-  
-  .category-description {
-    flex: 1; /* Ocupa todo el espacio restante */
-    margin-right: 0 0 100px; /* Espacio entre la descripción y los botones */
-    color: black; 
-  }
-  
-  .category-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar los botones horizontalmente */
-    justify-content: flex-start; /* Alinear los botones al inicio verticalmente */
-    margin-bottom: 60px
-  }
-  
-  .button, .button-2 {
-    margin-top: 5px; /* Espacio entre los botones */
-    padding: 10px 10px; /* Ajuste de relleno */
-    background-color: #FF7A00; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; 
-    margin-left: 400px;/* Transición suave del color de fondo */
-    width: 150px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
+.category-description {
+  /* Ocupa todo el espacio restante */
+ margin-right: 200px;
+ width: 60%;
+ margin-left: 100px;     right: 50px;
+ color: black;
+}
+
+.category-description {
+   /* Ocupa todo el espacio restante */
+  margin-right: 200px;
+  width: 60%;
+  left: 60px; 
+  color: black; 
+}
+
+.category-buttons {
+  display: flex;
+  flex-direction: column; /* Coloca los botones en una columna */
+  justify-content: flex-start; /* Alinea los botones al inicio verticalmente */
+  white-space: nowrap;
+  padding: 10px; /* Espaciado interno alrededor de los botones */
+  width: fit-content; /* Ajusta el ancho del contenedor al tamaño del contenido */
+  transform: translateY(-75px); 
+  margin-left: 520px;
+  margin-top: 10px;
+}
+
+.button, .button-2 {
   
-  .button {
-    background-color: #FF7A00;
-  }
-  
-  .button:hover {
-    background-color: #ff6600; /* Cambia el color de fondo al pasar el cursor */
-  }
-  
-  .button-2 {
-    background-color: #0094FF; /* Color diferente para el segundo botón */
-  }
-  
-  .button-2:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor */
-  }
-  h1 {
-    color: rgb(0, 0, 0);
-    position: absolute;
-    left: 400px;
-    margin-top: -40px;
+  background-color: #ffffff; /* Color de fondo de los botones */
+  border: none; /* Elimina el borde de los botones */
+  padding: 10px 20px; /* Espaciado interno dentro de los botones */
+  margin-bottom: 5px; /* Espacio entre los botones */
+  border-radius: 10px; /* Bordes redondeados de los botones */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de la fuente de los botones */
+  text-align: center; /* Centra el texto dentro del botón */
+  width: 150px; /* Ancho fijo para los botones */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: all 0.3s ease; /* Transición suave para los efectos */
+   /* Sombra del botón */
+  color: cornsilk;
+}
+
+
+.button {
+  background-color: #FF7A00;
+}
+.button-2 {
+  background-color: #0094FF; /* Color diferente para el segundo botón */
+}
+.button:hover, .button-2:hover {
+  transform: translateY(-5px); /* Eleva el botón */
+   /* Aumenta la sombra */
+}
+
+/* Efecto al hacer clic en el botón */
+.button:active, .button-2:active {
+  transform: translateY(-2px); /* Reduce la elevación al hacer clic */
+   /* Reduce la sombra */
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  left: 250px;
 }

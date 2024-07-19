@@ -48,19 +48,22 @@ import HeaderView from '@/components/header/HeaderView.vue';
     box-sizing: border-box;
 }
 .titulo{
-    margin-top: 140px;
+    position: absolute;
+    top: 120px;
     margin-left: -140px;
     font-family: "Poppins", sans-serif;
 }
 .line{
     border: none;
     height: 2px; 
-    background-color: #000; 
+    background-color: #000;
+    position: absolute;
+    top: 50px; 
     width: 350%;
 }
 .superior {
     display: block;
-    margin-top: 220px;
+    margin-top: 210px;
     margin-left: 290px;
     width: 90%;
     height: 10%;

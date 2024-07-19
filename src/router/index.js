@@ -16,6 +16,7 @@ import LoginView from "../views/login/LoginView.vue";
 import RegistroView from "@/views/login/RegistroView.vue";
 import RestaunranteView from "@/views/restaurante/RestauranteView.vue"
 import FormularioView from "@/views/restaurante/RestaraunteFromView.vue"
+import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
 
 const routes = [
     {
@@ -69,6 +70,10 @@ const routes = [
         path: '/add',
         component: AgregarEmpleado,
         props: true
+    },
+    {
+        path: "/create",
+        component: AgregarProveedor
     },
     {
         path: '/pagos',

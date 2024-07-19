@@ -46,7 +46,7 @@
         <div class="top">
             <h2>Proveedores</h2>
         <div class="superior">
-            <router-link to="/agregar">
+            <router-link to="/create">
                 <button>Agregar Proveedor</button>
             </router-link>
         </div>

@@ -101,7 +101,7 @@ body {
 }
 
 h1{
-    color: #FFFFFF;
+    color: #000000;
     font-size: 50px;
     padding-left: 150px;
     margin-top: 130px;
@@ -109,11 +109,11 @@ h1{
 }
 
 label{
-    color: #6C6C6C;
+    color: #000000;
 }
 
 input, textarea {
-    background-color: #F0F0F0;
+    background-color: #d3d1d1;
     border: none;
     border-radius: 10px;
     height: 40px;
