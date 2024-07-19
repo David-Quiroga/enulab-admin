@@ -141,12 +141,13 @@ export default {
   background-color: #656565;
   max-width: 750px;
   max-height: 150px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 50px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin-right: 100px;
+  margin-right: -500px;
   transform: translateY(18px);
   margin-top: -10px;
+  height:220px;
 }
 
 .category-content {

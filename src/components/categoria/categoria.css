@@ -2,39 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .category-description {
   /* Ocupa todo el espacio restante */
  margin-right: 200px;
  width: 60%;
- margin-left: 100px;     right: 50px;
- color: black;
-}
-
-.category-description {
-   /* Ocupa todo el espacio restante */
-  margin-right: 200px;
-  width: 60%;
-  left: 60px; 
-  color: black; 
+ margin-left: 100px; /* Espacio entre la descripción y los botones */
+ right: 50px;
+ color: black; 
+ height: 50px;
+ margin-top: -20px;
 }
 
 .category-buttons {
-  display: flex;
-  flex-direction: column; /* Coloca los botones en una columna */
-  justify-content: flex-start; /* Alinea los botones al inicio verticalmente */
-  white-space: nowrap;
-  padding: 10px; /* Espaciado interno alrededor de los botones */
-  width: fit-content; /* Ajusta el ancho del contenedor al tamaño del contenido */
-  transform: translateY(-75px); 
-  margin-left: 520px;
-  margin-top: 10px;
+ margin-top: -60px;
+ display: flex;
+ flex-direction: column; /* Coloca los botones en una columna */
+ justify-content: flex-start; /* Alinea los botones al inicio verticalmente */
+ padding: 10px; /* Espaciado interno alrededor de los botones */
+ width: fit-content; /* Ajusta el ancho del contenedor al tamaño del contenido */
 }
 
 .button, .button-2 {
-  
   background-color: #ffffff; /* Color de fondo de los botones */
   border: none; /* Elimina el borde de los botones */
   padding: 10px 20px; /* Espaciado interno dentro de los botones */
@@ -44,10 +35,9 @@
   font-size: 16px; /* Tamaño de la fuente de los botones */
   text-align: center; /* Centra el texto dentro del botón */
   width: 150px; /* Ancho fijo para los botones */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   transition: all 0.3s ease; /* Transición suave para los efectos */
-   /* Sombra del botón */
   color: cornsilk;
+  margin-left: 550px;
 }
 
 

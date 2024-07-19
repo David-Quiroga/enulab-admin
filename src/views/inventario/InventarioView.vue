@@ -152,9 +152,10 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  margin-left: 14px;
   display: flex;
   align-items: center;
-  width: 1200px;
+  width: 1220px;
   justify-content: space-between;
 }
 

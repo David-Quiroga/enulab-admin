@@ -103,48 +103,48 @@ import HeaderView from '@/components/header/HeaderView.vue';
 }
 
 .restaurant-info {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
 }
 
 .restaurant-info h2 {
-  margin: 0;
-  position: absolute;
-  top: -130px;
-  left: 70px;
-  font-size: 25px;
+    margin: 0;
+    position: absolute;
+    top: -130px;
+    left: 70px;
+    font-size: 25px;
 }
 
 .restaurant-info p {
-  margin: 0;
-  position: absolute;
-  top: -50px;
-  left: 93px;
-  font-size: 18px;
+    margin: 0;
+    position: absolute;
+    top: -50px;
+    left: 93px;
+    font-size: 18px;
 }
 
 .restaurant-actions {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
 }
 .restaurant-actions i {
     font-size: 24px; /* Ajusta este valor según el tamaño que desees */
 }
 .restaurant-actions button {
-  background-color: #FF7A00;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    background-color: #FF7A00;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 </style>

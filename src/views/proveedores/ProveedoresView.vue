@@ -154,6 +154,7 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 100px;
+    margin-left: 19px;
     width: 1200px;
     height: 80px;
     justify-content: space-between;
