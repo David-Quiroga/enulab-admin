@@ -75,7 +75,7 @@
                         <p>Alitas BBQ <span>15.00</span></p>
                         <p>Costillas <span>15.00</span></p>
                     </div>
-                    <img src="../../assets/img/hamburguer.jpg" alt="" class="imagen2">
+                    <!-- <img src="../../assets/img/hamburguer.jpg" alt="" class="imagen2"> -->
                 </div>
 
                 <h4>Snacks</h4>
@@ -153,14 +153,14 @@
                             <p>Alitas BBQ <span>15.00</span></p>
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
-                        <img src="../../assets/img/sopas.png" alt="" >
+                        <!-- <img src="../../assets/img/sopas.png" alt="" > -->
                     </div>
                     <h4>Caldos</h4>
                     <div class="sopa-seccion">
                         <div class="sopa-texto">
                             <p>Alitas BBQ <span>15.00</span></p>
                         </div>
-                        <img src="../../assets/img/sopas1.png" alt="" >
+                        <!-- <img src="../../assets/img/sopas1.png" alt="" > -->
                     </div>
                 </div>
                 <div class="bloque5">
@@ -319,6 +319,7 @@ export default {
     border: 5px solid #FFFFFF;
     filter: brightness(0.8);
     margin-left: 90px;
+
     width: 110px;
     height: 110px;
 }
