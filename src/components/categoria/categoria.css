@@ -30,7 +30,7 @@
   border: none; /* Elimina el borde de los botones */
   padding: 10px 20px; /* Espaciado interno dentro de los botones */
   margin-bottom: 5px; /* Espacio entre los botones */
-  border-radius: 10px; /* Bordes redondeados de los botones */
+  border-radius: 5px; /* Bordes redondeados de los botones */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   font-size: 16px; /* Tamaño de la fuente de los botones */
   text-align: center; /* Centra el texto dentro del botón */

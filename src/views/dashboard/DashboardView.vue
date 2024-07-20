@@ -314,9 +314,9 @@ body{
   padding: 5px 10px;
 }
 .redes i{
-  font-size: 60px;
+  font-size: 40px;
   margin: auto;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-top: 10px;
   padding: 0 30px;
   cursor: pointer;

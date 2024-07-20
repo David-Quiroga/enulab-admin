@@ -8,7 +8,7 @@ import EmpleadosView from "../views/empleados/EmpleadosView.vue";
 import ProveedoresView from "../views/proveedores/ProveedoresView.vue"
 import CreateMenu from '../views/menu/MenuAgregarView.vue';
 import AgregarInventario from '../views/inventario/InventarioAgregarView.vue'
-import ListarMenu from '../views/menu/ListarMenuView.vue'
+import ListarMenu from '@/views/menu/ListarMenuView.vue'
 import AgregarEmpleado from "../views/empleados/EmpleadosAgregarView.vue"
 import MetodosPago from "../views/mPagos/mPagosView.vue"
 import VisualizarMenu from "../views/visualizar/VisualizarView.vue"

@@ -142,7 +142,7 @@ export default {
   max-width: 750px;
   max-height: 150px;
   padding: 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin-right: -500px;
   transform: translateY(18px);
