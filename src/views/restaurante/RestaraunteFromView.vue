@@ -10,21 +10,21 @@
       <div class="formulario">
         <div>
           <h4>Nombre del restaurante</h4>
-          <input class="boton1" placeholder="">
+          <input class="boton1" v-model="nombreRestaurante">
         </div>
 
         <div class="nombre2">
           <h4>Ubicacion del restaurante</h4>
-          <input class="boton2" placeholder="">
+          <input class="boton2" v-model="ubicacion">
         </div>
 
         <div class="nombre3">
           <h4>Tipo de comida</h4>
-          <input class="boton3" id="comida-select">
+          <input class="boton3" id="comida-select" v-model="tipoComida">
 
         <div class="nombre4">
           <h4>Descripcion del negocio</h4>
-          <input class="boton4" placeholder="">
+          <input class="boton4" v-model="descripcion">
         </div>
       </div>
     </div>
@@ -34,31 +34,74 @@
         <router-link to="/restaurante">
           <button class="atras1">← Atras</button>
         </router-link>
-        <router-link to="/restaurante">
-          <button class="continuar">Continuar</button>
-        </router-link>
+        
+          <button class="continuar" @click="createRes">Continuar</button>
       </div>
     </main>
 
     <div class="izq1">
             <label class="imagen" for="imagen">Imagen del Negocio:</label>
-            <input type="file" class="logo" name="imagen">
+            <input type="file" class="logo" name="imagen" @change="onImageChange">
           <h4 class="mision">Mision y Vision (opcional)</h4>
-          <textarea class="iz1" placeholder=""></textarea>
-        </div>
-        <div class="izq3">
-          <h4>Edad</h4>
-          <input class="iz3" placeholder="">
+          <textarea class="iz1" v-model="objetivos"></textarea>
         </div>
 </template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
+import axios from 'axios';
+
 export default {
-name: 'App',
-components: {
-  HeaderView
-}
+  name: 'createRes',
+  components: {
+    HeaderView
+  },
+  data() {
+    return {
+      nombreRestaurante: "",
+      ubicacion: "",
+      objetivos: "",
+      descripcion: "",
+      tipoComida: "",
+      logo: null
+    };
+  },
+  methods: {
+    async createRes() {
+      try {
+        const formData = new FormData();
+        formData.append("nombreRestaurante", this.nombreRestaurante);
+        formData.append("ubicacion", this.ubicacion);
+        formData.append("tipoComida", this.tipoComida);
+        formData.append("objetivos", this.objetivos);
+        formData.append("descripcion", this.descripcion);
+        if (this.logo) {
+          formData.append("logo", this.logo);
+        }
+
+        await axios.post("http://localhost:4200/restaurante", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        });
+
+        // Limpieza de los datos del formulario
+        this.nombreRestaurante = "";
+        this.ubicacion = "";
+        this.tipoComida = "";
+        this.objetivos = "";
+        this.descripcion = "";
+        this.logo = null;
+
+        this.$router.push("/restaurante");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    onImageChange(event) {
+      this.logo = event.target.files[0];
+    }
+  }
 }
 </script>
 

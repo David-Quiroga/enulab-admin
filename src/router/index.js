@@ -85,7 +85,8 @@ const routes = [
     },
     {
         path: '/restaurante',
-        component: RestaunranteView
+            name: 'RestauranteDetalle',
+            component: RestaunranteView
     },
     {
         path: "/formulario",

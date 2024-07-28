@@ -1,39 +1,63 @@
 <template>
-    <HeaderView/>
-    <div class="container">
+    <div>
+      <HeaderView/>
+      <div class="container">
         <div class="titulo">
-            <h1>Mis restaurantes</h1>
-            <div class="line"></div>
+          <h1>Mis restaurantes</h1>
+          <div class="line"></div>
         </div>
-        <dvi class="superior">
-            <router-link to="/formulario">
-                <button>Agregar restaurante</button>
-            </router-link>
-        </dvi>
-            <div class="restaurant-card">
-                <div class="restaurant-image">
-                    <img src="../../assets/img/restaurante1.jpg" alt="Imagen del restaurante">
-                <div class="restaurant-info">
-                    <h2>Hermanos don chifle</h2>
-                    <p>Asiática</p>
-                </div>
-                <div class="restaurant-actions">
-                    <router-link to="/formulario"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></router-link>
-                    <router-link to="/dashboard"><i class="fa-solid fa-house" style="color: #000000;"></i></router-link>
-                </div>
+        <div class="superior">
+          <router-link to="/formulario">
+            <button>Agregar restaurante</button>
+          </router-link>
+        </div>
+        <div class="restaurant-list">
+          <div class="restaurant-card" v-for="restaurante in restaurantes" :key="restaurante.id">
+            <div class="restaurant-image">
+              <img :src="restaurante.logo ? `../../assets/img/${restaurante.logo}` : '../../assets/img/default.jpg'" alt="Imagen del restaurante">
             </div>
+            <div class="restaurant-info">
+              <h2>{{restaurante.nombreRestaurante }}</h2>
+              <p>{{restaurante.tipoComida }}</p>
+            </div>
+            <div class="restaurant-actions">
+              <router-link to="/formulario"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></router-link>
+              <router-link to="/dashboard"><i class="fa-solid fa-house" style="color: #000000;"></i></router-link>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</template>
+  </template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
-    export default {
-        name: 'App',
-            components: {
-            HeaderView
+import axios from 'axios';
+
+export default {
+    name: 'App',
+    components: {
+        HeaderView
+    },
+    data() {
+        return {
+        restaurantes: [],
+        };
+    },
+    created() {
+        this.getRestaurantes();
+    },
+methods: {
+    async getRestaurantes() {
+        try {
+            const response = await axios.get("http://localhost:4200/restaurante");
+                this.restaurantes = response.data;
+        } catch (err) {
+            console.log(err);
         }
     }
+}
+}
 </script>
 
 <style scoped>
