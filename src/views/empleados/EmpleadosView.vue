@@ -65,42 +65,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Jose Perez</td>
-          <td>31313131</td>
-          <td>19</td>
-          <td>Masculino</td>
-          <td>$400</td>
-          <td>Nocturno</td>
-          <td class="actions">
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-trash-alt"></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Jose Perez</td>
-          <td>31313131</td>
-          <td>19</td>
-          <td>Masculino</td>
-          <td>$400</td>
-          <td>Nocturno</td>
-          <td class="actions">
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-trash-alt"></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Jose Perez</td>
-          <td>31313131</td>
-          <td>19</td>
-          <td>Masculino</td>
-          <td>$400</td>
-          <td>Nocturno</td>
-          <td class="actions">
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-trash-alt"></i>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>

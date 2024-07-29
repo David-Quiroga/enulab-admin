@@ -1,34 +1,39 @@
 <template>
     <div>
-      <HeaderView/>
-      <div class="container">
-        <div class="titulo">
-          <h1>Mis restaurantes</h1>
-          <div class="line"></div>
-        </div>
-        <div class="superior">
-          <router-link to="/formulario">
-            <button>Agregar restaurante</button>
-          </router-link>
-        </div>
-        <div class="restaurant-list">
-          <div class="restaurant-card" v-for="restaurante in restaurantes" :key="restaurante.id">
-            <div class="restaurant-image">
-              <img :src="restaurante.logo ? `../../assets/img/${restaurante.logo}` : '../../assets/img/default.jpg'" alt="Imagen del restaurante">
+        <HeaderView />
+        <div class="container">
+            <div class="titulo">
+                <h1>Mis restaurantes</h1>
+                <div class="line"></div>
             </div>
-            <div class="restaurant-info">
-              <h2>{{restaurante.nombreRestaurante }}</h2>
-              <p>{{restaurante.tipoComida }}</p>
+            <div class="superior">
+                <router-link to="/formulario">
+                    <button>Agregar restaurante</button>
+                </router-link>
             </div>
-            <div class="restaurant-actions">
-              <router-link to="/formulario"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></router-link>
-              <router-link to="/dashboard"><i class="fa-solid fa-house" style="color: #000000;"></i></router-link>
+            <div class="restaurant-list">
+                <div v-if="restaurante.lista && restaurante.lista.length > 0">
+                    <div class="restaurant-card" v-for="restaurante in restaurante.lista" :key="restaurante.id">
+                        <div class="restaurant-image">
+                            <img src="../../assets/img/bebidas.png" alt="Imagen del restaurante">
+                        </div>
+                        <div class="restaurant-info">
+                            <h2>{{restaurante.nombreRestaurante}}</h2>
+                            <p>{{restaurante.descripcion}}</p>
+                        </div>
+                        <div class="restaurant-actions">
+                            <router-link to="/formulario"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></router-link>
+                            <router-link to="/dashboard"><i class="fa-solid fa-house" style="color: #000000;"></i></router-link>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <p>No hay restaurantes disponibles.</p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </template>
+</template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
@@ -41,24 +46,36 @@ export default {
     },
     data() {
         return {
-        restaurantes: [],
+            restaurante: {
+                lista: [],
+                form: {
+                    id: null,
+                    nombreRestaurante: '',
+                    ubicacion: '',
+                    tipoComida: '',
+                    objetivos: '',
+                    descripcion: ''
+                }
+            },
         };
     },
     created() {
         this.getRestaurantes();
     },
-methods: {
-    async getRestaurantes() {
-        try {
-            const response = await axios.get("http://localhost:4200/restaurante");
-                this.restaurantes = response.data;
-        } catch (err) {
-            console.log(err);
+    methods: {
+        async getRestaurantes() {
+            try {
+                const response = await axios.get("http://localhost:4200/restaurante");
+                console.log(response.data);
+                this.restaurante.lista = response.data;
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 }
-}
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -136,18 +153,24 @@ methods: {
 .restaurant-info h2 {
     margin: 0;
     position: absolute;
-    top: -130px;
+    top: -110px;
     left: 70px;
+    color: #000;
     font-size: 25px;
 }
 
 .restaurant-info p {
     margin: 0;
-    position: absolute;
-    top: -50px;
-    left: 93px;
+    position: relative; /* Cambiado de absolute a relative */
+    display: block; /* Cambiado de flex a block */
+    top: 0; /* Eliminado el posicionamiento de top */
+    left: 0; /* Eliminado el posicionamiento de left */
     font-size: 18px;
+    color: #000;
+    padding: 10px; /* Agregado para dar algo de espacio alrededor del texto */
+    line-height: 1.5; /* Agregado para mejorar la legibilidad del texto */
 }
+
 
 .restaurant-actions {
     position: absolute;

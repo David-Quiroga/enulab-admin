@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-
 import DashboardView from "../views/dashboard/DashboardView.vue"
 import Menus from '../views/menu/MenuView.vue';
 import InventarioView from "../views/inventario/InventarioView.vue"
@@ -20,77 +19,52 @@ import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
 
 const routes = [
     {
-        path: "/",
-        name: "login",
-        component: LoginView
+        path: "/", name: "login", component: LoginView
     },
     {
-        path: "/registro",
-        name: "registro",
-        component: RegistroView
+        path: "/registro", name: "registro", component: RegistroView
     },
     {
-        path: "/dashboard",
-        name: "dashboard",
-        component: DashboardView
-    },
-    { path: '/menus', 
-        name: "menus", 
-        component: Menus 
+        path: "/dashboard", name: "dashboard", component: DashboardView
     },
     {
-        path: "/inventario",
-        name: "Inventory",
-        component: InventarioView
+        path: '/menus', name: "menus", component: Menus 
     },
     {
-        path: "/empleados",
-        name: "empleados",
-        component: EmpleadosView
+        path: "/inventario", name: "Inventory", component: InventarioView
     },
     {
-        path: "/proveedores",
-        name: "proveedores",
-        component: ProveedoresView
-    },
-    {   path: '/crear/:categoria', 
-        component: CreateMenu, 
-        props: true 
-    },
-    {   path: '/ver/:categoria', 
-        component: ListarMenu, 
-        props: true 
+        path: "/empleados", name: "empleados", component: EmpleadosView
     },
     {
-        path: '/agregar',
-        component: AgregarInventario,
-        props: true
+        path: "/proveedores", name: "proveedores", component: ProveedoresView
+    },
+    {   
+        path: '/crear/:categoria', component: CreateMenu, props: true 
+    },
+    {   
+        path: '/ver/:categoria', component: ListarMenu, props: true 
     },
     {
-        path: '/add',
-        component: AgregarEmpleado,
-        props: true
+        path: '/agregar', component: AgregarInventario, props: true
     },
     {
-        path: "/create",
-        component: AgregarProveedor
+        path: '/add', component: AgregarEmpleado, props: true
     },
     {
-        path: '/pagos',
-        component: MetodosPago,
+        path: "/create", component: AgregarProveedor
     },
     {
-        path: '/visualizar',
-        component: VisualizarMenu,
+        path: '/pagos', component: MetodosPago,
     },
     {
-        path: '/restaurante',
-            name: 'RestauranteDetalle',
-            component: RestaunranteView
+        path: '/visualizar', component: VisualizarMenu,
     },
     {
-        path: "/formulario",
-        component: FormularioView
+        path: '/restaurante', component: RestaunranteView, props: true
+    },
+    {
+        path: "/formulario", component: FormularioView, props:true
     }
 ];
 
