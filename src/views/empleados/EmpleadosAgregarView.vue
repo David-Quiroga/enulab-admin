@@ -1,126 +1,156 @@
 <template>
   <HeaderView/>
-      <aside class="sidebar">
-  <nav>
+  <aside class="sidebar">
+    <nav>
       <ul>
-          <li>
-              <router-link to="/dashboard" class="active">
-                  <i class="fa-solid fa-chart-simple"></i> Dashboard
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/menus">
-                  <i class="fa-solid fa-envelope"></i> Menu
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/visualizar">
-              <i class="fa-solid fa-table-cells-large"></i> Visualizar
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/empleados">
-                  <i class="fa-solid fa-person"></i> Empleados
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/pagos">
-                  <i class="fa-regular fa-credit-card"></i> Metodos de pago
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/proveedores">
-                  <i class="fa-solid fa-user-group"></i> Proveedores
-              </router-link>
-          </li>
-          <li>
-              <router-link to="/inventario">
-                  <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-              </router-link>
-          </li>
+        <li>
+          <router-link to="/dashboard" class="active">
+            <i class="fa-solid fa-chart-simple"></i> Dashboard
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/menus">
+            <i class="fa-solid fa-envelope"></i> Menu
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/visualizar">
+            <i class="fa-solid fa-table-cells-large"></i> Visualizar
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/empleados">
+            <i class="fa-solid fa-person"></i> Empleados
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/pagos">
+            <i class="fa-regular fa-credit-card"></i> Metodos de pago
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/proveedores">
+            <i class="fa-solid fa-user-group"></i> Proveedores
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/inventario">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+          </router-link>
+        </li>
       </ul>
-  </nav>
-</aside>
-<!-- ! Termina el SIDEBAR -->
-    <!-- Contenido principal -->
-    <main>
-      <div class="hero">
-        <h1 class="titulo">Creacion de Empleado</h1>
+    </nav>
+  </aside>
+  <!-- ! Termina el SIDEBAR -->
+  <!-- Contenido principal -->
+  <main>
+    <div class="hero">
+      <h1 class="titulo">Creacion de Empleado</h1>
+    </div>
+
+    <!-- Formulario de información del restaurante -->
+    <div class="formulario">
+      <div>
+        <h4>Nombre del Empleado</h4>
+        <input class="boton1" placeholder="" v-model="nombreCompleto" required>
       </div>
 
-      <!-- Formulario de información del restaurante -->
-      <div class="formulario">
-        <div>
-          <h4>Nombre del Empleado</h4>
-          <input class="boton1" placeholder="" v-model="nombreCompleto">
-        </div>
+      <div class="nombre2">
+        <h4>Numero de Cedula</h4>
+        <input class="boton2" type="number" placeholder="Ingrese la cedula" v-model="cedula" required min="0" max="9999999999" title="Debe ingresar entre 1 y 10 dígitos">
+      </div>
 
-        <div class="nombre2">
-          <h4>Numero de Cedula</h4>
-          <input class="boton2" placeholder="" >
-        </div>
-
-        <div class="nombre3">
-          <h4>Genero</h4>
-          <input class="boton3" id="comida-select">
-
-        <div class="nombre4">
-          <h4>Cargo</h4>
-          <input class="boton4" placeholder="">
-        </div>
+      <div class="nombre3">
+        <h4>Edad</h4>
+        <input class="boton3" type="number" placeholder="Ingrese la edad" v-model="edadEmpleado" required min="18" max="99" maxlength="2" title="La edad debe ser un número entre 18 y 99">
       </div>
     </div>
 
-      <!-- Botones de navegación -->
-      <div class="botones">
-        <button class="atras1">← Atras</button>
-        <button class="continuar">Continuar</button>
-      </div>
-    </main>
+    <!-- Botones de navegación -->
+    <div class="botones">
+      <button class="atras1">← Atras</button>
+      <button class="continuar" @click="createEmploye">Continuar</button>
+    </div>
+  </main>
 
-    <!-- Información adicional -->
-
-
-
-    <div class="izq1">
-          <h4>Sueldo</h4>
-          <input class="iz1" placeholder="">
-        </div>
-        <div class="izq2">
-          <h4>Numero de Telefono</h4>
-          <input class="iz2" placeholder="">
-        </div>
-        <div class="izq3">
-          <h4>Edad</h4>
-          <input class="iz3" placeholder="">
-        </div>
-        <div class="izq4">
-          <h4>Jornada laboral</h4>
-          <input class="iz3" placeholder="">
-        </div>
+  <!-- Información adicional -->
+  <div class="izq1">
+    <h4>Genero</h4>
+    <input class="iz1" placeholder="" v-model="genero" required pattern="masculino|femenino" title="Ingrese 'masculino' o 'femenino'">
+  </div>
+  <div class="izq2">
+    <h4>Sueldo</h4>
+    <input class="iz2" type="number" placeholder="Ingrese el sueldo" v-model="sueldo" required min="450" title="El sueldo debe ser un número mayor o igual a 450">
+  </div>
+  <div class="izq3">
+    <h4>N° de contacto</h4>
+    <input class="iz3" type="number" placeholder="Ingrese el número de contacto" v-model="numeroContacto" required min="0" title="Debe ingresar un número de contacto válido">
+  </div>
 </template>
+
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 export default {
-name: 'App',
-components: {
-  HeaderView
+  name: 'createEmploye',
+  components: {
+    HeaderView
   },
-  data(){
+  data() {
     return {
       nombreCompleto: "",
-      cedula: "",
-      edadEmpleado: "",
+      cedula: null,
       genero: "",
-      sueldo: "",
-      numeroContacto: ""
+      sueldo: null,
+      edadEmpleado: null,
+      numeroContacto: null
     }
   },
   methods: {
-    async createEmploye(){
-      try{
+    validateForm() {
+      if (!this.nombreCompleto || this.cedula === null || this.edadEmpleado === null || !this.genero || this.sueldo === null || this.numeroContacto === null) {
+        return 'Todos los campos son obligatorios';
+      }
+
+      if (!Number.isInteger(this.cedula) || this.cedula.toString().length > 10) {
+        return 'La cédula debe ser un número válido con máximo 10 dígitos';
+      }
+
+      if (this.edadEmpleado < 18 || this.edadEmpleado > 99) {
+        return 'La edad debe ser un número entre 18 y 99';
+      }
+
+      const validGeneros = ['masculino', 'femenino'];
+      if (!validGeneros.includes(this.genero.toLowerCase())) {
+        return 'El género debe ser "masculino" o "femenino"';
+      }
+
+      if (this.sueldo < 450) {
+        return 'El sueldo debe ser un número mayor o igual a 450';
+      }
+
+      if (!Number.isInteger(this.numeroContacto) || this.numeroContacto.toString().length > 10) {
+        return 'El número de contacto debe ser un número válido con máximo 10 dígitos';
+      }
+
+      return null; // Indica que no hay errores
+    },
+    async createEmploye() {
+      const validationError = this.validateForm();
+      if (validationError) {
+        Swal.fire({
+          title: 'Error',
+          text: validationError,
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+        });
+        return;
+      }
+
+      try {
         const EmployeData = {
           nombreCompleto: this.nombreCompleto,
           cedula: this.cedula,
@@ -129,26 +159,39 @@ components: {
           sueldo: this.sueldo,
           numeroContacto: this.numeroContacto
         };
-        await axios.post("http://localhost:4200/empleados", EmployeData, {
+
+        await axios.post("http://localhost:4200/empleado", EmployeData, {
           headers: {
             "Content-Type": "application/json"
           }
         });
-        this.nombreCompleto = null,
-        this.cedula = null,
-        this.edadEmpleado = null,
-        this.genero = null,
-        this.sueldo = null,
-        this.numeroContacto = null
 
-        this.$router.push("/empleados")
-      } catch(err) {
-        console.log(err)
+        // Mostrar alerta de éxito
+        Swal.fire({
+          title: 'Éxito',
+          text: 'Empleado creado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+
+        // Limpiar los campos
+        this.nombreCompleto = "";
+        this.cedula = null;
+        this.edadEmpleado = null;
+        this.genero = "";
+        this.sueldo = null;
+        this.numeroContacto = null;
+
+        // Redirigir a la página de empleados
+        this.$router.push("/empleados");
+      } catch (err) {
+        console.log(err);
       }
     }
   }
 }
 </script>
+
 
 <style >
 /* Estilos generales */
@@ -257,7 +300,7 @@ margin-bottom: 30px;
 text-align: left; 
 line-height: 30px; 
 position: relative;
-z-index: 9999; 
+z-index: 1; 
 }
 .iz1 {
 width: 500px;
@@ -271,7 +314,7 @@ border: none;
 text-align: left; 
 line-height: 30px; 
 position: relative; 
-z-index: 9999; 
+z-index: 1; 
 }
 .izq2 {
 width: 200px;
@@ -283,7 +326,7 @@ color: #6C6C6C;
 text-align: left;
 line-height: 30px; 
 position: relative; 
-z-index: 9999; 
+z-index: 1; 
 }
 .iz2 {
 width: 500px;
@@ -298,19 +341,21 @@ color: #000;
 text-align: left;
 line-height: 30px; 
 position: relative; 
-z-index: 9999;
+z-index: 1;
 }
 .izq3 {
-width: 100px;
-height: 30px;
-margin-left: -200px; 
-margin-top: 430px;
-margin-bottom: 30px;
-color: #d3d1d1;
-text-align: left; 
-line-height: 30px; 
-position: relative; 
-z-index: 9999; 
+    width: 100px;
+    height: 30px;
+    margin-left: -200px; 
+    margin-top: 430px;
+    margin-bottom: 30px;
+    color: #d3d1d1;
+    text-align: left; 
+    line-height: 30px; 
+    position: relative; 
+    display: block;
+    z-index: 1; 
+    white-space: nowrap; /* Asegura que el texto no se envuelva */
 }
 .izq4 {
 width: 100px;

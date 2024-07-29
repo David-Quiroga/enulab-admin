@@ -52,33 +52,76 @@
     </div>
   </div>
   <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Nombres</th>
-          <th>Cedula</th>
-          <th>Edad</th>
-          <th>Genero</th>
-          <th>Sueldo</th>
-          <th>Horario</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombres</th>
+            <th>Cedula</th>
+            <th>Edad</th>
+            <th>Genero</th>
+            <th>Sueldo</th>
+            <th>N° Contacto</th>
+            <th>Acciones</th><!--Este no cuenta en el crud-->
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="empleado in empleado.lista" :key="empleado.idEmpleado">
+            <td>{{ empleado.nombreCompleto }}</td>
+            <td>{{ empleado.cedula }}</td>
+            <td>{{ empleado.edadEmpleado }}</td>
+            <td>{{ empleado.genero }}</td>
+            <td>{{ empleado.sueldo }}</td>
+            <td>{{ empleado.numeroContacto }}</td>
+            <td class="actions">
+              <i class="fas fa-edit"></i>
+              <i class="fas fa-trash-alt"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>
 </template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
+import axios from 'axios';
 
 export default {
-name: 'MenuListView',
-components: {
-HeaderView
-}
+  name: 'App',
+  components: {
+    HeaderView
+  },
+  data(){
+    return{
+      empleado: {
+        lista: [],
+        form: {
+          idEmpleado: null,
+          nombreCompleto: '',
+          cedula: '',
+          edadEmpleado: '',
+          genero: '',
+          sueldo: '',
+          numeroContacto: ''
+        }
+      }
+    };
+  },
+  created(){
+    this.getEmpleados();
+  },
+  methods: {
+    async getEmpleados(){
+      try {
+        const response = await axios.get('http://localhost:4200/empleado');
+        console.log(response.data)
+        this.empleado.lista = response.data
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 };
 </script>
 
