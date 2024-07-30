@@ -1,91 +1,95 @@
 <template>
   <HeaderView/>
-  <aside class="sidebar">
-    <nav>
+      <aside class="sidebar">
+  <nav>
       <ul>
-        <li>
-          <router-link to="/dashboard" class="active">
-            <i class="fa-solid fa-chart-simple"></i> Dashboard
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/menus">
-            <i class="fa-solid fa-envelope"></i> Menu
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/visualizar">
-            <i class="fa-solid fa-table-cells-large"></i> Visualizar
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/empleados">
-            <i class="fa-solid fa-person"></i> Empleados
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Metodos de pago
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/proveedores">
-            <i class="fa-solid fa-user-group"></i> Proveedores
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/inventario">
-            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-          </router-link>
-        </li>
+          <li>
+              <router-link to="/dashboard" class="active">
+                  <i class="fa-solid fa-chart-simple"></i> Dashboard
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/menus">
+                  <i class="fa-solid fa-envelope"></i> Menu
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/visualizar">
+              <i class="fa-solid fa-table-cells-large"></i> Visualizar
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/empleados">
+                  <i class="fa-solid fa-person"></i> Empleados
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/pagos">
+                  <i class="fa-regular fa-credit-card"></i> Metodos de pago
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/proveedores">
+                  <i class="fa-solid fa-user-group"></i> Proveedores
+              </router-link>
+          </li>
+          <li>
+              <router-link to="/inventario">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+              </router-link>
+          </li>
       </ul>
-    </nav>
-  </aside>
-  <!-- ! Termina el SIDEBAR -->
-  <!-- Contenido principal -->
-  <main>
-    <div class="hero">
-      <h1 class="titulo">Creacion de Empleado</h1>
-    </div>
-
-    <!-- Formulario de información del restaurante -->
-    <div class="formulario">
-      <div>
-        <h4>Nombre del Empleado</h4>
-        <input class="boton1" placeholder="" v-model="nombreCompleto" required>
+  </nav>
+</aside>
+<!-- ! Termina el SIDEBAR -->
+    <!-- Contenido principal -->
+    <main>
+      <div class="hero">
+        <h1 class="titulo">Creacion de Empleado</h1>
       </div>
 
-      <div class="nombre2">
-        <h4>Numero de Cedula</h4>
-        <input class="boton2" type="number" placeholder="Ingrese la cedula" v-model="cedula" required min="0" max="9999999999" title="Debe ingresar entre 1 y 10 dígitos">
-      </div>
+      <!-- Formulario de información del restaurante -->
+      <div class="formulario">
+        <div>
+          <h4>Nombre del Empleado</h4>
+          <input class="boton1" placeholder="" v-model="nombreCompleto" required>
+        </div>
 
-      <div class="nombre3">
-        <h4>Edad</h4>
-        <input class="boton3" type="number" placeholder="Ingrese la edad" v-model="edadEmpleado" required min="18" max="99" maxlength="2" title="La edad debe ser un número entre 18 y 99">
+        <div class="nombre2">
+          <h4>Numero de Cedula</h4>
+          <input class="boton2"  type="text" placeholder="Ingrese la cedula" pattern="\d{1,10}" 
+          title="Debe ingresar entre 1 y 10 dígitos" v-model.number="cedula" required maxlength="10">
+        </div>
+
+        <div class="nombre3">
+          <h4>Edad</h4>
+          <input class="boton3" id="comida-select"  v-model="edadEmpleado" min="18" maxlength="2" required>
       </div>
     </div>
 
-    <!-- Botones de navegación -->
-    <div class="botones">
-      <button class="atras1">← Atras</button>
-      <button class="continuar" @click="createEmploye">Continuar</button>
-    </div>
-  </main>
+      <!-- Botones de navegación -->
+      <div class="botones">
+        <router-link to="/empleados">
+          <button class="atras1">← Atras</button>
+        </router-link>
+        <button class="continuar" @click="createEmploye">Continuar</button>
+      </div>
+    </main>
 
-  <!-- Información adicional -->
-  <div class="izq1">
-    <h4>Genero</h4>
-    <input class="iz1" placeholder="" v-model="genero" required pattern="masculino|femenino" title="Ingrese 'masculino' o 'femenino'">
-  </div>
-  <div class="izq2">
-    <h4>Sueldo</h4>
-    <input class="iz2" type="number" placeholder="Ingrese el sueldo" v-model="sueldo" required min="450" title="El sueldo debe ser un número mayor o igual a 450">
-  </div>
-  <div class="izq3">
-    <h4>N° de contacto</h4>
-    <input class="iz3" type="number" placeholder="Ingrese el número de contacto" v-model="numeroContacto" required min="0" title="Debe ingresar un número de contacto válido">
-  </div>
+    <!-- Información adicional -->
+        <div class="izq1">
+          <h4>Genero</h4>
+          <input class="iz1" placeholder="" v-model="genero" required pattern="masculino|femenino" >
+        </div>
+        <div class="izq2">
+          <h4>Sueldo</h4>
+          <input class="iz2" placeholder="" v-model.number="sueldo" required min="450" maxlength="3">
+        </div>
+        <div class="izq3">
+          <h4>N° de contacto </h4>
+          <input class="iz3" placeholder="" v-model.number="numeroContacto" maxlength="10" >
+        </div>
+
 </template>
 
 

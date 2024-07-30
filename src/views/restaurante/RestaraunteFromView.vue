@@ -63,7 +63,6 @@ export default {
       objetivos: "",
       descripcion: "",
       tipoComida: "",
-      logo: null
     };
   },
   methods: {
@@ -89,7 +88,6 @@ export default {
             this.tipoComida = null;
             this.objetivos = null;
             this.descripcion = null;
-            this.logo = null;
 
             this.$router.push("/restaurante");
         } catch (err) {

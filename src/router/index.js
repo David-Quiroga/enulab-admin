@@ -16,6 +16,7 @@ import RegistroView from "@/views/login/RegistroView.vue";
 import RestaunranteView from "@/views/restaurante/RestauranteView.vue"
 import FormularioView from "@/views/restaurante/RestaraunteFromView.vue"
 import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
+import RestauranteUpdate from "@/views/restaurante/UpdateRestView.vue"
 
 const routes = [
     {
@@ -62,6 +63,9 @@ const routes = [
     },
     {
         path: '/restaurante', component: RestaunranteView, props: true
+    },
+    {
+        path: '/update/:id?', name: "update", component: RestauranteUpdate, props: true
     },
     {
         path: "/formulario", component: FormularioView, props:true

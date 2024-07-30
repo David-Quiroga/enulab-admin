@@ -22,18 +22,23 @@
                             <p>{{restaurante.descripcion}}</p>
                         </div>
                         <div class="restaurant-actions">
-                            <router-link to="/formulario"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></router-link>
-                            <router-link to="/dashboard"><i class="fa-solid fa-house" style="color: #000000;"></i></router-link>
+                            <router-link :to="{ name: 'update', params: { id: restaurante.id }}">
+                                <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                            </router-link>
+                            <router-link to="/dashboard">
+                                <i class="fa-solid fa-house" style="color: #000000;"></i>
+                            </router-link>
                         </div>
                     </div>
                 </div>
                 <div v-else>
-                    <p>No hay restaurantes disponibles.</p>
+                    <p class="error">No hay restaurantes disponibles.</p>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
@@ -66,7 +71,7 @@ export default {
         async getRestaurantes() {
             try {
                 const response = await axios.get("http://localhost:4200/restaurante");
-                console.log(response.data);
+                // console.log(response.data);
                 this.restaurante.lista = response.data;
             } catch (err) {
                 console.log(err);
@@ -87,6 +92,11 @@ export default {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.error{
+    margin-left: 160px;
+    margin-top: 80px;
+    line-height: 1.5;
 }
 .titulo{
     position: absolute;
