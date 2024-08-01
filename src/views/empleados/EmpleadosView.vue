@@ -73,7 +73,8 @@
             <td>{{ empleado.sueldo }}</td>
             <td>{{ empleado.numeroContacto }}</td>
             <td class="actions">
-              <i class="fas fa-edit"></i>
+              
+                <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
               <i class="fas fa-trash-alt"></i>
             </td>
           </tr>

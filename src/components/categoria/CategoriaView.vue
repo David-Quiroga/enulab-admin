@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-category">
+  <!-- <div class="menu-category">
     <div>
       <h1>{{title}}</h1>
     </div>
@@ -15,8 +15,9 @@
         
       </router-link>
     </div>
-  </div>
+  </div> -->
+  <h1></h1>
 </template>
-<script src="../categoria/categoria.js"></script>
+<!--<script src="../categoria/categoria.js"></script>-->
 <style scoped src="../categoria/categoria.css"></style>
 

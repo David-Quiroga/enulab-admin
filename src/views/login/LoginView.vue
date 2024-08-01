@@ -6,19 +6,17 @@
   <p class="autor">-Rollo May</p>
     <div class="form-wrapper">
         <h2>Inicio de Sesion</h2>
-        <form action="#">
+        <form @submit.prevent="iniciarSesion">
             <div class="form-control">
-                <input type="text" required>
-                <label>Email or phone number</label>
+                <input type="text" v-model="correoElectronico" required>
+                <label>Correo Electronico</label>
             </div>
             <div class="form-control">
-                <input type="password" required>
+                <input type="password" v-model="password" required>
                 <label>Password</label>
             </div>
-              <router-link to="/restaurante">
-                <button type="submit">Sign me In</button>
-              </router-link>
-            <div class="form-help"> 
+            <button type="submit">Sign me In</button>
+            <div class="form-help">
                 <div class="remember-me">
                     <input type="checkbox" id="remember-me">
                     <label for="remember-me">Remember me</label>
@@ -33,8 +31,34 @@
 </template>
 
 <script>
-export default {name: 'LoginView'};
+import axios from 'axios';
+
+export default {
+  name: 'LoginView',
+  data() {
+    return {
+      correoElectronico: '',
+      password: ''
+    };
+  },
+  methods: {
+    async iniciarSesion() {
+      try {
+        const response = await axios.post('http://localhost:4200/usuario/login', {
+          correoElectronico: this.correoElectronico,
+          password: this.password
+        });
+        console.log(response.data);
+        // Redireccionar al dashboard o a la vista correspondiente
+        this.$router.push('/restaurante');
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error.response ? error.response.data : error.message);
+      }
+    }
+  }
+};
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');

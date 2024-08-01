@@ -54,12 +54,9 @@
           <img src="../../assets/img/sopas25.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <MenuCategory
-            description="Las sopas son platos líquidos o semi-líquidos que se preparan mediante la cocción de diversos ingredientes en un caldo."
-            routePrefix="sopas"
-          />
         </div>
       </div>
+
 
       <!-- Contenedor de Entradas -->
       <div class="category-content">
@@ -68,10 +65,12 @@
           <img src="../../assets/img/entra.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <MenuCategory
-            description="Las entradas son pequeños platos que se sirven antes del plato principal para abrir el apetito. Pueden ser frías o calientes y varían ampliamente en cuanto a ingredientes y preparación."
-            routePrefix="entradas"
-          />
+          <router-link to="/formSopas">
+            <button class="add">Agregar</button>
+          </router-link>
+          <router-link to="/formSopas">
+            <button class="add">Agregar</button>
+          </router-link>
         </div>
       </div>
 
@@ -82,11 +81,6 @@
           <img src="../../assets/img/bebu.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <MenuCategory
-            
-            description="Las bebidas son líquidos que se sirven para acompañar las comidas o simplemente para disfrutar. Pueden ser alcohólicas o no alcohólicas y varían desde refrescos y jugos hasta vinos y cócteles."
-            routePrefix="bebidas"
-          />
           
         </div>
       </div>
@@ -98,11 +92,6 @@
           <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <MenuCategory
-            description="Los helados son postres congelados hechos principalmente a base de crema, leche y azúcar."
-            routePrefix="postres"
-          />
-        
         </div>
       </div>
     </div>
@@ -111,18 +100,23 @@
 
 <script>
 import HeaderView from "@/components/header/HeaderView.vue";
-import MenuCategory from "../../components/categoria/CategoriaView.vue";
+//import MenuCategory from "../../components/categoria/CategoriaView.vue";
 
 export default {
   name: "MenuListView",
   components: {
     HeaderView,
-    MenuCategory,
   },
 };
 </script>
 
 <style scoped>
+.add{
+  z-index: 1;
+  position: relative;
+  top: 10px;
+  left: 100px;
+}
 .menus {
   display: flex;
   flex-direction: column;

@@ -112,7 +112,6 @@ export default {
                       }
                   });
               }
-
               // Limpieza de los datos del formulario
               this.nombreRestaurante = "";
               this.ubicacion = "";

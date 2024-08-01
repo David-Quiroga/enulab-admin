@@ -17,13 +17,15 @@ import RestaunranteView from "@/views/restaurante/RestauranteView.vue"
 import FormularioView from "@/views/restaurante/RestaraunteFromView.vue"
 import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
 import RestauranteUpdate from "@/views/restaurante/UpdateRestView.vue"
+import MPagosAgregarView from "@/views/mPagos/mPagosAgregarView.vue";
+import formSopasView from "@/views/sopas/formSopasView.vue";
 
 const routes = [
     {
-        path: "/", name: "login", component: LoginView
+        path: "/", name: "login", component: LoginView, props: true
     },
     {
-        path: "/registro", name: "registro", component: RegistroView
+        path: "/registro", name: "registro", component: RegistroView, props: true
     },
     {
         path: "/dashboard", name: "dashboard", component: DashboardView
@@ -69,6 +71,12 @@ const routes = [
     },
     {
         path: "/formulario", component: FormularioView, props:true
+    },
+    {
+        path: "/addmetodo", component: MPagosAgregarView, props: true
+    },
+    {
+        path: "/formSopas", component: formSopasView, props: true
     }
 ];
 
