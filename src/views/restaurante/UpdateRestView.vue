@@ -1,50 +1,50 @@
 <template>
   <HeaderView/>
-    <!-- Contenido principal -->
-    <main>
-      <div class="hero">
-        <h1 class="titulo">{{ isEditing ? 'Editar Restaurante' : 'Creación de Restaurante' }}</h1>
+  <!-- Contenido principal -->
+  <main>
+    <div class="hero">
+      <h1 class="titulo">{{ isEditing ? 'Editar Restaurante' : 'Creación de Restaurante' }}</h1>
+    </div>
+
+    <!-- Formulario de información del restaurante -->
+    <div class="formulario">
+      <div>
+        <h4>Nombre del restaurante</h4>
+        <input class="boton1" v-model="nombreRestaurante">
       </div>
 
-      <!-- Formulario de información del restaurante -->
-      <div class="formulario">
-        <div>
-          <h4>Nombre del restaurante</h4>
-          <input class="boton1" v-model="nombreRestaurante">
-        </div>
+      <div class="nombre2">
+        <h4>Ubicacion del restaurante</h4>
+        <input class="boton2" v-model="ubicacion">
+      </div>
 
-        <div class="nombre2">
-          <h4>Ubicacion del restaurante</h4>
-          <input class="boton2" v-model="ubicacion">
-        </div>
+      <div class="nombre3">
+        <h4>Tipo de comida</h4>
+        <input class="boton3" id="comida-select" v-model="tipoComida">
+      </div>
 
-        <div class="nombre3">
-          <h4>Tipo de comida</h4>
-          <input class="boton3" id="comida-select" v-model="tipoComida">
-
-        <div class="nombre4">
-          <h4>Descripcion del negocio</h4>
-          <input class="boton4" v-model="descripcion">
-        </div>
+      <div class="nombre4">
+        <h4>Descripcion del negocio</h4>
+        <input class="boton4" v-model="descripcion">
       </div>
     </div>
 
-      <!-- Botones de navegación -->
-      <div class="botones">
-        <router-link to="/restaurante">
-          <button class="atras1">← Atras</button>
-        </router-link>
-        
-          <button class="continuar" @click="submitForm">Continuar</button>
-      </div>
-    </main>
+    <!-- Botones de navegación -->
+    <div class="botones">
+      <router-link to="/restaurante">
+        <button class="atras1">← Atras</button>
+      </router-link>
+      
+      <button class="continuar" @click="submitForm">Continuar</button>
+    </div>
+  </main>
 
-    <div class="izq1">
-            <label class="imagen" for="imagen">Imagen del Negocio:</label>
-            <input type="file" class="logo" name="imagen" @change="onImageChange">
-          <h4 class="mision">Mision y Vision (opcional)</h4>
-          <textarea class="iz1" v-model="objetivos"></textarea>
-        </div>
+  <div class="izq1">
+    <label class="imagen" for="imagen">Imagen del Negocio:</label>
+    <input type="file" class="logo" name="imagen" @change="onImageChange">
+    <h4 class="mision">Mision y Vision (opcional)</h4>
+    <textarea class="iz1" v-model="objetivos"></textarea>
+  </div>
 </template>
 
 <script>
@@ -54,83 +54,86 @@ import axios from 'axios';
 export default {
   name: 'FormularioView',
   components: {
-      HeaderView
+    HeaderView
   },
   data() {
-      return {
-          nombreRestaurante: "",
-          ubicacion: "",
-          objetivos: "",
-          descripcion: "",
-          tipoComida: "",
-          logo: null,
-          isEditing: false
-      };
+    return {
+      nombreRestaurante: "",
+      ubicacion: "",
+      objetivos: "",
+      descripcion: "",
+      tipoComida: "",
+      logo: null,
+      isEditing: false
+    };
   },
   props: ['id'],
   created() {
-      if (this.id) {
-          this.isEditing = true;
-          this.loadRestaurante();
-      }
+    if (this.id) {
+      this.isEditing = true;
+      this.loadRestaurante();
+    }
   },
   methods: {
-      async loadRestaurante() {
-          try {
-              const response = await axios.get(`http://localhost:4200/restaurante/${this.id}`);
-              const restaurante = response.data;
-              this.nombreRestaurante = restaurante.nombreRestaurante;
-              this.ubicacion = restaurante.ubicacion;
-              this.objetivos = restaurante.objetivos;
-              this.descripcion = restaurante.descripcion;
-              this.tipoComida = restaurante.tipoComida;
-              // Aquí no estamos cargando la imagen, porque la imagen ya debería estar almacenada en el servidor y se mostraría como una vista previa o algo similar.
-          } catch (error) {
-              console.error('Error cargando el restaurante:', error);
-          }
-      },
-      async submitForm() {
-          try {
-              const restauranteData = {
-                  nombreRestaurante: this.nombreRestaurante,
-                  ubicacion: this.ubicacion,
-                  tipoComida: this.tipoComida,
-                  objetivos: this.objetivos,
-                  descripcion: this.descripcion,
-              };
-              
-              if (this.isEditing) {
-                  await axios.put(`http://localhost:4200/restaurante/${this.id}`, restauranteData, {
-                      headers: {
-                          "Content-Type": "application/json"
-                      }
-                  });
-              } else {
-                  await axios.post("http://localhost:4200/restaurante", restauranteData, {
-                      headers: {
-                          "Content-Type": "application/json"
-                      }
-                  });
-              }
-              // Limpieza de los datos del formulario
-              this.nombreRestaurante = "";
-              this.ubicacion = "";
-              this.tipoComida = "";
-              this.objetivos = "";
-              this.descripcion = "";
-              this.logo = null;
-  
-              this.$router.push("/restaurante");
-          } catch (err) {
-              console.error('Error al enviar el formulario:', err);
-          }
-      },
-      onImageChange(event) {
-          this.logo = event.target.files[0];
+    async loadRestaurante() {
+      try {
+        const response = await axios.get(`http://localhost:4200/restaurante/${this.id}`);
+        const restaurante = response.data;
+        this.nombreRestaurante = restaurante.nombreRestaurante;
+        this.ubicacion = restaurante.ubicacion;
+        this.objetivos = restaurante.objetivos;
+        this.descripcion = restaurante.descripcion;
+        this.tipoComida = restaurante.tipoComida;
+      } catch (error) {
+        console.error('Error cargando el restaurante:', error);
       }
+    },
+    async submitForm() {
+      try {
+        const formData = new FormData();
+        formData.append('nombreRestaurante', this.nombreRestaurante);
+        formData.append('ubicacion', this.ubicacion);
+        formData.append('tipoComida', this.tipoComida);
+        formData.append('objetivos', this.objetivos);
+        formData.append('descripcion', this.descripcion);
+        if (this.logo) {
+          formData.append('logo', this.logo);
+        }
+
+        if (this.isEditing) {
+          await axios.put(`http://localhost:4200/restaurante/${this.id}`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        } else {
+          await axios.post("http://localhost:4200/restaurante", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          });
+        }
+
+        // Limpieza de los datos del formulario
+        this.nombreRestaurante = "";
+        this.ubicacion = "";
+        this.tipoComida = "";
+        this.objetivos = "";
+        this.descripcion = "";
+        this.logo = null;
+
+        this.$router.push("/restaurante");
+      } catch (err) {
+        console.error('Error al enviar el formulario:', err);
+      }
+    },
+    onImageChange(event) {
+      this.logo = event.target.files[0];
+    }
   }
 }
 </script>
+
 
   
   <style scoped>

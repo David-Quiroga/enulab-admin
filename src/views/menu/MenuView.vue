@@ -69,7 +69,7 @@
             <button class="add">Agregar</button>
           </router-link>
           <router-link to="/formSopas">
-            <button class="add">Agregar</button>
+            <button class="add">lista</button>
           </router-link>
         </div>
       </div>

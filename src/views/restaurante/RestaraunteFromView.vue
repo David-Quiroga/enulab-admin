@@ -63,41 +63,48 @@ export default {
       objetivos: "",
       descripcion: "",
       tipoComida: "",
+      logo: null
     };
   },
   methods: {
-    async createRes() {
-        try {
-            const restauranteData = {
-                nombreRestaurante: this.nombreRestaurante,
-                ubicacion: this.ubicacion,
-                tipoComida: this.tipoComida,
-                objetivos: this.objetivos,
-                descripcion: this.descripcion,
-                logo: this.logo ? this.logo.name : null
-            };
-
-            await axios.post("http://localhost:4200/restaurante", restauranteData, {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-            // Limpieza de los datos del formulario
-            this.nombreRestaurante = null;
-            this.ubicacion = null;
-            this.tipoComida = null;
-            this.objetivos = null;
-            this.descripcion = null;
-
-            this.$router.push("/restaurante");
-        } catch (err) {
-            console.log(err);
-        }
-    },
     onImageChange(event) {
-        this.logo = event.target.files[0];
+      this.logo = event.target.files[0];
+    },
+    async createRes() {
+      try {
+        // Crear una instancia de FormData
+        const formData = new FormData();
+        formData.append("nombreRestaurante", this.nombreRestaurante);
+        formData.append("ubicacion", this.ubicacion);
+        formData.append("tipoComida", this.tipoComida);
+        formData.append("objetivos", this.objetivos);
+        formData.append("descripcion", this.descripcion);
+
+        if (this.logo) {
+          formData.append("logo", this.logo);
+        }
+
+        // Enviar la solicitud con los datos del formulario
+        await axios.post("http://localhost:4200/restaurante", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        });
+
+        // Limpieza de los datos del formulario
+        this.nombreRestaurante = "";
+        this.ubicacion = "";
+        this.tipoComida = "";
+        this.objetivos = "";
+        this.descripcion = "";
+        this.logo = null;
+
+        this.$router.push("/restaurante");
+      } catch (err) {
+        console.log(err);
+      }
     }
-  },
+  }
 }
 </script>
 

@@ -15,14 +15,14 @@
                 <div v-if="restaurante.lista && restaurante.lista.length > 0">
                     <div class="restaurant-card" v-for="restaurante in restaurante.lista" :key="restaurante.id">
                         <div class="restaurant-image">
-                            <img src="../../assets/img/bebidas.png" alt="Imagen del restaurante">
+                            <img :src="getRestaurantImageUrl(restaurante.logo)" alt="Imagen del restaurante">
                         </div>
                         <div class="restaurant-info">
-                            <h2>{{restaurante.nombreRestaurante}}</h2>
-                            <p>{{restaurante.descripcion}}</p>
+                            <h2>{{ restaurante.nombreRestaurante }}</h2>
+                            <p>{{ restaurante.descripcion }}</p>
                         </div>
                         <div class="restaurant-actions">
-                            <router-link :to="{ name: 'update', params: { id: restaurante.id }}">
+                            <router-link :to="{ name: 'update', params: { id: restaurante.id } }">
                                 <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
                             </router-link>
                             <router-link to="/dashboard">
@@ -38,7 +38,6 @@
         </div>
     </div>
 </template>
-
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
@@ -71,16 +70,21 @@ export default {
         async getRestaurantes() {
             try {
                 const response = await axios.get("http://localhost:4200/restaurante");
-                // console.log(response.data);
                 this.restaurante.lista = response.data;
             } catch (err) {
                 console.log(err);
+            }
+        },
+        getRestaurantImageUrl(imageName) {
+            if (imageName) {
+                return `http://localhost:4200/img/usuario/${imageName}`;
+            } else {
+                return '../../assets/img/entrada.png'; // Ruta de una imagen predeterminada si no hay logo
             }
         }
     }
 }
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');

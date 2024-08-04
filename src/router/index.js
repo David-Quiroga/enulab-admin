@@ -19,6 +19,8 @@ import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
 import RestauranteUpdate from "@/views/restaurante/UpdateRestView.vue"
 import MPagosAgregarView from "@/views/mPagos/mPagosAgregarView.vue";
 import formSopasView from "@/views/sopas/formSopasView.vue";
+import UpdateEmpleado from "@/views/empleados/EmpleadoUpdateView.vue"
+
 
 const routes = [
     {
@@ -38,6 +40,9 @@ const routes = [
     },
     {
         path: "/empleados", name: "empleados", component: EmpleadosView
+    },
+    {
+        path: "/updateEmployee/:idEmpleado?", name: "updateEmployee", component: UpdateEmpleado, props: true
     },
     {
         path: "/proveedores", name: "proveedores", component: ProveedoresView
@@ -77,6 +82,10 @@ const routes = [
     },
     {
         path: "/formSopas", component: formSopasView, props: true
+    },
+    {
+        path: '/proveedores/edit/:id', name: 'EditProveedor',
+        component: () => import('../views/proveedores/ProveedoresFormView.vue')
     }
 ];
 

@@ -1,67 +1,67 @@
 <template>
-    <HeaderView/>
-        <aside class="sidebar">
+  <HeaderView />
+  <aside class="sidebar">
     <nav>
-        <ul>
-            <li>
-                <router-link to="/dashboard" class="active">
-                    <i class="fa-solid fa-chart-simple"></i> Dashboard
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/menus">
-                    <i class="fa-solid fa-envelope"></i> Menu
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/visualizar">
-                <i class="fa-solid fa-table-cells-large"></i> Visualizar
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/empleados">
-                    <i class="fa-solid fa-person"></i> Empleados
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/pagos">
-                    <i class="fa-regular fa-credit-card"></i> Metodos de pago
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/proveedores">
-                    <i class="fa-solid fa-user-group"></i> Proveedores
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/inventario">
-                    <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-                </router-link>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <router-link to="/dashboard" class="active">
+            <i class="fa-solid fa-chart-simple"></i> Dashboard
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/menus">
+            <i class="fa-solid fa-envelope"></i> Menu
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/visualizar">
+            <i class="fa-solid fa-table-cells-large"></i> Visualizar
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/empleados">
+            <i class="fa-solid fa-person"></i> Empleados
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/pagos">
+            <i class="fa-regular fa-credit-card"></i> Métodos de pago
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/proveedores">
+            <i class="fa-solid fa-user-group"></i> Proveedores
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/inventario">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+          </router-link>
+        </li>
+      </ul>
     </nav>
-</aside>
-<!-- ! Termina el SIDEBAR -->
-<div class="content">
-  <div class="titulo">
-    <h2>Empleados</h2>
-    <div class="superior">
+  </aside>
+  <!-- Termina el SIDEBAR -->
+  <div class="content">
+    <div class="titulo">
+      <h2>Empleados</h2>
+      <div class="superior">
         <router-link to="/add">
-          <button >Añadir Empleado</button>
+          <button>Añadir Empleado</button>
         </router-link>
+      </div>
     </div>
-  </div>
-  <div class="table-container">
+    <div class="table-container">
       <table>
         <thead>
           <tr>
             <th>Nombres</th>
-            <th>Cedula</th>
+            <th>Cédula</th>
             <th>Edad</th>
-            <th>Genero</th>
+            <th>Género</th>
             <th>Sueldo</th>
             <th>N° Contacto</th>
-            <th>Acciones</th><!--Este no cuenta en el crud-->
+            <th>Acciones</th><!-- Este no cuenta en el CRUD -->
           </tr>
         </thead>
         <tbody>
@@ -73,15 +73,17 @@
             <td>{{ empleado.sueldo }}</td>
             <td>{{ empleado.numeroContacto }}</td>
             <td class="actions">
+              <router-link :to="{ name: 'updateEmployee', params: { idEmpleado: empleado.idEmpleado } }">
+                <i class="fas fa-edit"></i>
+              </router-link>
+                <i class="fas fa-trash-alt"></i>
               
-                <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-              <i class="fas fa-trash-alt"></i>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -93,8 +95,8 @@ export default {
   components: {
     HeaderView
   },
-  data(){
-    return{
+  data() {
+    return {
       empleado: {
         lista: [],
         form: {
@@ -109,49 +111,49 @@ export default {
       }
     };
   },
-  created(){
+  created() {
     this.getEmpleados();
   },
   methods: {
-    async getEmpleados(){
+    async getEmpleados() {
       try {
         const response = await axios.get('http://localhost:4200/empleado');
-        console.log(response.data)
-        this.empleado.lista = response.data
+        // console.log(response.data);
+        this.empleado.lista = response.data;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    }
+    },
   }
 };
 </script>
 
 <style scoped>
 .content {
-    margin-left: 50px;
-    padding: 20px;
-    width: calc(100% - 270px);
+  margin-left: 50px;
+  padding: 20px;
+  width: calc(100% - 270px);
 }
-.superior h1{
-font-weight: bold;
-font-size: 50px;
+.superior h1 {
+  font-weight: bold;
+  font-size: 50px;
 }
 .superior {
-    display: flex;
-    width: 100%;
-    height: 15%;
-    padding: 0 30px;
+  display: flex;
+  width: 100%;
+  height: 15%;
+  padding: 0 30px;
 }
 
 .superior button {
-    background-color: #FF7A00;
-    border: none;
-    border-radius: 20px;
-    height: 39px;
-    padding: 0 60px;
-    margin-left: 740px;
-    color: white;
-    white-space: nowrap;
+  background-color: #FF7A00;
+  border: none;
+  border-radius: 20px;
+  height: 39px;
+  padding: 0 60px;
+  margin-left: 740px;
+  color: white;
+  white-space: nowrap;
 }
 .titulo {
   background-color: #75787b;
@@ -163,26 +165,26 @@ font-size: 50px;
   align-items: center;
   width: 1200px;
   justify-content: space-between;
-  margin-top: 1px
+  margin-top: 1px;
 }
 .header h2 {
-    margin: 0;
-    font-size: 24px;
+  margin: 0;
+  font-size: 24px;
 }
 
 .search-box {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .search-box input {
-    border: none;
-    outline: none;
-    margin-left: 5px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
 }
 
 .table-container {
@@ -214,8 +216,8 @@ tr:hover {
   background-color: #f1f1f1;
 }
 .actions i {
-    margin-right: 10px;
-    cursor: pointer;
+  margin-right: 10px;
+  cursor: pointer;
 }
 .actions i:hover {
   color: #FF0000;
