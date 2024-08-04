@@ -20,7 +20,11 @@ import RestauranteUpdate from "@/views/restaurante/UpdateRestView.vue"
 import MPagosAgregarView from "@/views/mPagos/mPagosAgregarView.vue";
 import formSopasView from "@/views/sopas/formSopasView.vue";
 import UpdateEmpleado from "@/views/empleados/EmpleadoUpdateView.vue"
-
+import SopasView from "@/views/sopas/sopasView.vue";
+import UpdateSopasView from "@/views/sopas/UpdateSopasView.vue";
+import formHeladosView from "@/views/helados/formHeladosView.vue";
+import HeladosView from "@/views/helados/HeladosView.vue";
+import UpdateHeladosView from "@/views/helados/UpdateHeladosView.vue";
 
 const routes = [
     {
@@ -81,12 +85,27 @@ const routes = [
         path: "/addmetodo", component: MPagosAgregarView, props: true
     },
     {
-        path: "/formSopas", component: formSopasView, props: true
-    },
-    {
         path: '/proveedores/edit/:id', name: 'EditProveedor',
         component: () => import('../views/proveedores/ProveedoresFormView.vue')
-    }
+    },
+    {
+        path: "/helados", component: HeladosView, props: true
+    },
+    {
+        path: "/formHelados", component: formHeladosView, props: true
+    },
+    {
+        path: "/UpdateHelados/:idHelado?", name: "UpdateHelados", component: UpdateHeladosView, props: true
+    },
+    {
+        path: "/sopas", component: SopasView, props: true
+    },
+    {
+        path: "/UpdateSopas/:idSopa?", name: "UpdateSopas", component: UpdateSopasView, props: true
+    },
+    {
+        path: "/formSopas", component: formSopasView, props: true
+    },
 ];
 
 const router = createRouter({

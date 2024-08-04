@@ -43,11 +43,11 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>Creación de la sopa</h1>
+    <h1>Creación del helado</h1>
     <div>
         <div class="contenedor"> 
             <div class="izquierda">
-                <h4>Nombre de la sopa</h4>
+                <h4 >Nombre del helado</h4>
                 <input v-model="nombre">
                 
                 <h4>Descripcion</h4>
@@ -55,7 +55,6 @@
                 
                 <h4>Estado</h4>
                 <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required >
-                
             </div>
     
             <div class="derecha">
@@ -72,22 +71,20 @@
             <router-link to="/menus">
                 <button class="btn-back">Atrás</button>
             </router-link>
-                <button class="btn-conf" @click="createSopa">Continuar</button>
-
-        </div>
+                <button class="btn-conf" @click="createHelado">Continuar</button>
+        </div>  
     </div>
-        
-
   </div>
-</template>
-
-<script>
-import HeaderView from '@/components/header/HeaderView.vue';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+  </template>
+  
+  <script>
+  import HeaderView from '@/components/header/HeaderView.vue';
+  import axios from 'axios';
+  import Swal from 'sweetalert2';
+  
   
   export default {
-  name: 'createSopa',
+  name: 'MenuListView',
   components: {
   HeaderView
   },
@@ -95,8 +92,8 @@ import Swal from 'sweetalert2';
     return {
       nombre: "",
       descripcion: "",
-      estado: "",
-      precio: ""
+      precio: null,
+      estado: ""
     }
   },
   methods: {
@@ -107,7 +104,7 @@ import Swal from 'sweetalert2';
 
       return null; // Indica que no hay errores
     },
-    async createSopa() {
+    async createHelado() {
       const validationError = this.validateForm();
       if (validationError) {
         Swal.fire({
@@ -120,14 +117,15 @@ import Swal from 'sweetalert2';
       }
 
       try {
-        const SopaData = {
+        const HeladoData = {
           nombre: this.nombre,
           descripcion: this.descripcion,
-          estado: this.estado,
-          precio: this.descripcion
+          precio: this.descripcion,
+          estado: this.estado
+          
         };
 
-        await axios.post("http://localhost:4200/sopas", SopaData, {
+        await axios.post("http://localhost:4200/helados", HeladoData, {
           headers: {
             "Content-Type": "application/json"
           }
@@ -136,7 +134,7 @@ import Swal from 'sweetalert2';
         // Mostrar alerta de éxito
         Swal.fire({
           title: 'Éxito',
-          text: 'Sopa creado correctamente',
+          text: 'Helado creado correctamente',
           icon: 'success',
           confirmButtonText: 'Aceptar'
         });
@@ -144,19 +142,18 @@ import Swal from 'sweetalert2';
         // Limpiar los campos
         this.nombre = "";
         this.descripcion = "";
-        this.estado = "";
         this.precio = null;
-        
+        this.estado = "";
 
         // Redirigir a la página de sopas
-        this.$router.push("/sopas");
+        this.$router.push("/helados");
       } catch (err) {
         console.log(err);
       }
     }
   }
 }
-</script>
+  </script>
   
   <style scoped>
   body {

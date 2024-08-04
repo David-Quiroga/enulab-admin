@@ -54,6 +54,12 @@
           <img src="../../assets/img/sopas25.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
+          <router-link to="/formSopas">
+            <button class="add">Agregar</button>
+          </router-link>
+          <router-link to="/sopas">
+            <button class="add">Ver lista de sopas</button>
+          </router-link>
         </div>
       </div>
 
@@ -65,12 +71,7 @@
           <img src="../../assets/img/entra.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <router-link to="/formSopas">
-            <button class="add">Agregar</button>
-          </router-link>
-          <router-link to="/formSopas">
-            <button class="add">lista</button>
-          </router-link>
+          
         </div>
       </div>
 
@@ -92,6 +93,12 @@
           <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
+          <router-link to="/formHelados">
+            <button class="add">Agregar</button>
+          </router-link>
+          <router-link to="/helados">
+            <button class="add">Ver lista de helados</button>
+          </router-link>
         </div>
       </div>
     </div>
