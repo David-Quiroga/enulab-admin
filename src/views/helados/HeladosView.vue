@@ -42,148 +42,116 @@
     </nav>
     </aside>
 <!-- ! Termina el SIDEBAR -->
-        <div class="create-menu" v-for="helado in helado.lista" :key="helado.idHelado">
-        <div class="img">
-            <p class="titulo1">Nombre:</p>
-            <br />
-            <p class="bold">{{ helado.nombre }}</p>
-            <br />
-            <p class="desc">Descripción</p>
-            <p class="plato">{{ helado.descripcion  }}</p>
-            <p class="price">Precio</p>
-            <p class="number">{{ helado.precio }}</p>
-            <div class="button-group">
-                <router-link :to="{ name: 'UpdateHelados', params: { idHelado: helado.idHelado }}">
-                    <button class="submit">Editar Plato</button>
-                </router-link>
-                <button class="delete" >Eliminar</button>
-            </div>
-        </div>
-        </div>
-        <!-- <div v-if="showDeleteModal" class="modal-overlay">
-        <div class="modal">
-            <p>¿Realmente deseas eliminar este plato?</p>
-            <div class="modal-buttons">
-            <button class="submit">Confirmar</button>
-            <button  class="submit">Cancelar</button>
-            </div>
-        </div>
-        </div> -->
+<div class="table-container">
+    <h2>Lista de Helados</h2> <!-- Título actualizado aquí -->
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Sub Categoría</th>
+          <th>Porciones</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="helado in helado.lista" :key="helado.idHelado">
+          <td>{{ helado.nombre }}</td>
+          <td>{{ helado.descripcion }}</td>
+          <td>{{ helado.precio }}</td>
+          <td>{{ helado.subCategoria }}</td>
+          <td>{{ helado.porciones }}</td>
+          <td>{{ helado.estado }}</td>
+          <td class="actions">
+            <router-link :to="{ name: 'UpdateHelados', params: { idHelado: helado.idHelado } }">
+              <i class="fas fa-edit"></i>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
-    import HeaderView from "@/components/header/HeaderView.vue";
-    import axios from 'axios';
-    
-    export default {
-        name: "verListaHelados",
-        components: {
-        HeaderView,
-        },
-        data() {
-        return {
-            helado: {
-                lista: [],
-                form: {
-                    idHelado: null,
-                    nombre: '',
-                    descripcion: '',
-                    precio: null
-                }
-            }
-        };
-        },
-        created(){
-            this.getHelados();
-        },
-        methods: {
-            async getHelados(){
-                try {
-                    const response = await axios.get('http://localhost:4200/helados');
-                    console.log(response.data)
-                    this.helado.lista = response.data
-                } catch (err) {
-                    console.log(err)
-                }
-            }
-        },
+import HeaderView from "@/components/header/HeaderView.vue";
+import axios from 'axios';
+
+export default {
+  name: "verListaHelados",
+  components: {
+    HeaderView,
+  },
+  data() {
+    return {
+      helado: {
+        lista: [],
+        form: {
+          idHelado: null,
+          nombre: '',
+          descripcion: '',
+          precio: null,
+          porciones: '', // Añadido porciones
+          subCategoria: '' // Añadida subCategoría
+        }
+      }
     };
+  },
+  created() {
+    this.getHelados();
+  },
+  methods: {
+    async getHelados() {
+      try {
+        const response = await axios.get('http://localhost:4200/helados');
+        console.log(response.data);
+        this.helado.lista = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+};
 </script>
+
     
-    <style scoped>
-    .create-menu {
-        background-color: #2C2E3A;
-        color: white;
-        padding: 15px; /* Reducido el padding para hacerlo más compacto */
-        border-radius: 2px; /* Reducido el radio del borde para suavizar los bordes */
-        width: 250px; /* Reducido el ancho para hacerlo más pequeño */
-        height: 300px;
-        margin-left: 50px; /* Ajustado el margen izquierdo */
-        margin-top: 100px; /* Añadido un margen superior para separarlo */
-        text-align: center;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2); /* Ligera sombra para destacarlo */
-    }
-    
-    .create-menu h1 {
-        font-size: 20px; /* Tamaño de la fuente del título reducido */
-        margin-bottom: 15px; /* Espaciado inferior del título reducido */
-    }
-    
-    .img {
-        background-image: url('../../assets/img/entrada.png');
-        opacity: 0.6;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 260px;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2); /* Sombra más suave para la imagen */
-    }
-    
-    .img p {
-        margin: 8px 0; /* Espaciado interno ajustado para los párrafos */
-    }
-    .titulo1{
-        position: absolute;
-        font-weight: bold;
-        top: 130px;
-        left: 355px;;
-    }
-    .bold{
-        position: absolute;
-        top: 150px;
-        left: 355px;
-    }
-    .desc{
-        position: absolute;
-        font-weight: bold;
-        top: 190px;
-        left: 350px;
-    }
-    .plato{
-        position: absolute;
-        top: 210px;
-        left: 357px;
-    }
-    .price{
-        position: absolute;
-        font-weight: bold;
-        top: 230px;
-        left: 370px;
-    }
-    .number{
-        position: absolute;
-        top: 260px;
-        left: 370px;
-    }
-    .button-group {
-        display: flex;
-        gap: 10px; /* Espacio entre los botones */
-        justify-content: center;
-        position: absolute;
-        margin-top: 130px; /* Centra los botones */
-        margin-left: 10px
-    }
+<style scoped>
+h2 {
+    margin-top: 100px;
+  color: #333; /* Color del texto del título */
+  font-size: 1.5em; /* Tamaño del texto del título */
+}
+.table-container {
+  background-color: #d6d6d659;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  width: 100%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+th {
+  background-color: #bebebe;
+  color: #333;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
     
     .submit {
         background-color: #210dd1;

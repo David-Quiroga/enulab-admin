@@ -43,115 +43,127 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>{{ isEditing ? 'Editar Helado' : 'Creación del Helado' }}</h1>
-    
-        <div class="contenedor"> 
-            <div class="izquierda">
-                <h4>Nombre del helado</h4>
-                <input v-model="nombre">
-                
-                <h4>Descripcion</h4>
-                <input v-model="descripcion">
-                
-                <h4>Estado</h4>
-                <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required >
-            </div>  
-    
-            <div class="derecha">
-                <h4>Precio</h4>
-                <input v-model="precio">
-                <h4>Porciones</h4>
-                <textarea id="descripcion" name="descripcion"></textarea>
-                <h4>Sub Categoria</h4>
-                <textarea id="descripcion" name="descripcion"></textarea>
-            </div>
+    <h1>{{ isEditing ? 'Editar Helado' : 'Creación de Helado' }}</h1>
+    <div>
+      <div class="contenedor">
+        <div class="izquierda">
+          <h4>Nombre del helado</h4>
+          <input v-model="nombre" />
+
+          <h4>Descripción</h4>
+          <input v-model="descripcion" />
+
+          <h4>Estado</h4>
+          <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
         </div>
 
-        <div class="botones">
-            <router-link to="/helados">
-                <button class="btn-back">Atrás</button>
-            </router-link>
-                <button class="btn-conf" @click="submitForm">Continuar</button>
+        <div class="derecha">
+          <h4>Precio</h4>
+          <input v-model="precio" />
+
+          <h4>Porciones</h4>
+          <input v-model="porciones" />
+
+          <h4>Sub Categoría</h4>
+          <input v-model="subCategoria" />
         </div>
-    
+      </div>
+
+      <div class="botones">
+        <router-link to="/helados">
+          <button class="btn-back">Atrás</button>
+        </router-link>
+        <button class="btn-conf" @click="submitForm">Continuar</button>
+      </div>
+    </div>
   </div>
-  </template>
+</template>
 
 <script>
-    import HeaderView from "@/components/header/HeaderView.vue";
-    import axios from 'axios';
-    
-    export default {
-        name: "verListaHelados",
-        components: {
-        HeaderView,
-        },
-        data() {
-        return {
-            nombre: "",
-            descripcion: "",
-            precio: null,
-            estado: "",
-            isEditing: false
-        }
-        },
-        props: ['idHelado'],
-        created() {
-            if (this.idHelado) {
-                this.isEditing = true;
-                this.loadHelado();
-            }
-        },
-        methods: {
-        async loadHelado() {
-            try {
-                const response = await axios.get(`http://localhost:4200/helados/${this.idHelado}`);
-                const helado = response.data;
-                this.nombre = helado.nombre;
-                this.descripcion = helado.descripcion;
-                this.precio = helado.precio;
-                this.estado = helado.estado;  
-            } catch (error) {
-                console.error('Error cargando el helado:', error);
-            }
-        },
-        async submitForm() {
-            try {
-                const heladoData = {
-                    nombre: this.nombre,
-                    descripcion: this.descripcion,
-                    precio: this.precio,
-                    estado: this.estado
-                };
-                
-                if (this.isEditing) {
-                    await axios.put(`http://localhost:4200/helados/${this.idHelado}`, heladoData, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-                } else {
-                    await axios.post("http://localhost:4200/helados", heladoData, {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    });
-                }
-            // Limpiar los campos
-            this.nombre = "";
-            this.descripcion = "";
-            this.precio = null;
-            this.estado = "";
+import HeaderView from "@/components/header/HeaderView.vue";
+import axios from 'axios';
 
-            // Redirigir a la página de empleados
-            this.$router.push("/helados");
-            } catch (err) {
-                console.log('Error al enviar el formulario:', err);
-            }
-        }
-        }
+export default {
+  name: "verListaHelados",
+  components: {
+    HeaderView,
+  },
+  data() {
+    return {
+      nombre: "",
+      descripcion: "",
+      precio: null,
+      estado: "",
+      porciones: "", // Añadido porciones
+      subCategoria: "", // Añadida subCategoría
+      isEditing: false
+    };
+  },
+  props: ['idHelado'],
+  created() {
+    if (this.idHelado) {
+      this.isEditing = true;
+      this.loadHelado();
     }
+  },
+  methods: {
+    async loadHelado() {
+      try {
+        const response = await axios.get(`http://localhost:4200/helados/${this.idHelado}`);
+        const helado = response.data;
+        this.nombre = helado.nombre;
+        this.descripcion = helado.descripcion;
+        this.precio = helado.precio;
+        this.estado = helado.estado;
+        this.porciones = helado.porciones; // Cargar porciones
+        this.subCategoria = helado.subCategoria; // Cargar subCategoría
+      } catch (error) {
+        console.error('Error cargando el helado:', error);
+      }
+    },
+    async submitForm() {
+      try {
+        const heladoData = {
+          nombre: this.nombre,
+          descripcion: this.descripcion,
+          precio: this.precio,
+          estado: this.estado,
+          porciones: this.porciones, // Incluir porciones
+          subCategoria: this.subCategoria // Incluir subCategoría
+        };
+
+        if (this.isEditing) {
+          await axios.put(`http://localhost:4200/helados/${this.idHelado}`, heladoData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+        } else {
+          await axios.post("http://localhost:4200/helados", heladoData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+        }
+
+        // Limpiar los campos
+        this.nombre = "";
+        this.descripcion = "";
+        this.precio = null;
+        this.estado = "";
+        this.porciones = ""; // Limpiar porciones
+        this.subCategoria = ""; // Limpiar subCategoría
+
+        // Redirigir a la página de helados
+        this.$router.push("/helados");
+      } catch (err) {
+        console.log('Error al enviar el formulario:', err);
+      }
+    }
+  }
+};
 </script>
+
     
 <style scoped>
 body {
@@ -207,6 +219,7 @@ justify-content: space-between; /* Espacio entre columnas */
 display: flex;
 flex-direction: column;
 width: 47%;
+margin-left: 100px
 }
 
 .botones {
@@ -220,21 +233,31 @@ height: 40px;
 border: none;
 border-radius: 10px;
 cursor: pointer;
-margin-top: -90px;
+margin-top: -30px;
 }
 
 .btn-back {
 background-color: #BBB7B7;
-width: 180px;
+width: 240px;
 position: absolute;
-left: 400px;
+left: 335px;
 }
 
 .btn-conf {
 background-color: #FF7A00;
 color: #FFFFFF;
-width: 250px;
+width: 240px;
 position: absolute;
-left: 600px;
+left: 330px;
+}
+input, textarea {
+background-color: #d3d1d1;
+border: 1px solid #000; /* Borde negro */
+border-radius: 10px;
+height: 40px;
+margin-top: 10px;
+margin-bottom: 21px;
+padding-left: 10px; /* Espacio a la izquierda del texto */
+padding-right: 10px; /* Espacio a la derecha del texto */
 }
 </style>

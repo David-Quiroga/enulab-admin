@@ -42,7 +42,8 @@
     </nav>
 </aside>
 <!-- ! Termina el SIDEBAR -->
-    <div class="container">
+<!-- ! Termina el SIDEBAR -->
+<div class="container">
         <h1>Visualización de menú</h1>
         <div class="content">
 
@@ -117,20 +118,18 @@
                 <div class="bloque3">
                     <h3>Postres</h3>
                     <h4>Frios</h4>
-                    <div class="postre-seccion">
+                    <div class="postre-seccion" v-for="postre in categorias.postresFrios" :key="postre.idPostre">
                         <div class="postre-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
+                            <p>{{ postre.nombre }} <span>{{ postre.precio }}</span></p>
                         </div>
                         <img src="../../assets/img/brownie.jpg" alt="" class="imagen4">
 
                     </div>
 
                     <h4>Calientes</h4>
-                    <div class="postre-seccion">
+                    <div class="postre-seccion" v-for="postre in categorias.postresCalientes" :key="postre.idPostre">
                         <div class="postre-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
+                            <p>{{ postre.nombre }} <span>{{ postre.precio }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -189,12 +188,38 @@
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
+import axios from 'axios';
 
 export default {
-    name: 'MenuListView',
-    components: {
-        HeaderView
+  name: 'MenuListView',
+  components: {
+    HeaderView
+  },
+  data() {
+    return {
+      categorias: {
+        postresFrios: [],
+        postresCalientes: []
+      }
+    };
+  },
+  created() {
+    this.fetchMenuData();
+  },
+  methods: {
+    async fetchMenuData() {
+        try {
+            const response = await axios.get('http://localhost:4200/data');
+            console.log('Datos del menú:', response.data);
+            this.helados = response.data.helados || {};
+            this.postres = response.data.postres || {};
+            this.entradas = response.data.entradas || {};
+            this.sopas = response.data.sopas || {};
+        } catch (error) {
+            console.error('Error al obtener los datos del menú:', error);
+        }
     }
+}
 };
 </script>
 

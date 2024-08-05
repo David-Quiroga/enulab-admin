@@ -48,27 +48,27 @@
     <div class="contenedor">
       <div class="izquierda">
         <label>Nombre del proveedor:</label>
-        <input type="text" v-model="nombreProveedor" />
+        <input class="input" type="text" v-model="nombreProveedor" />
 
         <label>Número de contacto:</label>
-        <input type="number" v-model="numContacto" />
+        <input class="input" type="number" v-model="numContacto" />
 
         <label>Email de contacto:</label>
-        <input type="text" v-model="emailContacto" />
+        <input class="input" type="text" v-model="emailContacto" />
 
         <label>Producto a Proveer:</label>
-        <input type="text" v-model="tipoProducto" />
+        <input class="input" type="text" v-model="tipoProducto" />
       </div>
 
       <div class="derecha">
         <label>Dirección:</label>
-        <input type="text" v-model="direccion" />
+        <input class="input" type="text" v-model="direccion" />
 
         <label>Ciudad:</label>
-        <input type="text" v-model="ciudad" />
+        <input class="input" type="text" v-model="ciudad" />
 
         <label>Estado:</label>
-        <input type="text" v-model="estado" />
+        <input class="input" type="text" v-model="estado" />
       </div>
     </div>
     <div class="botones">
@@ -198,14 +198,18 @@ margin-bottom: 50px;
 label{
 color: #000000;
 }
-
+.input{
+  width: 500px;
+}
 input, textarea {
-background-color: #d3d1d1;
-border: none;
-border-radius: 10px;
-height: 40px;
-margin-top: 10px;
-margin-bottom: 21px;
+  background-color: #d3d1d1;
+  border: 1px solid #000; /* Borde negro */
+  border-radius: 10px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 21px;
+  padding-left: 10px; /* Espacio a la izquierda del texto */
+  padding-right: 10px; /* Espacio a la derecha del texto */
 }
 
 textarea {
@@ -233,6 +237,7 @@ justify-content: space-between; /* Espacio entre columnas */
 display: flex;
 flex-direction: column;
 width: 47%;
+margin-left: 140px;
 }
 
 .botones {
@@ -250,13 +255,16 @@ margin-right: 10px
 }
 
 .btn-back {
-background-color: #BBB7B7;
-width: 180px;
+  margin-left: 40px;
+  background-color: #BBB7B7;
+  width: 200px;
 }
 
 .btn-conf {
-background-color: #FF7A00;
-color: #FFFFFF;
-width: 250px;
+  position: absolute;
+  left: 410px;
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  width: 200px;
 }
 </style>

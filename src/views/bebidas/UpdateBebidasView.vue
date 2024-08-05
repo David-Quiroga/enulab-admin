@@ -43,12 +43,12 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>{{ isEditing ? 'Editar Sopa' : 'Creacion de Sopa'}}</h1>
+    <h1>{{ isEditing ? 'Editar Bebida' : 'Creación de Bebida' }}</h1>
     <div>
       <div class="contenedor">
         <div class="izquierda">
-          <h4>Nombre de la sopa</h4>
-          <input v-model="nombre" />
+          <h4>Nombre de la bebida</h4>
+          <input class="prueba" v-model="nombre" />
 
           <h4>Descripción</h4>
           <input v-model="descripcion" />
@@ -61,16 +61,13 @@
           <h4>Precio</h4>
           <input v-model="precio" />
 
-          <h4>Porciones</h4>
-          <input v-model="porciones" />
-
           <h4>Sub Categoría</h4>
           <input v-model="subCategoria" />
         </div>
       </div>
 
       <div class="botones">
-        <router-link to="/menus">
+        <router-link to="/bebidas">
           <button class="btn-back">Atrás</button>
         </router-link>
         <button class="btn-conf" @click="submitForm">Continuar</button>
@@ -84,85 +81,78 @@ import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
 
 export default {
-  name: "verListaSopas",
+  name: "MenuListView",
   components: {
     HeaderView,
   },
-  props: ['idSopa'],
   data() {
     return {
       nombre: "",
       descripcion: "",
+      precio: null,
       estado: "",
-      precio: "",
-      porciones: "",
       subCategoria: "",
-      isEditing: false,
+      isEditing: false
     };
   },
+  props: ['idBebida'],
   created() {
-    if (this.idSopa) {
-      this.isEditing = true;
-      this.loadSopa();
-    }
-  },
+  console.log('ID de bebida:', this.idBebida); // Verifica el ID recibido
+  if (this.idBebida) {
+    this.isEditing = true;
+    this.loadBebida();
+  }
+},
   methods: {
-    async loadSopa() {
-      try {
-        const response = await axios.get(`http://localhost:4200/sopas/${this.idSopa}`);
-        const sopa = response.data;
-        this.nombre = sopa.nombre;
-        this.descripcion = sopa.descripcion;
-        this.estado = sopa.estado;
-        this.precio = sopa.precio;
-        this.porciones = sopa.porciones;
-        this.subCategoria = sopa.subCategoria;
-      } catch (error) {
-        console.error('Error cargando la sopa:', error);
-      }
-    },
+    async loadBebida() {
+  try {
+    const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
+    const bebida = response.data;
+    this.nombre = bebida.nombre;
+    this.descripcion = bebida.descripcion;
+    this.precio = bebida.precio;
+    this.estado = bebida.estado;
+    this.subCategoria = bebida.subCategoria;
+  } catch (error) {
+    console.error('Error cargando la bebida:', error);
+  }
+},
     async submitForm() {
-      const sopaData = {
-        nombre: this.nombre,
-        descripcion: this.descripcion,
-        estado: this.estado,
-        precio: this.precio,
-        porciones: this.porciones,
-        subCategoria: this.subCategoria,
-      };
-
       try {
+        const bebidaData = {
+          nombre: this.nombre,
+          descripcion: this.descripcion,
+          precio: this.precio,
+          estado: this.estado,
+          subCategoria: this.subCategoria
+        };
+
         if (this.isEditing) {
-          await axios.put(`http://localhost:4200/sopas/${this.idSopa}`, sopaData, {
+          await axios.put(`http://localhost:4200/bebidas/${this.idBebida}`, bebidaData, {
             headers: {
-              "Content-Type": "application/json",
-            },
+              "Content-Type": "application/json"
+            }
           });
         } else {
-          await axios.post("http://localhost:4200/sopas", sopaData, {
+          await axios.post("http://localhost:4200/bebidas", bebidaData, {
             headers: {
-              "Content-Type": "application/json",
-            },
+              "Content-Type": "application/json"
+            }
           });
         }
 
         // Limpiar los campos
-        this.resetForm();
+        this.nombre = "";
+        this.descripcion = "";
+        this.precio = null;
+        this.estado = "";
+        this.subCategoria = "";
 
-        // Redirigir a la página de sopas
-        this.$router.push("/sopas");
+        // Redirigir a la página de bebidas
+        this.$router.push("/bebidas");
       } catch (err) {
-        console.log('Error al enviar el formulario:', err);
+        console.error('Error al enviar el formulario:', err);
       }
-    },
-    resetForm() {
-      this.nombre = "";
-      this.descripcion = "";
-      this.estado = "";
-      this.precio = "";
-      this.porciones = "";
-      this.subCategoria = "";
-      this.isEditing = false;
     }
   }
 };
@@ -219,7 +209,6 @@ width: 900px; /* Ajustar al 100% del contenedor */
 justify-content: space-between; /* Espacio entre columnas */
 
 }
-
 .izquierda, .derecha {
 display: flex;
 flex-direction: column;

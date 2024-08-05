@@ -43,7 +43,7 @@
     </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="table-container">
-    <h2>Lista de Sopas</h2> <!-- Título agregado aquí -->
+    <h2>Lista de Entradas</h2> <!-- Título actualizado aquí -->
     <table>
       <thead>
         <tr>
@@ -57,15 +57,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="sopa in sopa.lista" :key="sopa.idSopa">
-          <td>{{ sopa.nombre }}</td>
-          <td>{{ sopa.descripcion }}</td>
-          <td>{{ sopa.precio }}</td>
-          <td>{{ sopa.subCategoria }}</td>
-          <td>{{ sopa.porciones }}</td>
-          <td>{{ sopa.estado }}</td>
+        <tr v-for="entrada in entradas.lista" :key="entrada.idEntrada">
+          <td>{{ entrada.nombre }}</td>
+          <td>{{ entrada.descripcion }}</td>
+          <td>{{ entrada.precio }}</td>
+          <td>{{ entrada.subCategoria }}</td>
+          <td>{{ entrada.porciones }}</td>
+          <td>{{ entrada.estado }}</td>
           <td class="actions">
-            <router-link :to="{ name: 'UpdateSopas', params: { idSopa: sopa.idSopa } }">
+            <router-link :to="{ name: 'UpdateEntrada', params: { idEntrada: entrada.idEntrada } }">
               <i class="fas fa-edit"></i>
             </router-link>
           </td>
@@ -74,24 +74,25 @@
     </table>
   </div>
 </template>
+
 <script>
 import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
 
 export default {
-  name: "verListaSopas",
+  name: "verListaEntradas",
   components: {
     HeaderView,
   },
   data() {
     return {
-      sopa: {
+      entradas: {
         lista: [],
         form: {
-          idSopa: null,
+          idEntrada: null,
           nombre: '',
           descripcion: '',
-          precio: '',
+          precio: null,
           porciones: '',
           subCategoria: ''
         }
@@ -99,19 +100,19 @@ export default {
     };
   },
   created() {
-    this.getSopas();
+    this.getEntradas();
   },
   methods: {
-    async getSopas() {
+    async getEntradas() {
       try {
-        const response = await axios.get('http://localhost:4200/sopas');
+        const response = await axios.get('http://localhost:4200/entrada');
         console.log(response.data);
-        this.sopa.lista = response.data;
+        this.entradas.lista = response.data;
       } catch (err) {
         console.log(err);
       }
     }
-  }
+  },
 };
 </script>
 

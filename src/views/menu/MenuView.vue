@@ -71,7 +71,12 @@
           <img src="../../assets/img/entra.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          
+          <router-link to="/formEntradas">
+            <button class="add">Agregar</button>
+          </router-link>
+          <router-link to="/entradas">
+            <button class="add">Ver lista de Entradas</button>
+          </router-link>
         </div>
       </div>
 
@@ -82,7 +87,12 @@
           <img src="../../assets/img/bebu.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          
+          <router-link to="/formBebidas">
+            <button class="add">Agregar</button>
+          </router-link>
+          <router-link to="/bebidas">
+            <button class="add">Ver lista de bebidas</button>
+          </router-link>
         </div>
       </div>
 
@@ -97,7 +107,7 @@
             <button class="add">Agregar</button>
           </router-link>
           <router-link to="/helados">
-            <button class="add">Ver lista de helados</button>
+            <button class="add">Ver lista de Postres</button>
           </router-link>
         </div>
       </div>

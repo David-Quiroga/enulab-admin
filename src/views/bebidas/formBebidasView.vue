@@ -43,126 +43,128 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>Creación de la sopa</h1>
+    <h1>Creación de Bebidas</h1>
     <div>
       <div class="contenedor">
         <div class="izquierda">
-          <h4>Nombre de la sopa</h4>
+          <h4>Nombre de la bebida</h4>
           <input v-model="nombre" />
-
+  
           <h4>Descripción</h4>
           <input v-model="descripcion" />
-
+  
           <h4>Estado</h4>
           <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
         </div>
-
+  
         <div class="derecha">
           <h4>Precio</h4>
           <input v-model="precio" />
-
-          <h4>Porciones</h4>
-          <input v-model="porciones" />
-
+  
           <h4>Sub Categoría</h4>
           <input v-model="subCategoria" />
         </div>
       </div>
-
+  
       <div class="botones">
         <router-link to="/menus">
           <button class="btn-back">Atrás</button>
         </router-link>
-        <button class="btn-conf" @click="createSopa">Continuar</button>
+        <button class="btn-conf" @click="createEntrada">Continuar</button>
       </div>
     </div>
   </div>
-</template>
-
-<script>
-import HeaderView from '@/components/header/HeaderView.vue';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-
-export default {
-  name: 'createSopa',
+  </template>
+    
+  <script>
+  import HeaderView from '@/components/header/HeaderView.vue';
+  import axios from 'axios';
+  //import Swal from 'sweetalert2';
+  
+  export default {
+  name: "MenuListView",
   components: {
-    HeaderView
+    HeaderView,
+  },
+  props: {
+    idBebida: {
+      type: String, // Asegúrate de que el tipo coincida con el valor pasado
+      required: false
+    }
   },
   data() {
     return {
       nombre: "",
       descripcion: "",
-      precio: "",
+      precio: null,
       estado: "",
-      porciones: "",
-      subCategoria: ""
+      subCategoria: "",
+      isEditing: false
     };
   },
+  created() {
+    console.log('ID de bebida:', this.idBebida); // Verifica que el ID se recibe
+    if (this.idBebida) {
+      this.isEditing = true;
+      this.loadBebida();
+    }
+  },
   methods: {
-    validateForm() {
-      if (!this.nombre || !this.descripcion || !this.precio || !this.estado || !this.porciones || !this.subCategoria) {
-        return 'Todos los campos son obligatorios';
-      }
-      return null; // Indica que no hay errores
-    },
-    async createSopa() {
-      const validationError = this.validateForm();
-      if (validationError) {
-        Swal.fire({
-          title: 'Error',
-          text: validationError,
-          icon: 'info',
-          confirmButtonText: 'Aceptar'
-        });
-        return;
-      }
-
+    async loadBebida() {
       try {
-        const SopaData = {
+        const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
+        const bebida = response.data;
+        this.nombre = bebida.nombre;
+        this.descripcion = bebida.descripcion;
+        this.precio = bebida.precio;
+        this.estado = bebida.estado;
+        this.subCategoria = bebida.subCategoria;
+      } catch (error) {
+        console.error('Error cargando la bebida:', error);
+      }
+    },
+    async submitForm() {
+      try {
+        const bebidaData = {
           nombre: this.nombre,
           descripcion: this.descripcion,
           precio: this.precio,
           estado: this.estado,
-          porciones: this.porciones,
           subCategoria: this.subCategoria
         };
 
-        await axios.post("http://localhost:4200/sopas", SopaData, {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-
-        // Mostrar alerta de éxito
-        Swal.fire({
-          title: 'Éxito',
-          text: 'Sopa creada correctamente',
-          icon: 'success',
-          confirmButtonText: 'Aceptar'
-        });
+        if (this.isEditing) {
+          await axios.put(`http://localhost:4200/bebidas/${this.idBebida}`, bebidaData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+        } else {
+          await axios.post("http://localhost:4200/bebidas", bebidaData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+        }
 
         // Limpiar los campos
-        this.resetForm();
+        this.nombre = "";
+        this.descripcion = "";
+        this.precio = null;
+        this.estado = "";
+        this.subCategoria = "";
 
-        // Redirigir a la página de sopas
-        this.$router.push("/sopas");
+        // Redirigir a la página de bebidas
+        this.$router.push("/bebidas");
       } catch (err) {
-        console.log(err);
+        console.error('Error al enviar el formulario:', err);
       }
-    },
-    resetForm() {
-      this.nombre = "";
-      this.descripcion = "";
-      this.precio = "";
-      this.estado = "";
-      this.porciones = "";
-      this.subCategoria = "";
     }
   }
 };
-</script>
+  </script>
   
+    
   <style scoped>
   body {
   padding: 0;
@@ -257,5 +259,5 @@ export default {
   margin-bottom: 21px;
   padding-left: 10px; /* Espacio a la izquierda del texto */
   padding-right: 10px; /* Espacio a la derecha del texto */
-}
+  }
   </style>

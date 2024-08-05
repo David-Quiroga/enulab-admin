@@ -49,26 +49,22 @@
             <div class="izquierda">
                 <div>
                     <h4>Nombre del item:</h4>
-                    <input class="boton1" v-model="nombreProductos">
+                    <input  v-model="nombreProductos">
                 </div>
 
                 <div>
                     <h4>Cantidad (gr):</h4>
-                    <input class="boton2" v-model="cantidad" min="0" max="9999999999">
+                    <input  v-model="cantidad" min="0" max="9999999999">
                 </div>
 
                 <div>
                     <h4>Categoría:</h4>
-                    <input class="boton3" v-model="categoria" pattern="producto|implemento" title="Ingrese 'producto' o 'implemento'">
+                    <input  v-model="categoria" pattern="producto|implemento" title="Ingrese 'producto' o 'implemento'">
                 </div>
-                
-                <label for="estado">Estado:</label>
-                    <div>
-                        <input type="radio" id="activo" name="estado" value="activo" v-model="estado">
-                        <label for="activo">Activo</label>
-                        <input type="radio" id="inactivo" name="estado" value="inactivo" v-model="estado">
-                        <label for="inactivo">Inactivo</label>
-                    </div>
+                <div class="boton3">
+                    <h4>Estado:</h4>
+                    <input  v-model="estado" >
+                </div>
             </div>
     
             <div class="derecha">
@@ -207,7 +203,7 @@ input, textarea {
 }
 
 textarea {
-    height: 80px; /* Ajustar altura del textarea */
+    height: 40px; /* Ajustar altura del textarea */
 }
 
 form {
@@ -253,15 +249,30 @@ form {
 .btn-back {
     background-color: #BBB7B7;
     position: relative;
-    left: -100px;
-    width: 180px;
+    left: -110px;
+    width: 200px;
 }
 
 .btn-conf {
     background-color: #FF7A00;
     color: #FFFFFF;
     position: relative;
-    left: -600px;
+    left: -530px;
     width: 200px;
+}
+.boton3{
+    position: absolute;
+    top: 350px;
+    left: 910px;
+}
+input, textarea {
+    background-color: #d3d1d1;
+    border: 1px solid #000; /* Borde negro */
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 21px;
+    padding-left: 10px; /* Espacio a la izquierda del texto */
+    padding-right: 10px; /* Espacio a la derecha del texto */
 }
 </style>

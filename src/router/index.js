@@ -26,10 +26,16 @@ import UpdateHeladosView from "@/views/helados/UpdateHeladosView.vue";
 import updateProveedorView from '@/views/proveedores/UpdateProveedoresView.vue'
 import updateInventario from '@/views/inventario/inventarioUpdateView.vue'
 import updateMPagos from '@/views/mPagos/mPagosUpdateView.vue'
+import FormEntradasView from '@/views/entradas/formEntradasView.vue'
+import EntradasView from "@/views/entradas/EntradasView.vue";
+import UpdateEntrada from "@/views/entradas/UpdateEntradasView.vue";
+import FormBebidasView from "@/views/bebidas/formBebidasView.vue";
+import BebidasView from "@/views/bebidas/BebidasView.vue";
+import UpdateBebidas from '@/views/bebidas/UpdateBebidasView.vue'
 
 const routes = [
     { path: "/", name: "login", component: LoginView, props: true },
-    { path: "/registro", name: "registro", component: RegistroView, props: true },
+    { path: "/registro", name: "registro", component: RegistroView, props: true,  },
     { path: "/dashboard", name: "dashboard", component: DashboardView },
     { path: '/menus', name: "menus", component: Menus },
     { path: "/inventario", name: "Inventory", component: InventarioView },
@@ -53,7 +59,13 @@ const routes = [
     { path: "/formSopas", component: formSopasView, props: true },
     { path: '/UpdateProveedores/:idProveedores?', name:"UpdateProveedores", component: updateProveedorView, props: true},
     { path: '/UpdateInventario/:idInventario?', name:"UpdateInventario", component: updateInventario, props: true},
-    { path: '/UpdateMPagos/:idMPagos?', name:"UpdatemPagos", component: updateMPagos, props: true}
+    { path: '/UpdateMPagos/:idMPagos?', name:"UpdatemPagos", component: updateMPagos, props: true},
+    { path: '/formEntradas', component: FormEntradasView, props: true},
+    { path: '/entradas', component: EntradasView},
+    { path: '/UpdateEntrada/:idEntrada?', name: 'UpdateEntrada', component: UpdateEntrada, props: true},
+    { path: '/formBebidas', component: FormBebidasView, props: true},
+    { path: '/bebidas', component: BebidasView},
+    { path: '/UpdateBebida/:idBebida?', name: 'UpdateBebida', component: UpdateBebidas, props: true}
 ];
 
 const router = createRouter({

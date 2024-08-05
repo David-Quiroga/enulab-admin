@@ -43,7 +43,7 @@
     </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="table-container">
-    <h2>Lista de Sopas</h2> <!-- Título agregado aquí -->
+    <h2>Lista de las Bebidas</h2> <!-- Título actualizado aquí -->
     <table>
       <thead>
         <tr>
@@ -51,22 +51,20 @@
           <th>Descripción</th>
           <th>Precio</th>
           <th>Sub Categoría</th>
-          <th>Porciones</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="sopa in sopa.lista" :key="sopa.idSopa">
-          <td>{{ sopa.nombre }}</td>
-          <td>{{ sopa.descripcion }}</td>
-          <td>{{ sopa.precio }}</td>
-          <td>{{ sopa.subCategoria }}</td>
-          <td>{{ sopa.porciones }}</td>
-          <td>{{ sopa.estado }}</td>
+        <tr v-for="bebida in bebidas.lista" :key="bebida.idBebida">
+          <td>{{ bebida.nombre }}</td>
+          <td>{{ bebida.descripcion }}</td>
+          <td>{{ bebida.precio }}</td>
+          <td>{{ bebida.subCategoria }}</td>
+          <td>{{ bebida.estado }}</td>
           <td class="actions">
-            <router-link :to="{ name: 'UpdateSopas', params: { idSopa: sopa.idSopa } }">
-              <i class="fas fa-edit"></i>
+            <router-link :to="{ name: 'UpdateBebida', params: { idBebida: bebida.idBebida } }">
+                <i class="fas fa-edit"></i>
             </router-link>
           </td>
         </tr>
@@ -74,44 +72,45 @@
     </table>
   </div>
 </template>
+
 <script>
 import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
 
 export default {
-  name: "verListaSopas",
+  name: "verListaBebidas",
   components: {
     HeaderView,
   },
   data() {
     return {
-      sopa: {
+      bebidas: {
         lista: [],
         form: {
-          idSopa: null,
+          idBebida: null,
           nombre: '',
           descripcion: '',
-          precio: '',
-          porciones: '',
-          subCategoria: ''
+          precio: null,
+          subCategoria: '',
+          estado: ''
         }
       }
     };
   },
   created() {
-    this.getSopas();
+    this.getBebidas();
   },
   methods: {
-    async getSopas() {
+    async getBebidas() {
       try {
-        const response = await axios.get('http://localhost:4200/sopas');
+        const response = await axios.get('http://localhost:4200/bebidas');
         console.log(response.data);
-        this.sopa.lista = response.data;
+        this.bebidas.lista = response.data;
       } catch (err) {
         console.log(err);
       }
     }
-  }
+  },
 };
 </script>
 
