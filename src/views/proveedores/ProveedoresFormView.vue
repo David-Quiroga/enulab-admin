@@ -44,39 +44,37 @@
 
 
       <div class="contenedor-principal">
-        <h1>{{ isEditing ? 'Editar Proveedor' : 'Creación de Proveedores' }}</h1>
-        <form >
+        <h1>Creación de Proveedores</h1>
             <div class="contenedor">
                 <div class="izquierda">
-            <label for="nombreProveedor">Nombre del proveedor:</label>
-            <input type="text" id="nombreProveedor" v-model="nombreProveedor">
+            <label >Nombre del proveedor:</label>
+            <input type="text"  v-model="nombreProveedor">
             
-            <label for="cItem">Numero de contacto:</label>
-            <input type="number" id="numContacto" v-model="numContacto">
+            <label >Numero de contacto:</label>
+            <input type="number" v-model="numContacto">
             
-            <label for="emailContacto">Email de contacto:</label>
-            <input type="text" id="emailContacto" v-model="emailContacto">
+            <label >Email de contacto:</label>
+            <input type="text" v-model="emailContacto">
             
-            <label for="tipoProducto">Producto a Proveer:</label>
-            <input type="text" id="tipoProducto" v-model="tipoProducto">
+            <label >Producto a Proveer:</label>
+            <input type="text" v-model="tipoProducto">
           </div>
     
           <div class="derecha">
-            <label for="direccion">Direccion</label>
-            <input type="text" id="direccion" v-model="direccion">
+            <label >Direccion</label>
+            <input type="text" v-model="direccion">
             
-            <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad" v-model="ciudad">
+            <label >Ciudad</label>
+            <input type="text" v-model="ciudad">
             
-            <label for="provincia">Estado</label>
-            <input type="text" id="provincia" v-model="estado">
+            <label >Estado</label>
+            <input type="text" v-model="estado">
           </div>
         </div>
         <div class="botones">
           <button class="btn-back" >Atrás</button>
           <button class="btn-conf" @click="createProveedor">Continuar</button>
         </div>
-        </form>
       </div>
   </template>
   
@@ -92,71 +90,37 @@
     },
     data() {
       return {
-        nombreProveedor: "",
-        numContacto: "",
-        emailContacto: "",
-        direccion: "",
-        ciudad: "",
-        estado: "",
-        tipoProducto: "",
-        isEditing: false,
-        proveedorId: null
+        nombreProveedor: '',
+        numContacto: '',
+        emailContacto: '',
+        direccion: '',
+        ciudad: '',
+        provincia: '',
+        tipoProducto: '',
+        estado: '',
+        isEditing: false
       };
     },
-    created() {
-      const id = this.$route.params.id;
-      if (id) {
-        this.isEditing = true;
-        this.proveedorId = id;
-        this.getProveedor(id);
-      }
-    },
     methods: {
-      validateForm() {
-        if (!this.nombreProveedor || !this.numContacto || !this.emailContacto || !this.direccion || !this.ciudad || !this.estado || !this.tipoProducto) {
-          return 'Todos los campos son obligatorios';
-        }
-  
-        if (!Number.isInteger(this.numContacto) || this.numContacto.toString().length > 10) {
-          return 'El número de contacto debe ser un número válido con máximo 10 dígitos';
-        }
-  
-        if (!this.emailContacto.includes('@') || !this.emailContacto.includes('.')) {
-          return 'El email debe ser válido';
-        }
-  
-        return null;
-      },
       async createProveedor() {
-        const validationError = this.validateForm();
-        if (validationError) {
-          Swal.fire({
-            title: 'Error',
-            text: validationError,
-            icon: 'info',
-            confirmButtonText: 'Aceptar'
-          });
-          return;
-        }
-  
-        const proveedorData = {
-          nombreProveedor: this.nombreProveedor,
-          numContacto: this.numContacto,
-          emailContacto: this.emailContacto,
-          direccion: this.direccion,
-          ciudad: this.ciudad,
-          estado: this.estado,
-          tipoProducto: this.tipoProducto
-        };
-  
         try {
+          const proveedorData = {
+            nombreProveedor: this.nombreProveedor,
+            numContacto: this.numContacto,
+            emailContacto: this.emailContacto,
+            direccion: this.direccion,
+            ciudad: this.ciudad,
+            provincia: this.provincia,
+            tipoProducto: this.tipoProducto,
+            estado: this.estado
+          };
+  
           if (this.isEditing) {
-            await axios.put(`http://localhost:4200/proveedores/${this.proveedorId}`, proveedorData, {
+            await axios.put(`http://localhost:4200/proveedores/${this.idProveedores}`, proveedorData, {
               headers: {
                 "Content-Type": "application/json"
               }
             });
-  
             Swal.fire({
               title: 'Éxito',
               text: 'Proveedor actualizado correctamente',
@@ -164,12 +128,11 @@
               confirmButtonText: 'Aceptar'
             });
           } else {
-            await axios.post("http://localhost:4200/proveedores", proveedorData, {
+            await axios.post('http://localhost:4200/proveedores', proveedorData, {
               headers: {
                 "Content-Type": "application/json"
               }
             });
-  
             Swal.fire({
               title: 'Éxito',
               text: 'Proveedor creado correctamente',
@@ -178,50 +141,30 @@
             });
           }
   
-          if (!this.isEditing) {
-            this.nombreProveedor = "";
-            this.numContacto = "";
-            this.emailContacto = "";
-            this.direccion = "";
-            this.ciudad = "";
-            this.estado = "";
-            this.tipoProducto = "";
-          }
+          // Limpiar el formulario
+          this.nombreProveedor = '';
+          this.numContacto = '';
+          this.emailContacto = '';
+          this.direccion = '';
+          this.ciudad = '';
+          this.provincia = '';
+          this.tipoProducto = '';
+          this.estado = '';
   
-          this.$router.push("/proveedores");
-        } catch (err) {
-          console.log(err);
+          // Redirigir a la lista de proveedores
+          this.$router.push('/proveedores');
+        } catch (error) {
+          console.error('Error al enviar el formulario', error);
           Swal.fire({
             title: 'Error',
-            text: `Hubo un error al ${this.isEditing ? 'actualizar' : 'crear'} el proveedor`,
+            text: 'Hubo un problema al crear o actualizar el proveedor',
             icon: 'error',
             confirmButtonText: 'Aceptar'
           });
         }
       },
-      async getProveedor(id) {
-        try {
-          const response = await axios.get(`http://localhost:4200/proveedores/${id}`);
-          const proveedor = response.data;
-          this.nombreProveedor = proveedor.nombreProveedor || '';
-          this.numContacto = proveedor.numContacto || '';
-          this.emailContacto = proveedor.emailContacto || '';
-          this.direccion = proveedor.direccion || '';
-          this.ciudad = proveedor.ciudad || '';
-          this.estado = proveedor.estado || '';
-          this.tipoProducto = proveedor.tipoProducto || '';
-        } catch (err) {
-          console.log(err);
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al obtener los datos del proveedor',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-          });
-        }
-      },
-      volver() {
-        this.$router.go(-1);
+      goBack() {
+        this.$router.push('/proveedores');
       }
     }
   };

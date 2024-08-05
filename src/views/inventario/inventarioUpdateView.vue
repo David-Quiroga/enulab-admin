@@ -43,8 +43,7 @@
 </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="contenedor-principal">
-    <h1>Creación de inventarios</h1>
-    <form action="">
+    <h1>{{ isEditing ? 'Editar Inventario' : 'Creación del Inventario' }}</h1>
         <div class="contenedor"> 
             <div class="izquierda">
                 <div>
@@ -54,7 +53,7 @@
 
                 <div>
                     <h4>Cantidad (gr):</h4>
-                    <input class="boton2" v-model="cantidad" min="0" max="9999999999">
+                    <input class="boton2" type="number" v-model="cantidad" min="0" max="9999999999">
                 </div>
 
                 <div>
@@ -63,12 +62,12 @@
                 </div>
                 
                 <label for="estado">Estado:</label>
-                    <div>
-                        <input type="radio" id="activo" name="estado" value="activo" v-model="estado">
-                        <label for="activo">Activo</label>
-                        <input type="radio" id="inactivo" name="estado" value="inactivo" v-model="estado">
-                        <label for="inactivo">Inactivo</label>
-                    </div>
+                <div>
+                    <input type="radio" id="activo" name="estado" value="activo" v-model="estado">
+                    <label for="activo">Activo</label>
+                    <input type="radio" id="inactivo" name="estado" value="inactivo" v-model="estado">
+                    <label for="inactivo">Inactivo</label>
+                </div>
             </div>
     
             <div class="derecha">
@@ -82,99 +81,88 @@
             <router-link to="/inventario">
                 <button type="button" class="btn-back">Atrás</button>
             </router-link>
-            <button type="button" class="btn-conf" @click="createItem">Continuar</button>
+            <button type="button" class="btn-conf" @click="submitForm">Continuar</button>
         </div>
-    </form>
-</div>
+    </div>
 </template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 export default {
-  name: 'MenuListView',
-  components: {
-    HeaderView
-  },
-  data() {
-    return {
-        nombreProductos: "",
-        cantidad: "",
-        categoria: "",
-        estado: "",
-        descripcion: ""
-    };
-  },
-  methods: {
-    validateForm() {
-         if (!this.nombreProductos || !this.cantidad === null || !this.categoria === null || !this.cantidad === null) {
-           return 'Todos los campos son obligatorios';
-         }
-  
-         const validClasificacion = ["producto", "implemento"];
-         if (!validClasificacion.includes(this.categoria.toLowerCase())) {
-           return 'La clasificacion debe ser "Producto" o "Implemento"';
-         }
-  
-         return null; // Indica que no hay errores
+    name: 'MenuListView',
+    components: {
+        HeaderView
     },
-        async createItem() {
-            const validationError = this.validateForm();
-            if (validationError) {
-            Swal.fire({
-            title: 'Error',
-            text: validationError,
-            icon: 'info',
-            confirmButtonText: 'Aceptar'
-            });
-            return;
+    data() {
+        return {
+            nombreProductos: "",
+            cantidad: "",
+            categoria: "",
+            estado: "",
+            descripcion: "",
+            isEditing: false
+        };
+    },
+    props: ['idInventario'],
+    created() {
+        if (this.idInventario) {
+            this.isEditing = true;
+            this.loadInventario();
+        }
+    },
+    methods: {
+        async loadInventario() {
+            try {
+                const response = await axios.get(`http://localhost:4200/inventario/${this.idInventario}`);
+                const inventario = response.data;
+                this.nombreProductos = inventario.nombreProductos;
+                this.cantidad = inventario.cantidad;
+                this.categoria = inventario.categoria;
+                this.estado = inventario.estado;
+                this.descripcion = inventario.descripcion;
+            } catch (error) {
+                console.error('Error cargando el inventario', error);
             }
-
+        },
+        async submitForm() {
             try {
                 const inventarioData = {
                     nombreProductos: this.nombreProductos,
                     cantidad: this.cantidad,
                     categoria: this.categoria,
                     estado: this.estado,
-                    logo: this.logo ? this.logo.name : null,
                     descripcion: this.descripcion
                 };
+                if (this.isEditing) {
+                    await axios.put(`http://localhost:4200/inventario/${this.idInventario}`, inventarioData, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                } else {
+                    await axios.post('http://localhost:4200/inventario', inventarioData, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                }
 
-                await axios.post("http://localhost:4200/inventario", inventarioData, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
+                this.nombreProductos = '';
+                this.cantidad = '';
+                this.categoria = '';
+                this.estado = '';
+                this.descripcion = '';
 
-                // Mostrar alerta de éxito
-                Swal.fire({
-                title: 'Éxito',
-                text: 'Empleado creado correctamente',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-                });
-
-
-                // Limpieza de los datos del formulario
-                this.nombreProductos = null;
-                this.cantidad = null;
-                this.categoria = null;
-                this.estado = null;
-                this.descripcion = null;
-                this.logo = null;
-
-                this.$router.push("/inventario");
-            } catch (err) {
-                console.log(err);
+                this.$router.push('/inventario');
+            } catch (error) {
+                console.log('Error interno del servidor', error);
             }
-        },
-        onImageChange(event) {
-            this.logo = event.target.files[0];
         }
-  },
-};
+    }
+}
 </script>
 
 <style scoped>
@@ -228,11 +216,16 @@ form {
 }
 .mision{
     margin-top: 2px;
+    margin-left: 30px;
+}
+.iz1{
+    margin-left: 30px;
+    margin-top: 1px;
 }
 .izquierda, .derecha {
     display: flex;
     flex-direction: column;
-    margin-left: -90px;
+    margin-left: 80px;
     width: 47%;
 }
 
@@ -253,7 +246,7 @@ form {
 .btn-back {
     background-color: #BBB7B7;
     position: relative;
-    left: -100px;
+    left: -10px;
     width: 180px;
 }
 
@@ -261,7 +254,7 @@ form {
     background-color: #FF7A00;
     color: #FFFFFF;
     position: relative;
-    left: -600px;
+    left: -700px;
     width: 200px;
 }
 </style>

@@ -65,7 +65,9 @@
             <td>{{ metodos.nombre }}</td>
             <td>{{ metodos.estado }}</td>
             <td class="actions">
-              <i class="fas fa-edit"></i>
+              <router-link :to="{name: 'UpdatemPagos', params: {idMPagos: metodos.idMPagos}}">
+                <i class="fas fa-edit"></i>
+              </router-link>
               <i class="fas fa-trash-alt"></i>
             </td>
           </tr>

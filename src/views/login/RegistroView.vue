@@ -1,4 +1,5 @@
 <template>
+  <body></body>
     <div>
       <h1>Digital Waiter</h1>
       <p class="comm">"El arte de crear es el arte de descubrir."</p>

@@ -63,17 +63,21 @@
           <th>Clasificacion</th>
           <th>Cantidad</th>
           <th>Descripcion</th>
+          <th>Estado</th>
           <th>Accion</th>
         </tr>
       </thead>
         <tbody>
           <tr v-for="inventario in inventario.lista" :key="inventario.idInventario">
           <td>{{inventario.nombreProductos}}</td>
-          <td>{{inventario.cantidad}}</td>
           <td>{{inventario.categoria}}</td>
+          <td>{{inventario.cantidad}}</td>
           <td>{{inventario.descripcion}}</td>
+          <td>{{inventario.estado}}</td>
           <td class="actions">
-            <i class="fas fa-edit"></i>
+            <router-link :to="{ name: 'UpdateInventario', params: { idInventario: inventario.idInventario}}">
+              <i class="fas fa-edit"></i>
+            </router-link>
             <i class="fas fa-trash-alt"></i>
           </td>
           </tr>
@@ -103,7 +107,8 @@
             nombreProductos: '',
             cantidad: '',
             categoria: '',
-            descripcion: ''
+            descripcion: '',
+            estado: ''
           }
         }
       }

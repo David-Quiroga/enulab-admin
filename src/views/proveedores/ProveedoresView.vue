@@ -42,52 +42,55 @@
     </nav>
 </aside>
 <!-- ! Termina el SIDEBAR -->
-    <div class="content">
-        <div class="top">
-            <h2>Proveedores</h2>
-        <div class="superior">
-            <router-link to="/create">
-                <button>Agregar Proveedor</button>
-            </router-link>
-        </div>
+<div class="content">
+    <div class="top">
+      <h2>Proveedores</h2>
+      <div class="superior">
+        <router-link to="/create">
+          <button>Agregar Proveedor</button>
+        </router-link>
+      </div>
     </div>
     <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Contacto</th>
-                    <th>Email</th>
-                    <th>Dirección</th>
-                    <th>Ciudad</th>
-                    <th>Estado</th>
-                    <th>Producto</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="proveedor in proveedores.lista" :key="proveedor.idProveedores">
-                    <td>{{ proveedor.nombreProveedor }}</td>
-                    <td>{{ proveedor.numContacto }}</td>
-                    <td>{{ proveedor.emailContacto }}</td>
-                    <td>{{ proveedor.direccion }}</td>
-                    <td>{{ proveedor.ciudad }}</td>
-                    <td>{{ proveedor.estado }}</td>
-                    <td>{{ proveedor.tipoProducto }}</td>
-                    <td class="actions">
-                    <i class="fas fa-edit" @click="editProveedor(proveedor.idProveedores)"></i>
-                    <i class="fas fa-trash-alt" @click="deleteProveedor(proveedor.idProveedores)"></i>
-                    </td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Email</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Producto</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="proveedor in proveedor.lista" :key="proveedor.idProveedores">
+            <td>{{ proveedor.nombreProveedor }}</td>
+            <td>{{ proveedor.numContacto }}</td>
+            <td>{{ proveedor.emailContacto }}</td>
+            <td>{{ proveedor.direccion }}</td>
+            <td>{{ proveedor.ciudad }}</td>
+            <td>{{ proveedor.tipoProducto }}</td>
+            <td>{{ proveedor.estado }}</td>
+            <td class="actions">
+              <router-link :to="{ name: 'UpdateProveedores', params: { idProveedores: proveedor.idProveedores }}">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </router-link>
+              <i class="fas fa-trash-alt" @click="deleteProveedor(proveedor.idProveedores)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </template>
+
+
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 
 export default {
   name: 'ProveedoresView',
@@ -96,8 +99,18 @@ export default {
   },
   data() {
     return {
-      proveedores: {
-        lista: []
+      proveedor: {
+        lista: [],
+        form: {
+          idProveedores: null,
+          nombreProveedor: '',
+          numContacto: '',
+          emailContacto: '',
+          direccion: '',
+          ciudad: '',
+          tipoProducto: '',
+          estado: ''
+        }
       }
     };
   },
@@ -108,51 +121,25 @@ export default {
     async getProveedores() {
       try {
         const response = await axios.get('http://localhost:4200/proveedores');
-        this.proveedores.lista = response.data;
-      } catch (err) {
-        console.log(err);
+        console.log(response.data);
+        this.proveedor.lista = response.data;
+      } catch (error) {
+        console.error('Error al obtener proveedores:', error);
       }
     },
-    editProveedor(id) {
-      this.$router.push(`/proveedores/edit/${id}`);
-    },
     async deleteProveedor(id) {
-      // Mostrar confirmación antes de eliminar
-      const result = await Swal.fire({
-        title: '¿Estás seguro?',
-        text: "No podrás revertir esta acción",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
-      });
-
-      if (result.isConfirmed) {
-        try {
-          await axios.delete(`http://localhost:4200/proveedores/${id}`);
-          Swal.fire({
-            title: 'Eliminado!',
-            text: 'Proveedor eliminado correctamente',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-          });
-          this.getProveedores(); // Actualizar la lista después de eliminar
-        } catch (err) {
-          console.log(err);
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al eliminar el proveedor',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-          });
-        }
+      try {
+        await axios.delete(`http://localhost:4200/proveedores/${id}`);
+        this.proveedor.lista = this.proveedor.lista.filter(proveedor => proveedor.idProveedores !== id);
+        console.log('Proveedor eliminado correctamente');
+      } catch (error) {
+        console.error('Error al eliminar proveedor:', error);
       }
     }
   }
 };
 </script>
+
 
 <style scoped>
 .imgP{

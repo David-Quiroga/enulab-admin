@@ -48,6 +48,11 @@ export default {
           correoElectronico: this.correoElectronico,
           password: this.password
         });
+
+        const { usuario, token } = response.data;
+        localStorage.setItem("user", JSON.stringify(usuario));
+        localStorage.setItem("token", token);
+        
         console.log(response.data);
         // Redireccionar al dashboard o a la vista correspondiente
         this.$router.push('/restaurante');
