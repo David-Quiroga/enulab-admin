@@ -189,7 +189,7 @@
   .form-control input:is(:focus, :valid) {
       background: #444;
       padding: 16px 20px 0;
-  }
+        }
   .form-control label {
       position: absolute;
       left: 20px;
@@ -237,6 +237,7 @@
   form .remember-me {
       position: absolute;
       top: 870px;
+      left: -100px;
       display: flex;
   }
   form .remember-me input {

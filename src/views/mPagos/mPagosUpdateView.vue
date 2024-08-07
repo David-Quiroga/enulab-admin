@@ -25,7 +25,7 @@
           </li>
           <li>
             <router-link to="/pagos">
-              <i class="fa-regular fa-credit-card"></i> Metodos de pago
+              <i class="fa-regular fa-credit-card"></i> Métodos de pago
             </router-link>
           </li>
           <li>
@@ -45,7 +45,7 @@
     <!-- Contenido principal -->
     <main>
         <div class="hero">
-            <h1 class="titulo">{{ isEditing ? 'Editar Metodos de pago': 'Creacion de Metodos de pago' }}</h1>
+            <h1 class="titulo">{{ isEditing ? 'Editar Métodos de pago': 'Creacion de Métodos de pago' }}</h1>
         </div>
 
         <!-- Formulario de información del restaurante -->

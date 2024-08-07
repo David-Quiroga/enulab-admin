@@ -62,7 +62,7 @@
           <input v-model="precio" />
 
           <h4>Porciones</h4>
-          <input v-model="porciones" />
+          <input v-model="porciones" placeholder="Porcion por persona"/>
 
           <h4>Sub Categoría</h4>
           <input v-model="subCategoria" />

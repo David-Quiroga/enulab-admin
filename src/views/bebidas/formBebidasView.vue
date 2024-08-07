@@ -25,7 +25,7 @@
     </li>
     <li>
         <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Metodos de pago
+            <i class="fa-regular fa-credit-card"></i> Métodos de pago
         </router-link>
     </li>
     <li>
@@ -70,7 +70,7 @@
         <router-link to="/menus">
           <button class="btn-back">Atrás</button>
         </router-link>
-        <button class="btn-conf" @click="createEntrada">Continuar</button>
+        <button class="btn-conf" @click="submitForm">Continuar</button>
       </div>
     </div>
   </div>
@@ -85,12 +85,6 @@
   name: "MenuListView",
   components: {
     HeaderView,
-  },
-  props: {
-    idBebida: {
-      type: String, // Asegúrate de que el tipo coincida con el valor pasado
-      required: false
-    }
   },
   data() {
     return {

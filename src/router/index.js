@@ -32,40 +32,46 @@ import UpdateEntrada from "@/views/entradas/UpdateEntradasView.vue";
 import FormBebidasView from "@/views/bebidas/formBebidasView.vue";
 import BebidasView from "@/views/bebidas/BebidasView.vue";
 import UpdateBebidas from '@/views/bebidas/UpdateBebidasView.vue'
+import Error  from "@/views/error/error.vue";
+
+function isAuthenticated() {
+  return !!localStorage.getItem('token'); // Verifica si el token existe en localStorage
+}
 
 const routes = [
     { path: "/", name: "login", component: LoginView, props: true },
     { path: "/registro", name: "registro", component: RegistroView, props: true,  },
-    { path: "/dashboard", name: "dashboard", component: DashboardView },
-    { path: '/menus', name: "menus", component: Menus },
-    { path: "/inventario", name: "Inventory", component: InventarioView },
-    { path: "/empleados", name: "empleados", component: EmpleadosView },
-    { path: "/updateEmployee/:idEmpleado?", name: "updateEmployee", component: UpdateEmpleado, props: true },
-    { path: "/proveedores", name: "proveedores", component: ProveedoresView },
-    { path: '/agregar', component: AgregarInventario, props: true },
-    { path: '/add', component: AgregarEmpleado, props: true },
-    { path: "/create", component: AgregarProveedor },
-    { path: '/pagos', component: MetodosPago },
-    { path: '/visualizar', component: VisualizarMenu },
-    { path: '/restaurante', component: RestaunranteView, props: true },
-    { path: '/update/:id?', name: "update", component: RestauranteUpdate, props: true },
-    { path: "/formulario", component: FormularioView, props: true },
-    { path: "/addmetodo", component: MPagosAgregarView, props: true },
+    { path: "/dashboard", name: "dashboard", component: DashboardView, meta: { requiresAuth: true } },
+    { path: '/menus', name: "menus", component: Menus , meta: { requiresAuth: true }},
+    { path: "/inventario", name: "Inventory", component: InventarioView, meta: { requiresAuth: true } },
+    { path: "/empleados", name: "empleados", component: EmpleadosView, meta: { requiresAuth: true } },
+    { path: "/updateEmployee/:idEmpleado?", name: "updateEmployee", component: UpdateEmpleado, meta: { requiresAuth: true }, props: true },
+    { path: "/proveedores", name: "proveedores", component: ProveedoresView, meta: { requiresAuth: true } },
+    { path: '/agregar', component: AgregarInventario, meta: { requiresAuth: true }, props: true },
+    { path: '/add', component: AgregarEmpleado, meta: { requiresAuth: true }, props: true },
+    { path: "/create", component: AgregarProveedor, meta: { requiresAuth: true } },
+    { path: '/pagos', component: MetodosPago, meta: { requiresAuth: true } },
+    { path: '/visualizar', component: VisualizarMenu, meta: { requiresAuth: true } },
+    { path: '/restaurante', component: RestaunranteView, meta: { requiresAuth: true }, props: true },
+    { path: '/update/:id?', name: "update", component: RestauranteUpdate, meta: { requiresAuth: true }, props: true },
+    { path: "/formulario", component: FormularioView, meta: { requiresAuth: true }, props: true },
+    { path: "/addmetodo", component: MPagosAgregarView, meta: { requiresAuth: true }, props: true },
     { path: "/helados", component: HeladosView, props: true, meta: { requiresAuth: true } },
-    { path: "/formHelados", component: formHeladosView, props: true },
-    { path: "/UpdateHelados/:idHelado?", name: "UpdateHelados", component: UpdateHeladosView, props: true },
-    { path: "/sopas", component: SopasView, props: true },
-    { path: "/UpdateSopas/:idSopa?", name: "UpdateSopas", component: UpdateSopasView, props: true },
-    { path: "/formSopas", component: formSopasView, props: true },
-    { path: '/UpdateProveedores/:idProveedores?', name:"UpdateProveedores", component: updateProveedorView, props: true},
-    { path: '/UpdateInventario/:idInventario?', name:"UpdateInventario", component: updateInventario, props: true},
-    { path: '/UpdateMPagos/:idMPagos?', name:"UpdatemPagos", component: updateMPagos, props: true},
-    { path: '/formEntradas', component: FormEntradasView, props: true},
-    { path: '/entradas', component: EntradasView},
-    { path: '/UpdateEntrada/:idEntrada?', name: 'UpdateEntrada', component: UpdateEntrada, props: true},
-    { path: '/formBebidas', component: FormBebidasView, props: true},
-    { path: '/bebidas', component: BebidasView},
-    { path: '/UpdateBebida/:idBebida?', name: 'UpdateBebida', component: UpdateBebidas, props: true}
+    { path: "/formHelados", component: formHeladosView, meta: { requiresAuth: true }, props: true },
+    { path: "/UpdateHelados/:idHelado?", name: "UpdateHelados", component: UpdateHeladosView, meta: { requiresAuth: true }, props: true },
+    { path: "/sopas", component: SopasView, meta: { requiresAuth: true }, props: true },
+    { path: "/UpdateSopas/:idSopa?", name: "UpdateSopas", component: UpdateSopasView, meta: { requiresAuth: true }, props: true },
+    { path: "/formSopas", component: formSopasView, meta: { requiresAuth: true }, props: true },
+    { path: '/UpdateProveedores/:idProveedores?', name:"UpdateProveedores", component: updateProveedorView, meta: { requiresAuth: true }, props: true},
+    { path: '/UpdateInventario/:idInventario?', name:"UpdateInventario", component: updateInventario, meta: { requiresAuth: true }, props: true},
+    { path: '/UpdateMPagos/:idMPagos?', name:"UpdatemPagos", component: updateMPagos, meta: { requiresAuth: true }, props: true},
+    { path: '/formEntradas', component: FormEntradasView, meta: { requiresAuth: true }, props: true},
+    { path: '/entradas', component: EntradasView, meta: { requiresAuth: true }},
+    { path: '/UpdateEntrada/:idEntrada?', name: 'UpdateEntrada', component: UpdateEntrada, meta: { requiresAuth: true }, props: true},
+    { path: '/formBebidas', component: FormBebidasView, meta: { requiresAuth: true }, props: true},
+    { path: '/bebidas', component: BebidasView, meta: { requiresAuth: true } },
+    { path: '/UpdateBebida/:idBebida?', name: 'UpdateBebida', component: UpdateBebidas, meta: { requiresAuth: true }, props: true},
+    { path: '/access-denied', name: 'error', component: Error}
 ];
 
 const router = createRouter({
@@ -73,4 +79,15 @@ const router = createRouter({
     routes,
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!isAuthenticated()) {
+        next({ path: '/access-denied', query: { redirect: to.fullPath } });
+      } else {
+        next();
+      }
+    } else {
+      next();
+    }
+  });
 export default router;

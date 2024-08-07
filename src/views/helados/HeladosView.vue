@@ -25,7 +25,7 @@
         </li>
         <li>
             <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Metodos de pago
+            <i class="fa-regular fa-credit-card"></i> Métodos de pago
             </router-link>
         </li>
         <li>

@@ -54,12 +54,19 @@
           <img src="../../assets/img/sopas25.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <router-link to="/formSopas">
-            <button class="add">Agregar</button>
-          </router-link>
-          <router-link to="/sopas">
-            <button class="add">Ver lista de sopas</button>
-          </router-link>
+          <div class="desc">
+            <p>Las sopas son platos líquidos, servidos calientes o fríos, 
+              que pueden ser ligeros o sustanciosos. Se elaboran con una base de caldo, 
+              vegetales, carne o pescado, y pueden incluir ingredientes adicionales como pasta o legumbres.</p>
+          </div>
+          <div class="botons">
+            <router-link to="/formSopas">
+              <button class="add">Agregar</button>
+            </router-link>
+            <router-link to="/sopas">
+              <button class="ver-btn">Ver lista de Sopas</button>
+            </router-link>
+          </div>
         </div>
       </div>
 
@@ -71,12 +78,18 @@
           <img src="../../assets/img/entra.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <router-link to="/formEntradas">
-            <button class="add">Agregar</button>
-          </router-link>
-          <router-link to="/entradas">
-            <button class="add">Ver lista de Entradas</button>
-          </router-link>
+          <div  class="desc">
+            <p>Nuestras sopas están hechas con ingredientes frescos y naturales, 
+              cocinadas a fuego lento para ofrecerte un sabor reconfortante y nutritivo.</p>
+          </div>
+          <div class="botons">
+            <router-link to="/formEntradas">
+              <button class="add">Agregar</button>
+            </router-link>
+            <router-link to="/entradas">
+              <button class="ver-btn">Ver lista de Entradas</button>
+            </router-link>
+          </div>
         </div>
       </div>
 
@@ -87,12 +100,18 @@
           <img src="../../assets/img/bebu.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <router-link to="/formBebidas">
-            <button class="add">Agregar</button>
-          </router-link>
-          <router-link to="/bebidas">
-            <button class="add">Ver lista de bebidas</button>
-          </router-link>
+          <div  class="desc">
+            <p>Acompaña tu comida con nuestras bebidas cuidadosamente seleccionadas, 
+              desde refrescantes jugos naturales hasta cócteles y vinos de excelente calidad.</p>
+          </div>
+          <div class="botons">
+            <router-link to="/formBebidas">
+              <button class="add">Agregar</button>
+            </router-link>
+            <router-link to="/bebidas">
+              <button class="ver-btn">Ver lista de Bebidas</button>
+            </router-link>
+          </div>
         </div>
       </div>
 
@@ -103,12 +122,18 @@
           <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría" />
         </div>
         <div class="category-container">
-          <router-link to="/formHelados">
-            <button class="add">Agregar</button>
-          </router-link>
-          <router-link to="/helados">
-            <button class="add">Ver lista de Postres</button>
-          </router-link>
+          <div  class="desc">
+            <p>Nuestros postres son el final perfecto para tu comida, 
+              elaborados con ingredientes de primera calidad para brindar una experiencia dulce y memorable.</p>
+          </div>
+          <div class="botons">
+            <router-link to="/formHelados">
+              <button class="add">Agregar</button>
+            </router-link>
+            <router-link to="/helados">
+              <button class="ver-btn">Ver lista de Postres</button>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -129,10 +154,16 @@ export default {
 
 <style scoped>
 .add{
-  z-index: 1;
-  position: relative;
-  top: 10px;
-  left: 100px;
+  background-color: rgba(255, 122, 0, 0.8);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 35px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 .menus {
   display: flex;
@@ -149,8 +180,8 @@ export default {
 }
 .category-container {
   flex: 1; /* Asegúrate de que el contenedor ocupe todo el espacio disponible */
-  background-color: #656565;
-  max-width: 750px;
+  background-color: #848484;
+  max-width: 850px;
   max-height: 150px;
   padding: 20px;
   border-radius: 10px;
@@ -159,6 +190,7 @@ export default {
   transform: translateY(18px);
   margin-top: -10px;
   height:220px;
+  display: flex;
 }
 
 .category-content {
@@ -215,4 +247,25 @@ h1 {
   font-family: montserrat;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
+.ver-btn{
+  background-color: rgba(0, 148, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 150px;
+  height: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  
+}
+.desc{
+  color: #ffffff;
+  font-weight: 300;
+  width: 800px;
+  margin-left: 50px;
+}
+.botons{
+  margin-left: 30px;
+}
+
 </style>

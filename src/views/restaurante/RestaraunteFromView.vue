@@ -32,10 +32,10 @@
       <!-- Botones de navegación -->
       <div class="botones">
         <router-link to="/restaurante">
-          <button class="atras1">← Atras</button>
+          <button class="btn-back">← Atras</button>
         </router-link>
         
-          <button class="continuar" @click="createRes">Continuar</button>
+          <button class="btn-conf" @click="createRes">Continuar</button>
       </div>
     </main>
 
@@ -178,6 +178,27 @@ textarea{
   margin-top: 40px;
   margin-left: 100px;
 }
+.btn-back, .btn-conf {
+height: 40px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+margin-right: 10px
+}
+
+.btn-back {
+background-color: #BBB7B7;
+width: 250px;
+margin-left: -18px;
+}
+
+.btn-conf {
+background-color: #FF7A00;
+color: #FFFFFF;
+width: 250px;
+position: absolute;
+margin-left: 260px;
+}
 .atras1 {
   background-color: #BBB7B7;
   border: none;
@@ -192,8 +213,8 @@ textarea{
 .izq1 {
   width: 100px;
   height: 30px;
-  margin-left: 70px; 
-  margin-top: 239px;
+  margin-left: -580px; 
+  margin-top: -10px;
   margin-bottom: 30px;
   text-align: left; 
   line-height: 30px; 
@@ -213,4 +234,14 @@ textarea{
   position: relative; 
   z-index: 9999; 
   }
+  input {
+  background-color: #d3d1d1;
+  border: 1px solid #000; /* Borde negro */
+  border-radius: 10px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 21px;
+  padding-left: 10px; /* Espacio a la izquierda del texto */
+  padding-right: 10px; /* Espacio a la derecha del texto */
+}
 </style>

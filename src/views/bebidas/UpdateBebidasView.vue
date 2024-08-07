@@ -25,7 +25,7 @@
     </li>
     <li>
         <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Metodos de pago
+            <i class="fa-regular fa-credit-card"></i> Métodos de pago
         </router-link>
     </li>
     <li>
@@ -97,7 +97,6 @@ export default {
   },
   props: ['idBebida'],
   created() {
-  console.log('ID de bebida:', this.idBebida); // Verifica el ID recibido
   if (this.idBebida) {
     this.isEditing = true;
     this.loadBebida();
@@ -105,18 +104,18 @@ export default {
 },
   methods: {
     async loadBebida() {
-  try {
-    const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
-    const bebida = response.data;
-    this.nombre = bebida.nombre;
-    this.descripcion = bebida.descripcion;
-    this.precio = bebida.precio;
-    this.estado = bebida.estado;
-    this.subCategoria = bebida.subCategoria;
-  } catch (error) {
-    console.error('Error cargando la bebida:', error);
-  }
-},
+      try {
+        const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
+        const bebida = response.data;
+        this.nombre = bebida.nombre;
+        this.descripcion = bebida.descripcion;
+        this.precio = bebida.precio;
+        this.estado = bebida.estado;
+        this.subCategoria = bebida.subCategoria;
+      } catch (error) {
+        console.error('Error cargando la bebida:', error);
+      }
+    },
     async submitForm() {
       try {
         const bebidaData = {

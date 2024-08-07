@@ -25,7 +25,7 @@
           </li>
           <li>
               <router-link to="/pagos">
-                  <i class="fa-regular fa-credit-card"></i> Metodos de pago
+                  <i class="fa-regular fa-credit-card"></i> Métodos de pago
               </router-link>
           </li>
           <li>
@@ -44,10 +44,10 @@
 <!-- ! Termina el SIDEBAR -->
 <div class="content">
   <div class="titulo">
-    <h2>Metodos de pago</h2>
+    <h2>Métodos de pago</h2>
     <div class="superior">
         <router-link to="/addmetodo">
-          <button >Añadir Metodos</button>
+          <button >Añadir Métodos</button>
         </router-link>
     </div>
   </div>

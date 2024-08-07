@@ -52,40 +52,25 @@
                 <div class="bloque1">
 
                 <h3>Entrantes</h3>
-                <h4>Entradas frias</h4>
-                <div class="entrada-seccion">
-                    <div class="entrada-texto">
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
-                    </div>
-                    <img src="../../assets/img/ceviche.jpg" alt="" class="imagen1">
-                </div>
-
                 <h4>Entradas Calientes</h4>
-                <div class="entrada-seccion">
+                <div class="entrada-seccion" v-for="entrada in entradas.lista" :key="entrada.idEntrada">
                     <div class="entrada-texto">
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
+                        <p>{{entrada.nombre}} <span>{{ entrada.precio }}</span></p>
                     </div>
-                    <!-- Puedes agregar una imagen aquí si lo deseas -->
                 </div>
+                <img src="../../assets/img/ceviche.jpg" alt="" class="imagen1">
 
                 <h4>Aperitivos</h4>
                 <div class="entrada-seccion">
                     <div class="entrada-texto">
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
                     </div>
-                    <!-- <img src="../../assets/img/hamburguer.jpg" alt="" class="imagen2"> -->
                 </div>
 
                 <h4>Snacks</h4>
                 <div class="entrada-seccion">
                     <div class="entrada-texto">
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
+
                     </div>
-                    <!-- Puedes agregar una imagen aquí si lo deseas -->
                 </div>
             </div>
             </div>
@@ -94,70 +79,44 @@
             <div class="medio">
                 <div class="bloque2">
                     <h3>Bebidas</h3>
-                    <h4>Sin alcohol</h4>
-                    <div class="bebida-seccion">
+                    <h4>Con alcohol</h4>
+                    <div class="bebida-seccion" v-for="bebida in bebidas.lista" :key="bebida.idBebida">
                         <div class="bebida-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Costillas <span>15.00</span></p>
+                            <p>{{bebida.nombre}} <span>{{ bebida.precio }}</span></p>
                         </div>
                     </div>
 
-                    <h4>Con alcohol</h4>
-                    <div class="bebida-seccion">
-                        <div class="bebida-texto">
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
-                        <p>Alitas BBQ <span>15.00</span></p>
-                        <p>Costillas <span>15.00</span></p>
-                        </div>
                         <img src="../../assets/img/trago.jpg" alt="" class="imagen3">
-                    </div>
                     
                 </div>
 
                 <div class="bloque3">
                     <h3>Postres</h3>
                     <h4>Frios</h4>
-                    <div class="postre-seccion" v-for="postre in categorias.postresFrios" :key="postre.idPostre">
+                    <div class="postre-seccion" v-for="helado in helado.lista" :key="helado.idHelado">
                         <div class="postre-texto">
-                            <p>{{ postre.nombre }} <span>{{ postre.precio }}</span></p>
-                        </div>
-                        <img src="../../assets/img/brownie.jpg" alt="" class="imagen4">
-
-                    </div>
-
-                    <h4>Calientes</h4>
-                    <div class="postre-seccion" v-for="postre in categorias.postresCalientes" :key="postre.idPostre">
-                        <div class="postre-texto">
-                            <p>{{ postre.nombre }} <span>{{ postre.precio }}</span></p>
+                            <p>{{helado.nombre}} <span>{{ helado.precio }}</span></p>
                         </div>
                     </div>
+                    <img src="../../assets/img/brownie.jpg" alt="" class="imagen4">
                 </div>
             </div>
 
             <div class="derecha">
                 <div class="bloque4">
                     <h3>Sopas</h3>
-                    <h4>Mariscos</h4>
-                    <div class="sopa-seccion">
-                        <div class="sopa-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
-                        </div>
-                        <img src="../../assets/img/entrada1.png" alt="" >
-                    </div>
+                    <img src="../../assets/img/entrada1.png" alt="" class="imagen5">
                     <h4>Cremas</h4>
-                    <div class="sopa-seccion">
+                    <div class="sopa-seccion" v-for="sopa in sopa.lista" :key="sopa.idSopa">
                         <div class="sopa-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
+                            <p>{{sopa.nombre}} <span>{{ sopa.precio }}</span></p>
                         </div>
                         <!-- <img src="../../assets/img/sopas.png" alt="" > -->
                     </div>
                     <h4>Caldos</h4>
                     <div class="sopa-seccion">
                         <div class="sopa-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
+                        
                         </div>
                         <!-- <img src="../../assets/img/sopas1.png" alt="" > -->
                     </div>
@@ -167,17 +126,15 @@
                     <h4>Naturales</h4>
                     <div class="helado-seccion">
                         <div class="helado-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
+
                         </div>
-                        <img src="../../assets/img/helado.jpg" alt="" >
+                        <img src="../../assets/img/helado.jpg" alt="" class="imagen6">
 
                     </div>
                     <h4>Especiales</h4>
                     <div class="helado-seccion">
                         <div class="helado-texto">
-                            <p>Alitas BBQ <span>15.00</span></p>
-                            <p>Alitas BBQ <span>15.00</span></p>
+
                         </div>
                     </div>
                     </div>
@@ -191,37 +148,106 @@ import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
 
 export default {
-  name: 'MenuListView',
+  name: 'CombinedView',
   components: {
     HeaderView
   },
   data() {
     return {
-      categorias: {
-        postresFrios: [],
-        postresCalientes: []
+      helado: {
+        lista: [],
+        form: {
+          idHelado: null,
+          nombre: '',
+          descripcion: '',
+          precio: null,
+          porciones: '',
+          subCategoria: ''
+        }
+      },
+      bebidas: {
+        lista: [],
+        form: {
+          idBebida: null,
+          nombre: '',
+          descripcion: '',
+          precio: null,
+          subCategoria: '',
+          estado: ''
+        }
+      },
+      entradas: {
+        lista: [],
+        form: {
+          idEntrada: null,
+          nombre: '',
+          descripcion: '',
+          precio: null,
+          porciones: '',
+          subCategoria: ''
+        }
+      },
+      sopa: {
+        lista: [],
+        form: {
+          idSopa: null,
+          nombre: '',
+          descripcion: '',
+          precio: '',
+          porciones: '',
+          subCategoria: ''
+        }
       }
     };
   },
   created() {
-    this.fetchMenuData();
+    this.getHelados();
+    this.getBebidas();
+    this.getEntradas();
+    this.getSopas();
   },
   methods: {
-    async fetchMenuData() {
-        try {
-            const response = await axios.get('http://localhost:4200/data');
-            console.log('Datos del menú:', response.data);
-            this.helados = response.data.helados || {};
-            this.postres = response.data.postres || {};
-            this.entradas = response.data.entradas || {};
-            this.sopas = response.data.sopas || {};
-        } catch (error) {
-            console.error('Error al obtener los datos del menú:', error);
-        }
+    async getHelados() {
+      try {
+        const response = await axios.get('http://localhost:4200/helados');
+        console.log(response.data);
+        this.helado.lista = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getBebidas() {
+      try {
+        const response = await axios.get('http://localhost:4200/bebidas');
+        console.log(response.data);
+        this.bebidas.lista = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getEntradas() {
+      try {
+        const response = await axios.get('http://localhost:4200/entrada');
+        console.log(response.data);
+        this.entradas.lista = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getSopas() {
+      try {
+        const response = await axios.get('http://localhost:4200/sopas');
+        console.log(response.data);
+        this.sopa.lista = response.data;
+      } catch (err) {
+        console.log(err);
+      }
     }
+  }
 }
-};
 </script>
+
+
 
 <style scoped>
 
@@ -291,14 +317,17 @@ export default {
 }
 .postre-seccion {
     display: flex;
-    margin-bottom: -35px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: -10px;
     /* justify-content: space-between; */
 }
 .sopa-seccion {
     display: flex;
-    margin: 0;
+    height: 70px;
     margin-bottom: -38px;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 .helado-seccion {
     display: flex;
@@ -331,6 +360,8 @@ export default {
     font-size: 20px;
 }
 .imagen1{
+    position: absolute;
+    left: 550px;
     border-radius: 100%;
     width: 90px;
     height: 90px;
@@ -353,15 +384,37 @@ export default {
     border-radius: 100%;
     width: 110px;
     height: 110px;
-    margin-left: 70px;
+    margin-left: 180px;
     border: 5px solid #FFFFFF;
     filter: brightness(0.8);    
 }
 .imagen4{
+    position: absolute;
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    margin-left: 40px;
+    top: 570px;
+    left: 940px;
+    border: 5px solid #FFFFFF;
+    filter: brightness(0.8);    
+}
+.imagen5{
+    position: absolute;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    top: 250px;
+    left: 1230px;
+    border: 5px solid #FFFFFF;
+    filter: brightness(0.8);    
+}
+.imagen6{
+    position: absolute;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    top: 590px;
+    left: 1230px;
     border: 5px solid #FFFFFF;
     filter: brightness(0.8);    
 }

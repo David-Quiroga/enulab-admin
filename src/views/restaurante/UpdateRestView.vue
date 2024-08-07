@@ -32,14 +32,14 @@
     <!-- Botones de navegación -->
     <div class="botones">
       <router-link to="/restaurante">
-        <button class="atras1">← Atras</button>
+        <button class="btn-back">← Atras</button>
       </router-link>
       
-      <button class="continuar" @click="submitForm">Continuar</button>
+      <button class="btn-conf" @click="submitForm">Continuar</button>
     </div>
   </main>
 
-  <div class="izq1">
+  <div class="izq3">
     <label class="imagen" for="imagen">Imagen del Negocio:</label>
     <input type="file" class="logo" name="imagen" @change="onImageChange">
     <h4 class="mision">Mision y Vision (opcional)</h4>
@@ -178,17 +178,16 @@ export default {
       flex-direction: column;
       width: 47%;
   }
-  input{
-      background-color: #d3d1d1;
-      border: none;
-      border-radius: 10px;
-      height: 40px;
-      margin-top: 10px;
-      margin-bottom: 21px;
-  }
-  textarea{
-    height: 150px;
-  }
+  input {
+  background-color: #d3d1d1;
+  border: 1px solid #000; /* Borde negro */
+  border-radius: 10px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 21px;
+  padding-left: 10px; /* Espacio a la izquierda del texto */
+  padding-right: 10px; /* Espacio a la derecha del texto */
+}
   .mision{
     margin-top: 95px;
   }
@@ -229,16 +228,44 @@ export default {
     white-space: nowrap;
     z-index: 9999; 
   }
-    .izq3 {
-    width: 100px;
-    height: 30px;
-    margin-left: -100px; 
-    margin-top: 530px;
-    margin-bottom: 30px;
-    color: #d3d1d1;
-    text-align: left; 
-    line-height: 30px; 
-    position: relative; 
-    z-index: 9999; 
-    }
+  .botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+.btn-back, .btn-conf {
+height: 40px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+margin-right: 10px
+}
+
+.btn-back {
+background-color: #BBB7B7;
+width: 250px;
+margin-left: -18px;
+}
+
+.btn-conf {
+background-color: #FF7A00;
+color: #FFFFFF;
+width: 250px;
+position: absolute;
+margin-left: 260px;
+}
+  .izq3 {
+  width: 100px;
+  height: 30px;
+  margin-left: -700px; 
+  margin-top: -200px;
+  margin-bottom: 30px;
+  color: #000000;
+  text-align: left; 
+  line-height: 30px; 
+  position: relative; 
+  z-index: 9999;
+  white-space: nowrap; 
+  }
   </style>
