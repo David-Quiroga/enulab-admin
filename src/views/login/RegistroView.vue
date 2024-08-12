@@ -29,12 +29,7 @@
           </div>
           <button>Sign Up</button>
           <div class="form-help">
-            <div class="remember-me">
-              <input type="checkbox" id="remember-me" />
-              <label for="remember-me">
-                By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.
-              </label>
-            </div>
+
             <router-link to="/">
               <a>Already a member? Click here to login.</a>
             </router-link>

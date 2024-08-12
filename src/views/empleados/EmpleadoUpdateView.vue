@@ -77,10 +77,14 @@
     </main>
 
     <!-- Información adicional -->
-        <div class="izq1">
-          <h4>Genero</h4>
-          <input placeholder="" v-model="genero" required pattern="masculino|femenino" >
-        </div>
+    <div class="izq1">
+      <h4>Género</h4>
+      <select v-model="genero" required>
+        <option value="" disabled>Seleccione un género</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+      </select>
+    </div>
         <div class="izq2">
           <h4>Sueldo</h4>
           <input placeholder="" v-model.number="sueldo" required min="450" maxlength="3">
@@ -244,5 +248,12 @@ color: #FFFFFF;
 width: 240px;
 position: absolute;
 margin-left: 240px;
+}
+select{
+    background-color: #d3d1d1;
+    margin-top: 10px; 
+    border-radius: 10px;
+    height: 40px;
+    width: 500px;
 }
 </style>

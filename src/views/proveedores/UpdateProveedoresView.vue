@@ -51,7 +51,7 @@
         <input class="input" type="text" v-model="nombreProveedor" />
 
         <label>Número de contacto:</label>
-        <input class="input" type="number" v-model="numContacto" />
+        <input class="input"  v-model.number="numContacto" />
 
         <label>Email de contacto:</label>
         <input class="input" type="text" v-model="emailContacto" />
@@ -67,8 +67,13 @@
         <label>Ciudad:</label>
         <input class="input" type="text" v-model="ciudad" />
 
-        <label>Estado:</label>
-        <input class="input" type="text" v-model="estado" />
+        <label>Estado</label>
+        <select class="input" v-model="estado">
+          <option value="" disabled>Seleccione un estado</option>
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <!-- Añade más opciones si es necesario -->
+        </select>
       </div>
     </div>
     <div class="botones">
@@ -81,7 +86,7 @@
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'; // Asegúrate de importar Swal
 
 export default {
   name: 'AgregarProveedor',
@@ -160,13 +165,13 @@ export default {
         // Redirigir al usuario a la lista de proveedores
         this.$router.push('/proveedores');
 
-        // Mostrar alerta de éxito (opcional)
-        // Swal.fire({
-        //   title: 'Éxito',
-        //   text: 'Proveedor guardado correctamente',
-        //   icon: 'success',
-        //   confirmButtonText: 'Aceptar'
-        // });
+        // Mostrar alerta de éxito
+        Swal.fire({
+          title: 'Éxito',
+          text: 'Proveedor guardado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
 
       } catch (error) {
         console.error('Error al enviar el formulario', error);
@@ -190,7 +195,7 @@ height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
 h1{
 color: #000000;
 font-size: 50px;
-padding-left: 150px;
+padding-left: 140px;
 margin-top: 130px;
 margin-bottom: 50px;
 }

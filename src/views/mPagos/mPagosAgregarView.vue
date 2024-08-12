@@ -70,7 +70,11 @@
     <!-- Información adicional -->
     <div class="izq1">
       <h4>Estado</h4>
-      <input placeholder="Activo o Inactivo" v-model="estado" required >
+      <select v-model="estado" required>
+        <option value="" disabled>Seleccione un estado</option>
+        <option value="activo">activo</option>
+        <option value="inactivo">inactivo</option>
+      </select>
     </div>
   </template>
   
@@ -93,15 +97,9 @@
     },
     methods: {
        validateForm() {
-         if (!this.nombre || !this.estado) {
+         if (!this.nombre ) {
            return 'Todos los campos son obligatorios';
-         }
-  
-         const validEstados = ["activo", "inactivo"];
-         if (!validEstados.includes(this.estado.toLowerCase())) {
-           return 'El estado debe ser "Activo" o "Inactivo"';
-         }
-  
+         }  
          return null; // Indica que no hay errores
        },
        async createMetodo() {

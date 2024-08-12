@@ -54,8 +54,13 @@
           <input v-model="descripcion" />
 
           <h4>Estado</h4>
-          <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
-        </div>
+        <select v-model="estado">
+          <option value="activo" >Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <option value="agotado">Agotado</option>
+          <option value="fuera de temporada">Fuera de temporada</option>
+        </select>
+      </div>
 
         <div class="derecha">
           <h4>Precio</h4>
@@ -77,8 +82,9 @@
 </template>
 
 <script>
-import HeaderView from "@/components/header/HeaderView.vue";
+import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name: "MenuListView",
@@ -97,12 +103,18 @@ export default {
   },
   props: ['idBebida'],
   created() {
-  if (this.idBebida) {
-    this.isEditing = true;
-    this.loadBebida();
-  }
-},
+    if (this.idBebida) {
+      this.isEditing = true;
+      this.loadBebida();
+    }
+  },
   methods: {
+    validateForm() {
+      if (!this.nombre || !this.descripcion || this.precio === null || !this.estado || !this.subCategoria) {
+        return 'Todos los campos son obligatorios y el precio no puede ser nulo';
+      }
+      return null; // Indica que no hay errores
+    },
     async loadBebida() {
       try {
         const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
@@ -117,26 +129,49 @@ export default {
       }
     },
     async submitForm() {
-      try {
-        const bebidaData = {
-          nombre: this.nombre,
-          descripcion: this.descripcion,
-          precio: this.precio,
-          estado: this.estado,
-          subCategoria: this.subCategoria
-        };
+      const validationError = this.validateForm();
+      if (validationError) {
+        Swal.fire({
+          title: 'Error',
+          text: validationError,
+          icon: 'warning',
+          confirmButtonText: 'Aceptar'
+        });
+        return; // Detener la ejecución si hay errores
+      }
 
+      const bebidaData = {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        precio: this.precio,
+        estado: this.estado,
+        subCategoria: this.subCategoria
+      };
+
+      try {
         if (this.isEditing) {
           await axios.put(`http://localhost:4200/bebidas/${this.idBebida}`, bebidaData, {
             headers: {
               "Content-Type": "application/json"
             }
           });
+          Swal.fire({
+            title: 'Actualización exitosa',
+            text: 'Bebida actualizada correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
         } else {
           await axios.post("http://localhost:4200/bebidas", bebidaData, {
             headers: {
               "Content-Type": "application/json"
             }
+          });
+          Swal.fire({
+            title: 'Creación exitosa',
+            text: 'Bebida creada correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
           });
         }
 
@@ -151,6 +186,12 @@ export default {
         this.$router.push("/bebidas");
       } catch (err) {
         console.error('Error al enviar el formulario:', err);
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     }
   }
@@ -170,7 +211,7 @@ height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
 h1{
 color: #000000;
 font-size: 50px;
-padding-left: 150px;
+padding-left: 90px;
 margin-top: 130px;
 margin-bottom: 50px;
 }

@@ -1,78 +1,78 @@
 <template>
-    <HeaderView/>
-    <aside class="sidebar">
-    <nav>
-        <ul>
-        <li>
-            <router-link to="/dashboard" class="active">
-            <i class="fa-solid fa-chart-simple"></i> Dashboard
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/menus">
-            <i class="fa-solid fa-envelope"></i> Menu
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/visualizar">
-            <i class="fa-solid fa-table-cells-large"></i> Visualizar
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/empleados">
-            <i class="fa-solid fa-person"></i> Empleados
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Métodos de pago
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/proveedores">
-            <i class="fa-solid fa-user-group"></i> Proveedores
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/inventario">
-            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-            </router-link>
-        </li>
-        </ul>
-    </nav>
-    </aside>
+  <HeaderView/>
+  <aside class="sidebar">
+  <nav>
+      <ul>
+      <li>
+          <router-link to="/dashboard" class="active">
+          <i class="fa-solid fa-chart-simple"></i> Dashboard
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/menus">
+          <i class="fa-solid fa-envelope"></i> Menu
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/visualizar">
+          <i class="fa-solid fa-table-cells-large"></i> Visualizar
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/empleados">
+          <i class="fa-solid fa-person"></i> Empleados
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/pagos">
+          <i class="fa-regular fa-credit-card"></i> Métodos de pago
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/proveedores">
+          <i class="fa-solid fa-user-group"></i> Proveedores
+          </router-link>
+      </li>
+      <li>
+          <router-link to="/inventario">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+          </router-link>
+      </li>
+      </ul>
+  </nav>
+  </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="table-container">
-    <h2>Lista de Entradas</h2> <!-- Título actualizado aquí -->
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Sub Categoría</th>
-          <th>Porciones</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="entrada in entradas.lista" :key="entrada.idEntrada">
-          <td>{{ entrada.nombre }}</td>
-          <td>{{ entrada.descripcion }}</td>
-          <td>{{ entrada.precio }}</td>
-          <td>{{ entrada.subCategoria }}</td>
-          <td>{{ entrada.porciones }}</td>
-          <td>{{ entrada.estado }}</td>
-          <td class="actions">
-            <router-link :to="{ name: 'UpdateEntrada', params: { idEntrada: entrada.idEntrada } }">
-              <i class="fas fa-edit"></i>
-            </router-link>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>Lista de Entradas</h2> <!-- Título actualizado aquí -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Sub Categoría</th>
+        <th>Porciones</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="entrada in entradas.lista" :key="entrada.idEntrada">
+        <td>{{ entrada.nombre }}</td>
+        <td>{{ entrada.descripcion }}</td>
+        <td>{{ entrada.precio }}</td>
+        <td>{{ entrada.subCategoria }}</td>
+        <td>{{ entrada.porciones }}</td>
+        <td>{{ entrada.estado }}</td>
+        <td class="actions">
+          <router-link :to="{ name: 'UpdateEntrada', params: { idEntrada: entrada.idEntrada } }">
+            <i class="fas fa-edit"></i>
+          </router-link>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </template>
 
 <script>
@@ -80,143 +80,146 @@ import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
 
 export default {
-  name: "verListaEntradas",
-  components: {
-    HeaderView,
-  },
-  data() {
-    return {
-      entradas: {
-        lista: [],
-        form: {
-          idEntrada: null,
-          nombre: '',
-          descripcion: '',
-          precio: null,
-          porciones: '',
-          subCategoria: ''
-        }
-      }
-    };
-  },
-  created() {
-    this.getEntradas();
-  },
-  methods: {
-    async getEntradas() {
-      try {
-        const response = await axios.get('http://localhost:4200/entrada');
-        console.log(response.data);
-        this.entradas.lista = response.data;
-      } catch (err) {
-        console.log(err);
+name: "verListaEntradas",
+components: {
+  HeaderView,
+},
+data() {
+  return {
+    entradas: {
+      lista: [],
+      form: {
+        idEntrada: null,
+        nombre: '',
+        descripcion: '',
+        precio: null,
+        porciones: '',
+        subCategoria: ''
       }
     }
-  },
+  };
+},
+created() {
+  this.getEntradas();
+},
+methods: {
+  async getEntradas() {
+    try {
+      const response = await axios.get('http://localhost:4200/entrada');
+      console.log(response.data);
+      this.entradas.lista = response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+},
 };
 </script>
 
-    
+  
 <style scoped>
 h2 {
-    margin-top: 100px;
-  color: #333; /* Color del texto del título */
-  font-size: 1.5em; /* Tamaño del texto del título */
+  margin-top: 100px;
+color: #333; /* Color del texto del título */
+font-size: 1.5em; /* Tamaño del texto del título */
 }
 .table-container {
-  background-color: #d6d6d659;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 20px;
-  width: 100%;
+background-color: #d6d6d659;
+border-radius: 10px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+padding: 20px;
+width: 100%;
 }
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-  border-radius: 10px;
+width: 100%;
+border-collapse: collapse;
+margin-top: 30px;
+border-radius: 10px;
 }
 th, td {
-  padding: 15px;
-  text-align: left;
+padding: 15px;
 }
 th {
-  background-color: #bebebe;
-  color: #333;
-  font-weight: bold;
+background-color: #bebebe;
+color: #333;
+font-weight: bold;
+text-align: center;
+}
+td{
+text-align: center;
 }
 tr:nth-child(even) {
-  background-color: #f9fafb;
+background-color: #f9fafb;
 }
 tr:hover {
-  background-color: #f1f1f1;
+background-color: #f1f1f1;
 }
-    
-    .submit {
-        background-color: #210dd1;
-        color: white;
-        border: none;
-        padding: 8px 12px; /* Padding del botón reducido */
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .delete {
-        background-color: #d40707;
-        color: white;
-        border: none;
-        padding: 8px 12px; /* Padding del botón reducido */
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .submit:hover, .delete:hover {
-        background-color: #d35400;
-    }
-    
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    
-    .modal {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        width: 300px;
-        height: 100px;
-        
-    }
-    
-    .modal-buttons {
-        display: flex;
-        justify-content: space-between;
-    /* Añade este espacio entre los botones */
-    }
-    
-    .confirm-button, .cancel-button {
-        background-color: #e67e22;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .confirm-button:hover, .cancel-button:hover {
-        background-color: #d35400;
-    }
+  
+.submit {
+      background-color: #210dd1;
+      color: white;
+      border: none;
+      padding: 8px 12px; /* Padding del botón reducido */
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+}
+.delete {
+      background-color: #d40707;
+      color: white;
+      border: none;
+      padding: 8px 12px; /* Padding del botón reducido */
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+}
+  
+.submit:hover, .delete:hover {
+      background-color: #d35400;
+}
+  
+.modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+}
+  
+.modal {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      height: 100px;
+      
+}
+  
+.modal-buttons {
+      display: flex;
+      justify-content: space-between;
+  /* Añade este espacio entre los botones */
+}
+  
+.confirm-button, .cancel-button {
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+}
+  
+.confirm-button:hover, .cancel-button:hover {
+      background-color: #d35400;
+}
 </style>

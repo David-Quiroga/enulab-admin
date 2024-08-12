@@ -47,14 +47,20 @@
     <div>
       <div class="contenedor">
         <div class="izquierda">
-          <h4>Nombre de la bebida</h4>
+          <h4>Nombre de la Bebida</h4>
           <input v-model="nombre" />
   
           <h4>Descripción</h4>
           <input v-model="descripcion" />
   
           <h4>Estado</h4>
-          <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
+            <select v-model="estado">
+              <option value="" disabled>Selecciona un estado</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="agotado">Agotado</option>
+              <option value="fuera de temporada">Fuera de temporada</option>
+            </select>
         </div>
   
         <div class="derecha">
@@ -76,90 +82,124 @@
   </div>
   </template>
     
-  <script>
-  import HeaderView from '@/components/header/HeaderView.vue';
-  import axios from 'axios';
-  //import Swal from 'sweetalert2';
-  
-  export default {
-  name: "MenuListView",
-  components: {
-    HeaderView,
-  },
-  data() {
-    return {
-      nombre: "",
-      descripcion: "",
-      precio: null,
-      estado: "",
-      subCategoria: "",
-      isEditing: false
-    };
-  },
-  created() {
-    console.log('ID de bebida:', this.idBebida); // Verifica que el ID se recibe
-    if (this.idBebida) {
-      this.isEditing = true;
-      this.loadBebida();
-    }
-  },
-  methods: {
-    async loadBebida() {
-      try {
-        const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
-        const bebida = response.data;
-        this.nombre = bebida.nombre;
-        this.descripcion = bebida.descripcion;
-        this.precio = bebida.precio;
-        this.estado = bebida.estado;
-        this.subCategoria = bebida.subCategoria;
-      } catch (error) {
-        console.error('Error cargando la bebida:', error);
-      }
-    },
-    async submitForm() {
-      try {
-        const bebidaData = {
-          nombre: this.nombre,
-          descripcion: this.descripcion,
-          precio: this.precio,
-          estado: this.estado,
-          subCategoria: this.subCategoria
-        };
-
-        if (this.isEditing) {
-          await axios.put(`http://localhost:4200/bebidas/${this.idBebida}`, bebidaData, {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
-        } else {
-          await axios.post("http://localhost:4200/bebidas", bebidaData, {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
-        }
-
-        // Limpiar los campos
-        this.nombre = "";
-        this.descripcion = "";
-        this.precio = null;
-        this.estado = "";
-        this.subCategoria = "";
-
-        // Redirigir a la página de bebidas
-        this.$router.push("/bebidas");
-      } catch (err) {
-        console.error('Error al enviar el formulario:', err);
-      }
-    }
-  }
-};
-  </script>
-  
+    <script>
+    import HeaderView from '@/components/header/HeaderView.vue';
+    import axios from 'axios';
+    import Swal from 'sweetalert2';
     
-  <style scoped>
+    export default {
+      name: "MenuListView",
+      components: {
+        HeaderView,
+      },
+      data() {
+        return {
+          nombre: "",
+          descripcion: "",
+          precio: null,
+          estado: "",
+          subCategoria: "",
+          isEditing: false
+        };
+      },
+      created() {
+        console.log('ID de bebida:', this.idBebida); // Verifica que el ID se recibe
+        if (this.idBebida) {
+          this.isEditing = true;
+          this.loadBebida();
+        }
+      },
+      methods: {
+        validateForm() {
+          if (!this.nombre || !this.descripcion || this.precio === null || !this.estado || !this.subCategoria) {
+            return 'Todos los campos son obligatorios y el precio no puede ser nulo';
+          }
+          return null; // Indica que no hay errores
+        },
+        async loadBebida() {
+          try {
+            const response = await axios.get(`http://localhost:4200/bebidas/${this.idBebida}`);
+            const bebida = response.data;
+            this.nombre = bebida.nombre;
+            this.descripcion = bebida.descripcion;
+            this.precio = bebida.precio;
+            this.estado = bebida.estado;
+            this.subCategoria = bebida.subCategoria;
+          } catch (error) {
+            console.error('Error cargando la bebida:', error);
+          }
+        },
+        async submitForm() {
+          const validationError = this.validateForm();
+          if (validationError) {
+            Swal.fire({
+              title: 'Error',
+              text: validationError,
+              icon: 'warning',
+              confirmButtonText: 'Aceptar'
+            });
+            return; // Detener la ejecución si hay errores
+          }
+    
+          const bebidaData = {
+            nombre: this.nombre,
+            descripcion: this.descripcion,
+            precio: this.precio,
+            estado: this.estado,
+            subCategoria: this.subCategoria
+          };
+    
+          try {
+            if (this.isEditing) {
+              await axios.put(`http://localhost:4200/bebidas/${this.idBebida}`, bebidaData, {
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              });
+              Swal.fire({
+                title: 'Actualización exitosa',
+                text: 'Bebida actualizada correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              });
+            } else {
+              await axios.post("http://localhost:4200/bebidas", bebidaData, {
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              });
+              Swal.fire({
+                title: 'Creación exitosa',
+                text: 'Bebida creada correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              });
+            }
+            
+            // Limpiar los campos
+            this.nombre = "";
+            this.descripcion = "";
+            this.precio = null;
+            this.estado = "";
+            this.subCategoria = "";
+    
+            // Redirigir a la página de bebidas
+            this.$router.push("/bebidas");
+          } catch (err) {
+            console.error('Error al enviar el formulario:', err);
+            Swal.fire({
+              title: 'Error',
+              text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo.',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+        }
+      }
+    };
+    </script>
+  
+<style scoped>
   body {
   padding: 0;
   margin: 0;
@@ -170,13 +210,9 @@
   h1{
   color: #000000;
   font-size: 50px;
-  padding-left: 150px;
+  padding-left: 90px;
   margin-top: 130px;
   margin-bottom: 50px;
-  }
-  
-  label{
-  color: #000000;
   }
   
   input, textarea {
@@ -188,16 +224,12 @@
   margin-bottom: 21px;
   }
   
-  textarea {
-  height: 80px; /* Ajustar altura del textarea */
-  }
-  
-  form {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  select{
+    background-color: #d3d1d1;
+    margin-top: 10px; 
+    border-radius: 10px;
+    height: 40px;
+    width: 500px;
   }
   .contenedor-principal{
   width: 100%;

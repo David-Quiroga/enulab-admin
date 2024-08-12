@@ -205,7 +205,9 @@ table {
 }
 th, td {
     padding: 15px;
-    text-align: left;
+}
+td{
+  text-align: center;
 }
 th {
     background-color: #bebebe;

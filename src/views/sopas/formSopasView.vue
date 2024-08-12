@@ -43,32 +43,38 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>Creación de la sopa</h1>
+    <h1>Creación de Sopas</h1>
     <div>
       <div class="contenedor">
         <div class="izquierda">
-          <h4>Nombre de la sopa</h4>
+          <h4>Nombre de la entrada</h4>
           <input v-model="nombre" />
-
+  
           <h4>Descripción</h4>
           <input v-model="descripcion" />
-
+  
           <h4>Estado</h4>
-          <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
+            <select v-model="estado">
+              <option value="" disabled>Selecciona un estado</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="agotado">Agotado</option>
+              <option value="fuera de temporada">Fuera de temporada</option>
+            </select>
         </div>
-
+  
         <div class="derecha">
           <h4>Precio</h4>
           <input v-model="precio" />
-
+  
           <h4>Porciones</h4>
-          <input v-model="porciones" placeholder="Porcion por persona"/>
-
+          <input v-model="porciones" placeholder="Porciones por persona"/>
+  
           <h4>Sub Categoría</h4>
           <input v-model="subCategoria" />
         </div>
       </div>
-
+  
       <div class="botones">
         <router-link to="/menus">
           <button class="btn-back">Atrás</button>
@@ -77,7 +83,7 @@
       </div>
     </div>
   </div>
-</template>
+  </template>
 
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
@@ -119,7 +125,7 @@ export default {
       }
 
       try {
-        const SopaData = {
+        const sopaData = {
           nombre: this.nombre,
           descripcion: this.descripcion,
           precio: this.precio,
@@ -128,7 +134,7 @@ export default {
           subCategoria: this.subCategoria
         };
 
-        await axios.post("http://localhost:4200/sopas", SopaData, {
+        await axios.post("http://localhost:4200/sopas", sopaData, {
           headers: {
             "Content-Type": "application/json"
           }
@@ -148,7 +154,13 @@ export default {
         // Redirigir a la página de sopas
         this.$router.push("/sopas");
       } catch (err) {
-        console.log(err);
+        console.log('Error al crear la sopa:', err);
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al crear la sopa. Inténtalo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     },
     resetForm() {
@@ -163,7 +175,7 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
   body {
   padding: 0;
   margin: 0;
@@ -174,13 +186,9 @@ export default {
   h1{
   color: #000000;
   font-size: 50px;
-  padding-left: 150px;
+  padding-left: 90px;
   margin-top: 130px;
   margin-bottom: 50px;
-  }
-  
-  label{
-  color: #000000;
   }
   
   input, textarea {
@@ -192,16 +200,12 @@ export default {
   margin-bottom: 21px;
   }
   
-  textarea {
-  height: 80px; /* Ajustar altura del textarea */
-  }
-  
-  form {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  select{
+    background-color: #d3d1d1;
+    margin-top: 10px; 
+    border-radius: 10px;
+    height: 40px;
+    width: 500px;
   }
   .contenedor-principal{
   width: 100%;
@@ -257,5 +261,5 @@ export default {
   margin-bottom: 21px;
   padding-left: 10px; /* Espacio a la izquierda del texto */
   padding-right: 10px; /* Espacio a la derecha del texto */
-}
-  </style>
+  }
+</style>

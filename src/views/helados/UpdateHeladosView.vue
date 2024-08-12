@@ -43,19 +43,24 @@
   </aside>
   <!-- ! Termina el SIDEBAR -->
   <div class="contenedor-principal">
-    <h1>{{ isEditing ? 'Editar Helado' : 'Creación de Helado' }}</h1>
+    <h1>{{ isEditing ? 'Editar Postre' : 'Creación de Postre' }}</h1>
     <div>
       <div class="contenedor">
         <div class="izquierda">
-          <h4>Nombre del helado</h4>
+          <h4>Nombre del postre</h4>
           <input v-model="nombre" />
 
           <h4>Descripción</h4>
           <input v-model="descripcion" />
 
           <h4>Estado</h4>
-          <input class="iz1" placeholder="Activo o Inactivo" v-model="estado" required />
-        </div>
+        <select v-model="estado">
+          <option value="activo" >Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <option value="agotado">Agotado</option>
+          <option value="fuera de temporada">Fuera de temporada</option>
+        </select>
+      </div>
 
         <div class="derecha">
           <h4>Precio</h4>
@@ -82,6 +87,7 @@
 <script>
 import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name: "verListaHelados",
@@ -107,6 +113,12 @@ export default {
     }
   },
   methods: {
+    validateForm() {
+      if (!this.nombre || !this.descripcion || !this.precio || !this.estado || !this.porciones || !this.subCategoria) {
+        return 'Todos los campos son obligatorios';
+      }
+      return null; // Indica que no hay errores
+    },
     async loadHelado() {
       try {
         const response = await axios.get(`http://localhost:4200/helados/${this.idHelado}`);
@@ -122,6 +134,17 @@ export default {
       }
     },
     async submitForm() {
+      const validationError = this.validateForm();
+      if (validationError) {
+        Swal.fire({
+          title: 'Error',
+          text: validationError,
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+        });
+        return; // Detener la ejecución si falta algún campo
+      }
+
       try {
         const heladoData = {
           nombre: this.nombre,
@@ -146,6 +169,14 @@ export default {
           });
         }
 
+        // Mostrar alerta de éxito
+        Swal.fire({
+          title: 'Éxito',
+          text: this.isEditing ? 'Helado actualizado correctamente' : 'Helado creado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+
         // Limpiar los campos
         this.nombre = "";
         this.descripcion = "";
@@ -157,12 +188,19 @@ export default {
         // Redirigir a la página de helados
         this.$router.push("/helados");
       } catch (err) {
-        console.log('Error al enviar el formulario:', err);
+        console.error('Error al enviar el formulario:', err);
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al procesar la solicitud. Inténtalo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     }
   }
 };
 </script>
+
 
     
 <style scoped>
@@ -176,7 +214,7 @@ height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
 h1{
 color: #000000;
 font-size: 50px;
-padding-left: 150px;
+padding-left: 90px;
 margin-top: 130px;
 margin-bottom: 50px;
 }

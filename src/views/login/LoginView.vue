@@ -17,10 +17,6 @@
               </div>
               <button type="submit">Sign me In</button>
               <div class="form-help">
-                  <div class="remember-me">
-                      <input type="checkbox" id="remember-me">
-                      <label for="remember-me">Remember me</label>
-                  </div>
                   <router-link to="/registro">
                     <a>Aun no tienes cuenta?</a>
                   </router-link>

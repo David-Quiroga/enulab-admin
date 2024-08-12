@@ -76,8 +76,6 @@
               <router-link :to="{ name: 'updateEmployee', params: { idEmpleado: empleado.idEmpleado } }">
                 <i class="fas fa-edit"></i>
               </router-link>
-                <i class="fas fa-trash-alt"></i>
-              
             </td>
           </tr>
         </tbody>
@@ -201,8 +199,9 @@ table {
   border-radius: 10px;
 }
 th, td {
-  padding: 15px;
-  text-align: left;
+  padding: 15px;}
+td{
+  text-align: center;
 }
 th {
   background-color: #bebebe;

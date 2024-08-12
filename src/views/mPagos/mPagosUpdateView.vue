@@ -66,8 +66,12 @@
 
     <!-- Información adicional -->
     <div class="izq1">
-        <h4>Estado</h4>
-        <input placeholder="Activo o Inactivo" v-model="estado" required >
+      <h4>Estado</h4>
+      <select v-model="estado" required>
+        <option value="" disabled>Seleccione un estado</option>
+        <option value="activo">activo</option>
+        <option value="inactivo">inactivo</option>
+      </select>
     </div>
 </template>
 

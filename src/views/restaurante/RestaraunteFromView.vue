@@ -50,6 +50,7 @@
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'createRes',
@@ -71,6 +72,17 @@ export default {
       this.logo = event.target.files[0];
     },
     async createRes() {
+      // Validación de los campos
+      if (!this.nombreRestaurante || !this.ubicacion || !this.tipoComida || !this.descripcion) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Campos obligatorios',
+          text: 'Por favor, completa todos los campos antes de enviar.',
+          confirmButtonText: 'Entendido'
+        });
+        return; // Detener la ejecución si falta algún campo
+      }
+
       try {
         // Crear una instancia de FormData
         const formData = new FormData();
@@ -91,6 +103,14 @@ export default {
           }
         });
 
+        // Mostrar alerta de éxito
+        Swal.fire({
+          icon: 'success',
+          title: 'Restaurante creado',
+          text: 'El restaurante se ha creado con éxito.',
+          confirmButtonText: 'Aceptar'
+        });
+
         // Limpieza de los datos del formulario
         this.nombreRestaurante = "";
         this.ubicacion = "";
@@ -99,6 +119,7 @@ export default {
         this.descripcion = "";
         this.logo = null;
 
+        // Redirigir a la vista de restaurantes
         this.$router.push("/restaurante");
       } catch (err) {
         console.log(err);
@@ -220,7 +241,6 @@ margin-left: 260px;
   line-height: 30px; 
   position: relative;
   white-space: nowrap;
-  z-index: 9999; 
 }
   .izq3 {
   width: 100px;

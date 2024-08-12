@@ -63,7 +63,11 @@
                 </div>
                 <div class="boton3">
                     <h4>Estado:</h4>
-                    <input  v-model="estado" >
+                    <select v-model="estado">
+                        <option value="" disabled selected>Selecciona un estado</option>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
                 </div>
             </div>
     
@@ -184,7 +188,7 @@ body {
 h1{
     color: #000000;
     font-size: 50px;
-    padding-left: 150px;
+    padding-left: 130px;
     margin-top: 130px;
     margin-bottom: 50px;
 }
@@ -203,7 +207,8 @@ input, textarea {
 }
 
 textarea {
-    height: 40px; /* Ajustar altura del textarea */
+    height: 60px; /* Ajustar altura del textarea */
+    z-index: 1;
 }
 
 form {

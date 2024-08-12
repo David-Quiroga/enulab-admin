@@ -50,6 +50,7 @@
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'FormularioView',
@@ -89,6 +90,17 @@ export default {
       }
     },
     async submitForm() {
+      // Validación de campos obligatorios
+      if (!this.nombreRestaurante || !this.ubicacion || !this.tipoComida || !this.objetivos || !this.descripcion) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Campos obligatorios',
+          text: 'Por favor, completa todos los campos antes de enviar.',
+          confirmButtonText: 'Entendido'
+        });
+        return; // Detener la ejecución si falta algún campo
+      }
+
       try {
         const formData = new FormData();
         formData.append('nombreRestaurante', this.nombreRestaurante);
@@ -106,11 +118,23 @@ export default {
               "Content-Type": "multipart/form-data"
             }
           });
+          Swal.fire({
+            icon: 'success',
+            title: 'Restaurante actualizado',
+            text: 'El restaurante ha sido actualizado con éxito.',
+            confirmButtonText: 'Aceptar'
+          });
         } else {
           await axios.post("http://localhost:4200/restaurante", formData, {
             headers: {
               "Content-Type": "multipart/form-data"
             }
+          });
+          Swal.fire({
+            icon: 'success',
+            title: 'Restaurante creado',
+            text: 'El restaurante ha sido creado con éxito.',
+            confirmButtonText: 'Aceptar'
           });
         }
 
@@ -265,7 +289,6 @@ margin-left: 260px;
   text-align: left; 
   line-height: 30px; 
   position: relative; 
-  z-index: 9999;
   white-space: nowrap; 
   }
   </style>

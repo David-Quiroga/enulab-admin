@@ -68,7 +68,6 @@
               <router-link :to="{name: 'UpdatemPagos', params: {idMPagos: metodos.idMPagos}}">
                 <i class="fas fa-edit"></i>
               </router-link>
-              <i class="fas fa-trash-alt"></i>
             </td>
           </tr>
         </tbody>
@@ -190,12 +189,14 @@ border-radius: 10px;
 }
 th, td {
 padding: 15px;
-text-align: left;
 }
 th {
 background-color: #bebebe;
 color: #333;
 font-weight: bold;
+}
+td{
+  text-align: center;
 }
 tr:nth-child(even) {
 background-color: #f9fafb;

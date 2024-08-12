@@ -78,7 +78,6 @@
             <router-link :to="{ name: 'UpdateInventario', params: { idInventario: inventario.idInventario}}">
               <i class="fas fa-edit"></i>
             </router-link>
-            <i class="fas fa-trash-alt"></i>
           </td>
           </tr>
         
@@ -206,7 +205,9 @@ table {
 }
 th, td {
   padding: 15px;
-  text-align: left;
+}
+td{
+  text-align: center;
 }
 th {
   background-color: #bebebe;

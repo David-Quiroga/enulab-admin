@@ -138,12 +138,15 @@ table {
 }
 th, td {
   padding: 15px;
-  text-align: left;
 }
 th {
   background-color: #bebebe;
   color: #333;
   font-weight: bold;
+  text-align: center;
+}
+td{
+  text-align: center;
 }
 tr:nth-child(even) {
   background-color: #f9fafb;
@@ -152,7 +155,7 @@ tr:hover {
   background-color: #f1f1f1;
 }
     
-    .submit {
+.submit {
         background-color: #210dd1;
         color: white;
         border: none;
@@ -160,8 +163,8 @@ tr:hover {
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-    }
-    .delete {
+}
+.delete {
         background-color: #d40707;
         color: white;
         border: none;
@@ -169,13 +172,13 @@ tr:hover {
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-    }
+}
     
-    .submit:hover, .delete:hover {
+.submit:hover, .delete:hover {
         background-color: #d35400;
-    }
+}
     
-    .modal-overlay {
+.modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -186,9 +189,9 @@ tr:hover {
         justify-content: center;
         align-items: center;
         
-    }
+}
     
-    .modal {
+.modal {
         background: white;
         padding: 20px;
         border-radius: 8px;
@@ -197,15 +200,15 @@ tr:hover {
         width: 300px;
         height: 100px;
         
-    }
+}
     
-    .modal-buttons {
+.modal-buttons {
         display: flex;
         justify-content: space-between;
     /* Añade este espacio entre los botones */
-    }
+}
     
-    .confirm-button, .cancel-button {
+.confirm-button, .cancel-button {
         background-color: #e67e22;
         color: white;
         border: none;
@@ -213,9 +216,9 @@ tr:hover {
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-    }
+}
     
-    .confirm-button:hover, .cancel-button:hover {
+.confirm-button:hover, .cancel-button:hover {
         background-color: #d35400;
-    }
+}
 </style>

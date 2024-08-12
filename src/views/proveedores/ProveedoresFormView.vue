@@ -44,132 +44,136 @@
 
 
       <div class="contenedor-principal">
-        <h1>Creación de Proveedores</h1>
-            <div class="contenedor">
-                <div class="izquierda">
-            <label >Nombre del proveedor:</label>
-            <input class="input" type="text"  v-model="nombreProveedor">
-            
-            <label >Numero de contacto:</label>
-            <input class="input" type="number" v-model="numContacto">
-            
-            <label >Email de contacto:</label>
-            <input class="input" type="text" v-model="emailContacto">
-            
-            <label >Producto a Proveer:</label>
-            <input class="input" type="text" v-model="tipoProducto">
-          </div>
-    
-          <div class="derecha">
-            <label >Direccion</label>
-            <input class="input" type="text" v-model="direccion">
-            
-            <label >Ciudad</label>
-            <input class="input" type="text" v-model="ciudad">
-            
-            <label >Estado</label>
-            <input class="input" type="text" v-model="estado">
-          </div>
-        </div>
-        <div class="botones">
-          <button class="btn-back" >Atrás</button>
-          <button class="btn-conf" @click="createProveedor">Continuar</button>
-        </div>
+    <h1>Creación de Proveedores</h1>
+    <div class="contenedor">
+      <div class="izquierda">
+        <label>Nombre del proveedor:</label>
+        <input class="input" type="text" v-model="nombreProveedor">
+        
+        <label>Número de contacto:</label>
+        <input class="input"  v-model.number="numContacto">
+        
+        <label>Email de contacto:</label>
+        <input class="input" type="text" v-model="emailContacto">
+        
+        <label>Producto a Proveer:</label>
+        <input class="input" type="text" v-model="tipoProducto">
       </div>
-  </template>
+
+      <div class="derecha">
+        <label>Dirección</label>
+        <input class="input" type="text" v-model="direccion">
+        
+        <label>Ciudad</label>
+        <input class="input" type="text" v-model="ciudad">
+        
+        <label>Estado</label>
+        <select class="input" v-model="estado">
+          <option value="" disabled>Seleccione un estado</option>
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+          <!-- Añade más opciones si es necesario -->
+        </select>
+      </div>
+    </div>
+    <div class="botones">
+      <button class="btn-back">Atrás</button>
+      <button class="btn-conf" @click="createProveedor">Continuar</button>
+    </div>
+  </div>
+</template>
   
-  <script>
-  import HeaderView from '@/components/header/HeaderView.vue';
-  import axios from 'axios';
-  import Swal from 'sweetalert2';
-  
-  export default {
-    name: 'AgregarProveedor',
-    components: {
-      HeaderView
-    },
-    data() {
-      return {
-        nombreProveedor: '',
-        numContacto: '',
-        emailContacto: '',
-        direccion: '',
-        ciudad: '',
-        provincia: '',
-        tipoProducto: '',
-        estado: '',
-        isEditing: false
-      };
-    },
-    methods: {
-      async createProveedor() {
-        try {
-          const proveedorData = {
-            nombreProveedor: this.nombreProveedor,
-            numContacto: this.numContacto,
-            emailContacto: this.emailContacto,
-            direccion: this.direccion,
-            ciudad: this.ciudad,
-            provincia: this.provincia,
-            tipoProducto: this.tipoProducto,
-            estado: this.estado
-          };
-  
-          if (this.isEditing) {
-            await axios.put(`http://localhost:4200/proveedores/${this.idProveedores}`, proveedorData, {
-              headers: {
-                "Content-Type": "application/json"
-              }
-            });
-            Swal.fire({
-              title: 'Éxito',
-              text: 'Proveedor actualizado correctamente',
-              icon: 'success',
-              confirmButtonText: 'Aceptar'
-            });
-          } else {
-            await axios.post('http://localhost:4200/proveedores', proveedorData, {
-              headers: {
-                "Content-Type": "application/json"
-              }
-            });
-            Swal.fire({
-              title: 'Éxito',
-              text: 'Proveedor creado correctamente',
-              icon: 'success',
-              confirmButtonText: 'Aceptar'
-            });
-          }
-  
-          // Limpiar el formulario
-          this.nombreProveedor = '';
-          this.numContacto = '';
-          this.emailContacto = '';
-          this.direccion = '';
-          this.ciudad = '';
-          this.provincia = '';
-          this.tipoProducto = '';
-          this.estado = '';
-  
-          // Redirigir a la lista de proveedores
-          this.$router.push('/proveedores');
-        } catch (error) {
-          console.error('Error al enviar el formulario', error);
+<script>
+import HeaderView from '@/components/header/HeaderView.vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+export default {
+  name: 'AgregarProveedor',
+  components: {
+    HeaderView
+  },
+  data() {
+    return {
+      nombreProveedor: '',
+      numContacto: '',
+      emailContacto: '',
+      direccion: '',
+      ciudad: '',
+      provincia: '',
+      tipoProducto: '',
+      estado: '',
+      isEditing: false
+    };
+  },
+  methods: {
+    async createProveedor() {
+      try {
+        const proveedorData = {
+          nombreProveedor: this.nombreProveedor,
+          numContacto: this.numContacto,
+          emailContacto: this.emailContacto,
+          direccion: this.direccion,
+          ciudad: this.ciudad,
+          provincia: this.provincia,
+          tipoProducto: this.tipoProducto,
+          estado: this.estado
+        };
+
+        if (this.isEditing) {
+          await axios.put(`http://localhost:4200/proveedores/${this.idProveedores}`, proveedorData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
           Swal.fire({
-            title: 'Error',
-            text: 'Hubo un problema al crear o actualizar el proveedor',
-            icon: 'error',
+            title: 'Éxito',
+            text: 'Proveedor actualizado correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+        } else {
+          await axios.post('http://localhost:4200/proveedores', proveedorData, {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Proveedor creado correctamente',
+            icon: 'success',
             confirmButtonText: 'Aceptar'
           });
         }
-      },
-      goBack() {
-        this.$router.push('/proveedores');
-      }
-    }
-  };
-  </script>
 
+        // Limpiar el formulario
+        this.nombreProveedor = '';
+        this.numContacto = '';
+        this.emailContacto = '';
+        this.direccion = '';
+        this.ciudad = '';
+        this.provincia = '';
+        this.tipoProducto = '';
+        this.estado = '';
+
+        // Redirigir a la lista de proveedores
+        this.$router.push('/proveedores');
+      } catch (error) {
+        console.error('Error al enviar el formulario', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al crear o actualizar el proveedor',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+    },
+    goBack() {
+      this.$router.push('/proveedores');
+    }
+  }
+};
+</script>
 <style scoped>
 body {
 padding: 0;

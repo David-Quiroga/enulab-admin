@@ -2,10 +2,10 @@
     <div class="access-denied">
       <div class="content">
         <div class="image-section">
-          <img src="" alt="Acceso Denegado" />
+          <img src="../../assets//img/error.png" alt="Acceso Denegado" />
         </div>
         <div class="message-section">
-          <h1>Acceso Denegado</h1>
+          <h1>Aaaah! Algo salio mal</h1>
           <p>Debes iniciar sesión para acceder a esta página.</p>
           <router-link to="/">Iniciar Sesión</router-link>
         </div>

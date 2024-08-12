@@ -82,6 +82,7 @@
 <script>
 import HeaderView from "@/components/header/HeaderView.vue";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   name: "verListaSopas",
@@ -122,6 +123,17 @@ export default {
       }
     },
     async submitForm() {
+      // Validación de campos obligatorios
+      if (!this.nombre || !this.descripcion || !this.estado || !this.precio || !this.porciones || !this.subCategoria) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Campos obligatorios',
+          text: 'Por favor, completa todos los campos antes de enviar.',
+          confirmButtonText: 'Entendido'
+        });
+        return; // Detener la ejecución si falta algún campo
+      }
+
       const sopaData = {
         nombre: this.nombre,
         descripcion: this.descripcion,
@@ -138,11 +150,27 @@ export default {
               "Content-Type": "application/json",
             },
           });
+
+          // Mostrar alerta de éxito para actualización
+          Swal.fire({
+            title: 'Actualización exitosa',
+            text: 'Sopa actualizada correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
         } else {
           await axios.post("http://localhost:4200/sopas", sopaData, {
             headers: {
               "Content-Type": "application/json",
             },
+          });
+
+          // Mostrar alerta de éxito para creación
+          Swal.fire({
+            title: 'Creación exitosa',
+            text: 'Sopa creada correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
           });
         }
 
@@ -153,6 +181,14 @@ export default {
         this.$router.push("/sopas");
       } catch (err) {
         console.log('Error al enviar el formulario:', err);
+
+        // Mostrar alerta de error
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     },
     resetForm() {
@@ -181,7 +217,7 @@ height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
 h1{
 color: #000000;
 font-size: 50px;
-padding-left: 150px;
+padding-left: 90px;
 margin-top: 130px;
 margin-bottom: 50px;
 }

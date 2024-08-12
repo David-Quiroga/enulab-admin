@@ -82,7 +82,7 @@
 <script>
 import HeaderView from '@/components/header/HeaderView.vue';
 import axios from 'axios';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';  // Asegúrate de importar SweetAlert2
 
 export default {
     name: 'MenuListView',
@@ -143,15 +143,31 @@ export default {
                     });
                 }
 
+                // Mostrar alerta de éxito
+                Swal.fire({
+                    title: 'Éxito',
+                    text: this.isEditing ? 'Inventario actualizado correctamente' : 'Inventario creado correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+
+                // Limpiar los campos
                 this.nombreProductos = '';
                 this.cantidad = '';
                 this.categoria = '';
                 this.estado = '';
                 this.descripcion = '';
 
+                // Redirigir a la página de inventario
                 this.$router.push('/inventario');
             } catch (error) {
-                console.log('Error interno del servidor', error);
+                console.error('Error interno del servidor', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Hubo un problema al guardar el inventario',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         }
     }
@@ -169,7 +185,7 @@ body {
 h1{
     color: #000000;
     font-size: 50px;
-    padding-left: 150px;
+    padding-left: 80px;
     margin-top: 130px;
     margin-bottom: 50px;
 }

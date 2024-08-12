@@ -176,7 +176,7 @@ export default {
 .restaurant-info p {
     margin: 0;
     position: relative; /* Cambiado de absolute a relative */
-    display: block; /* Cambiado de flex a block */
+    display: flex; /* Cambiado de flex a block */
     top: 0; /* Eliminado el posicionamiento de top */
     left: 0; /* Eliminado el posicionamiento de left */
     font-size: 18px;

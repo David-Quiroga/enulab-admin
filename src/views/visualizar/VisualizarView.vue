@@ -121,23 +121,6 @@
                         <!-- <img src="../../assets/img/sopas1.png" alt="" > -->
                     </div>
                 </div>
-                <div class="bloque5">
-                    <h3>Helados</h3>
-                    <h4>Naturales</h4>
-                    <div class="helado-seccion">
-                        <div class="helado-texto">
-
-                        </div>
-                        <img src="../../assets/img/helado.jpg" alt="" class="imagen6">
-
-                    </div>
-                    <h4>Especiales</h4>
-                    <div class="helado-seccion">
-                        <div class="helado-texto">
-
-                        </div>
-                    </div>
-                    </div>
                 </div>
             </div>
         </div>
