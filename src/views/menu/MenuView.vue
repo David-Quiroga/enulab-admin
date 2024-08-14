@@ -4,38 +4,38 @@
     <nav>
       <ul>
         <li>
-          <router-link to="/dashboard" class="active">
-            <i class="fa-solid fa-chart-simple"></i> Dashboard
+          <router-link to="/dashboard" class="active sidebar-link">
+            <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/menus">
-            <i class="fa-solid fa-envelope"></i> Menu
+          <router-link to="/menus" class="active sidebar-link">
+            <i class="fa-solid fa-envelope"></i> <span>Menu</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/visualizar">
-            <i class="fa-solid fa-table-cells-large"></i> Visualizar
+          <router-link to="/visualizar" class="active sidebar-link">
+            <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/empleados">
-            <i class="fa-solid fa-person"></i> Empleados
+          <router-link to="/empleados" class="active sidebar-link">
+            <i class="fa-solid fa-person"></i> <span>Empleados</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Metodos de pago
+          <router-link to="/pagos" class="active sidebar-link">
+            <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/proveedores">
-            <i class="fa-solid fa-user-group"></i> Proveedores
+          <router-link to="/proveedores" class="active sidebar-link">
+            <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/inventario">
-            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+          <router-link to="/inventario" class="active sidebar-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
           </router-link>
         </li>
       </ul>
@@ -47,18 +47,21 @@
     
     <div class="cont_menus">
       <h1>Gestion de menus</h1>
+
       <!-- Contenedor de Sopas -->
       <div class="category-content">
         <div class="category-image-container">
           <h2>SOPAS</h2>
           <img src="../../assets/img/sopas25.png" class="category-image" alt="Imagen de la categoría" />
         </div>
+
         <div class="category-container">
           <div class="desc">
             <p>Las sopas son platos líquidos, servidos calientes o fríos, 
               que pueden ser ligeros o sustanciosos. Se elaboran con una base de caldo, 
               vegetales, carne o pescado, y pueden incluir ingredientes adicionales como pasta o legumbres.</p>
           </div>
+
           <div class="botons">
             <router-link to="/formSopas">
               <button class="add">Agregar</button>
@@ -117,10 +120,12 @@
 
       <!-- Contenedor de Postres -->
       <div class="category-content">
+
         <div class="category-image-container">
           <h2>POSTRES</h2>
           <img src="../../assets/img/postres.png" class="category-image" alt="Imagen de la categoría" />
         </div>
+
         <div class="category-container">
           <div  class="desc">
             <p>Nuestros postres son el final perfecto para tu comida, 
@@ -226,10 +231,9 @@ export default {
 
 .category-image {
   width: 100%;
-  
   border-radius: 15px;
   height: auto;
-  
+
 }
 h1 {
 
@@ -267,5 +271,66 @@ h1 {
 .botons{
   margin-left: 30px;
 }
+@media (max-width: 720px) {
+  .sidebar {
+    max-width: 70px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link i {
+    font-size: 1.5em;
+  }
+
+  h1{
+    margin-top: 20px;
+    margin-left: -70px;
+  }
+  .menus{
+    max-width: 720px;
+    margin: 0;
+    padding: 0;
+  }
+  .category-content{
+    margin: 20px 0 0 -30px;
+    padding: 0;
+    width: 80%;
+  }
+  .category-image-container{
+    width: 200px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .category-image{
+    width: 200px;
+  }
+  .category-container{
+    max-width: 350px;
+    height: 110px;
+    margin-top: -30px;
+  }
+  .desc{
+    display: none;
+  }
+  .botons{
+    width: 200px;
+    margin: auto;
+    margin-right: -5px;
+    margin-top: -13px;
+  }
+  .add{
+    height: 30px;
+  }
+}
+
 
 </style>

@@ -1,45 +1,45 @@
 <template>
   <HeaderView/>
   <aside class="sidebar">
-  <nav>
+    <nav>
       <ul>
-      <li>
-          <router-link to="/dashboard" class="active">
-          <i class="fa-solid fa-chart-simple"></i> Dashboard
+        <li>
+          <router-link to="/dashboard" class="active sidebar-link">
+            <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/menus">
-          <i class="fa-solid fa-envelope"></i> Menu
+        </li>
+        <li>
+          <router-link to="/menus" class="active sidebar-link">
+            <i class="fa-solid fa-envelope"></i> <span>Menu</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/visualizar">
-          <i class="fa-solid fa-table-cells-large"></i> Visualizar
+        </li>
+        <li>
+          <router-link to="/visualizar" class="active sidebar-link">
+            <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/empleados">
-          <i class="fa-solid fa-person"></i> Empleados
+        </li>
+        <li>
+          <router-link to="/empleados" class="active sidebar-link">
+            <i class="fa-solid fa-person"></i> <span>Empleados</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/pagos">
-          <i class="fa-regular fa-credit-card"></i> Métodos de pago
+        </li>
+        <li>
+          <router-link to="/pagos" class="active sidebar-link">
+            <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/proveedores">
-          <i class="fa-solid fa-user-group"></i> Proveedores
+        </li>
+        <li>
+          <router-link to="/proveedores" class="active sidebar-link">
+            <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
           </router-link>
-      </li>
-      <li>
-          <router-link to="/inventario">
-          <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+        </li>
+        <li>
+          <router-link to="/inventario" class="active sidebar-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
           </router-link>
-      </li>
+        </li>
       </ul>
-  </nav>
+    </nav>
   </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="table-container">
@@ -48,9 +48,9 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Descripción</th>
+        <th class="hide-mobile">Descripción</th>
         <th>Precio</th>
-        <th>Sub Categoría</th>
+        <th class="hide-mobile">Sub Categoría</th>
         <th>Porciones</th>
         <th>Estado</th>
         <th>Acciones</th>
@@ -59,9 +59,9 @@
     <tbody>
       <tr v-for="entrada in entradas.lista" :key="entrada.idEntrada">
         <td>{{ entrada.nombre }}</td>
-        <td>{{ entrada.descripcion }}</td>
+        <td class="hide-mobile">{{ entrada.descripcion }}</td>
         <td>{{ entrada.precio }}</td>
-        <td>{{ entrada.subCategoria }}</td>
+        <td class="hide-mobile">{{ entrada.subCategoria }}</td>
         <td>{{ entrada.porciones }}</td>
         <td>{{ entrada.estado }}</td>
         <td class="actions">
@@ -221,5 +221,35 @@ background-color: #f1f1f1;
   
 .confirm-button:hover, .cancel-button:hover {
       background-color: #d35400;
+}
+@media (max-width: 720px) {
+  .sidebar {
+    max-width: 70px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link i {
+    font-size: 1.5em;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
+
+  /* Ajusta el ancho de las celdas restantes */
+  table th,
+  table td {
+    width: 25%; /* 100% dividido entre las 4 columnas restantes */
+  }
 }
 </style>

@@ -1,46 +1,46 @@
 <template>
   <HeaderView/>
   <aside class="sidebar">
-<nav>
-<ul>
-  <li>
-      <router-link to="/dashboard" class="active">
-          <i class="fa-solid fa-chart-simple"></i> Dashboard
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/menus">
-          <i class="fa-solid fa-envelope"></i> Menu
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/visualizar">
-      <i class="fa-solid fa-table-cells-large"></i> Visualizar
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/empleados">
-          <i class="fa-solid fa-person"></i> Empleados
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/pagos">
-          <i class="fa-regular fa-credit-card"></i> Métodos de pago
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/proveedores">
-          <i class="fa-solid fa-user-group"></i> Proveedores
-      </router-link>
-  </li>
-  <li>
-      <router-link to="/inventario">
-          <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-      </router-link>
-  </li>
-  </ul>
-</nav>
-</aside>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/dashboard" class="active sidebar-link">
+            <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/menus" class="active sidebar-link">
+            <i class="fa-solid fa-envelope"></i> <span>Menu</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/visualizar" class="active sidebar-link">
+            <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/empleados" class="active sidebar-link">
+            <i class="fa-solid fa-person"></i> <span>Empleados</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/pagos" class="active sidebar-link">
+            <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/proveedores" class="active sidebar-link">
+            <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/inventario" class="active sidebar-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 <!-- ! Termina el SIDEBAR -->
 <div class="contenedor-principal">
   <h1>Creación de Postres</h1>
@@ -254,4 +254,58 @@ export default {
   padding-left: 10px; /* Espacio a la izquierda del texto */
   padding-right: 10px; /* Espacio a la derecha del texto */
   }
+  @media (max-width: 720px) {
+  .sidebar {
+    max-width: 70px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link i {
+    font-size: 1.5em;
+  }
+
+  .contenedor-principal{
+    max-width: 720px;
+  }
+  .contenedor-principal > h1{
+    font-size: 2.3em;
+    margin-left: -50px;
+    margin-top: 90px;
+    margin-bottom: -20px;
+  }
+  .contenedor{
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    margin-top: 20px;
+  }
+  .izquierda, .derecha{
+    margin: auto;
+  }
+
+  input,select{
+    width: 300px;
+    height: 30px;
+  }
+  .btn-back{
+    margin-top: -40px;
+    margin-left: -150px;
+    width: 200px;
+  }
+  .btn-conf{
+    margin-top: -40px;
+    margin-left: 70px;
+    width: 200px;
+  }
+}
 </style>

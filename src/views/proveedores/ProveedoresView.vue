@@ -1,47 +1,47 @@
 <template>
-        <HeaderView/>
-        <aside class="sidebar">
-<nav>
-    <ul>
+  <HeaderView />
+  <aside class="sidebar">
+    <nav>
+      <ul>
         <li>
-            <router-link to="/dashboard" class="active">
-                <i class="fa-solid fa-chart-simple"></i> Dashboard
-            </router-link>
+          <router-link to="/dashboard" class="active sidebar-link">
+            <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/menus">
-                <i class="fa-solid fa-envelope"></i> Menu
-            </router-link>
+          <router-link to="/menus" class="active sidebar-link">
+            <i class="fa-solid fa-envelope"></i> <span>Menu</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/visualizar">
-            <i class="fa-solid fa-table-cells-large"></i> Visualizar
-            </router-link>
+          <router-link to="/visualizar" class="active sidebar-link">
+            <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/empleados">
-                <i class="fa-solid fa-person"></i> Empleados
-            </router-link>
+          <router-link to="/empleados" class="active sidebar-link">
+            <i class="fa-solid fa-person"></i> <span>Empleados</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/pagos">
-                <i class="fa-regular fa-credit-card"></i> Métodos de pago
-            </router-link>
+          <router-link to="/pagos" class="active sidebar-link">
+            <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/proveedores">
-                <i class="fa-solid fa-user-group"></i> Proveedores
-            </router-link>
+          <router-link to="/proveedores" class="active sidebar-link">
+            <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
+          </router-link>
         </li>
         <li>
-            <router-link to="/inventario">
-                <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-            </router-link>
+          <router-link to="/inventario" class="active sidebar-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
+          </router-link>
         </li>
-        </ul>
+      </ul>
     </nav>
-</aside>
-<!-- ! Termina el SIDEBAR -->
+  </aside>
+  <!-- ! Termina el SIDEBAR -->
 <div class="content">
     <div class="top">
       <h2>Proveedores</h2>
@@ -56,10 +56,10 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Contacto</th>
+            <th >Contacto</th>
             <th>Email</th>
-            <th>Dirección</th>
-            <th>Ciudad</th>
+            <th class="hide-mobile">Dirección</th>
+            <th class="hide-mobile">Ciudad</th>
             <th>Producto</th>
             <th>Estado</th>
             <th>Acciones</th>
@@ -70,15 +70,14 @@
             <td>{{ proveedor.nombreProveedor }}</td>
             <td>{{ proveedor.numContacto }}</td>
             <td>{{ proveedor.emailContacto }}</td>
-            <td>{{ proveedor.direccion }}</td>
-            <td>{{ proveedor.ciudad }}</td>
+            <td class="hide-mobile">{{ proveedor.direccion }}</td>
+            <td class="hide-mobile">{{ proveedor.ciudad }}</td>
             <td>{{ proveedor.tipoProducto }}</td>
             <td>{{ proveedor.estado }}</td>
             <td class="actions">
               <router-link :to="{ name: 'UpdateProveedores', params: { idProveedores: proveedor.idProveedores }}">
                 <i class="fa-solid fa-pen-to-square"></i>
               </router-link>
-              <i class="fas fa-trash-alt" @click="deleteProveedor(proveedor.idProveedores)"></i>
             </td>
           </tr>
         </tbody>
@@ -108,8 +107,8 @@ export default {
           emailContacto: '',
           direccion: '',
           ciudad: '',
-          tipoProducto: '',
-          estado: ''
+          estado: '',        // Colocamos "estado" antes de "tipoProducto"
+          tipoProducto: ''
         }
       }
     };
@@ -139,6 +138,7 @@ export default {
   }
 };
 </script>
+
 
 
 <style scoped>
@@ -240,5 +240,87 @@ tr:hover {
 .header-container h1 {
     margin: 0;
     font-size: 24px;
+}
+@media (max-width: 720px) {
+  .sidebar {
+    max-width: 70px;
+  }
+  .sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link i {
+    font-size: 1.5em;
+  }
+  .content {
+    margin-left: 0;
+    padding: 10px;
+    width: 150%;
+  }
+  .top{
+    width: 90%;
+  }
+  .superior h1 {
+    font-size: 24px;
+  }
+  .superior button {
+    margin-left: 10px;
+    padding: 0 20px;
+    font-size: 12px;
+  }
+  .titulo {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .header h2 {
+    font-size: 18px;
+  }
+  .search-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+  table {
+    margin-top: -12px;
+    width: 98%;
+    margin-left: 1px;
+  }
+  th, td {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .header-container h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .titulo {
+    width: 96%;
+    height: 10%;
+    position: relative;
+    left: 10px;
+    border-radius: 5px;
+  }
+  .superior button {
+    border-radius: 5px;
+    position: relative;
+    top: -4px;
+    width: 100%;
+    left: 160px;
+  }
+  .hide-mobile {
+  display: none;
+}
 }
 </style>

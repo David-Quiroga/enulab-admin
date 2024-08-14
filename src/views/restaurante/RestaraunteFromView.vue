@@ -21,13 +21,13 @@
         <div class="nombre3">
           <h4>Tipo de comida</h4>
           <input class="boton3" id="comida-select" v-model="tipoComida">
+        </div>
 
         <div class="nombre4">
           <h4>Descripcion del negocio</h4>
           <input class="boton4" v-model="descripcion">
         </div>
       </div>
-    </div>
 
       <!-- Botones de navegación -->
       <div class="botones">
@@ -140,6 +140,7 @@ export default {
 body {
   background-color: #141313;
 }
+
 /* Estilos para el contenido principal */
 .main {
   padding: 20px;
@@ -148,78 +149,92 @@ body {
 .hero {
   margin-top: 240px;
 }
-.titulo{
-background-color: #00000000;
-width: 350px;
-box-shadow: none;
-position: absolute;
-left: 100px;
-top: 140px;
-white-space: nowrap;
+
+.titulo {
+  background-color: #00000000;
+  width: 350px;
+  box-shadow: none;
+  position: absolute;
+  left: 100px;
+  top: 140px;
+  white-space: nowrap;
 }
-h4{
-color: #000;
+
+h4 {
+  color: #000;
 }
+
 .formulario {
   margin-top: 50px;
   margin-left: 80px;
   color: #6c6c6c;
   font-family: 'Montserrat', sans-serif;
 }
+
 .izquierda, .derecha {
-    display: flex;
-    flex-direction: column;
-    width: 47%;
+  display: flex;
+  flex-direction: column;
+  width: 47%;
 }
-input{
-    background-color: #d3d1d1;
-    border: none;
-    border-radius: 10px;
-    height: 40px;
-    margin-top: 10px;
-    margin-bottom: 21px;
+
+input {
+  background-color: #d3d1d1;
+  border: 1px solid #000; /* Borde negro */
+  border-radius: 10px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 21px;
+  padding-left: 10px; /* Espacio a la izquierda del texto */
+  padding-right: 10px; /* Espacio a la derecha del texto */
 }
-textarea{
+
+textarea {
   height: 150px;
 }
-.mision{
+
+.mision {
   margin-top: 95px;
 }
-.imagen{
+
+.imagen {
   position: absolute;
   margin-top: 4px;
 }
-.logo{
+
+.logo {
   position: absolute;
   top: 30px;
 }
+
 .botones {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
   margin-left: 100px;
 }
+
 .btn-back, .btn-conf {
-height: 40px;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-margin-right: 10px
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .btn-back {
-background-color: #BBB7B7;
-width: 250px;
-margin-left: -18px;
+  background-color: #BBB7B7;
+  width: 250px;
+  margin-left: -18px;
 }
 
 .btn-conf {
-background-color: #FF7A00;
-color: #FFFFFF;
-width: 250px;
-position: absolute;
-margin-left: 260px;
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  width: 250px;
+  position: absolute;
+  margin-left: 260px;
 }
+
 .atras1 {
   background-color: #BBB7B7;
   border: none;
@@ -231,6 +246,7 @@ margin-left: 260px;
   border: none;
   color: #000;
 }
+
 .izq1 {
   width: 100px;
   height: 30px;
@@ -242,7 +258,8 @@ margin-left: 260px;
   position: relative;
   white-space: nowrap;
 }
-  .izq3 {
+
+.izq3 {
   width: 100px;
   height: 30px;
   margin-left: -100px; 
@@ -253,15 +270,81 @@ margin-left: 260px;
   line-height: 30px; 
   position: relative; 
   z-index: 9999; 
+}
+
+/* Media Query para pantallas de 720px o menos */
+@media (max-width: 720px) {
+  .titulo {
+    left: 20px;
+    top: 100px;
+    width: auto;
+    font-size: 18px;
   }
-  input {
-  background-color: #d3d1d1;
-  border: 1px solid #000; /* Borde negro */
-  border-radius: 10px;
-  height: 40px;
-  margin-top: 10px;
-  margin-bottom: 21px;
-  padding-left: 10px; /* Espacio a la izquierda del texto */
-  padding-right: 10px; /* Espacio a la derecha del texto */
+  input{
+    position: relative;
+    top: -20px;
+    width: 100;
+    height: 30px;
+    border-radius: 5px;
+  }
+  label{
+    position: absolute;
+    top: 10%;
+  }
+  h4{
+    position: relative;
+    top: -16px;
+    white-space: nowrap;
+  }
+  .izquierda, .derecha {
+    width: 100%;
+  }
+  .nombre3{
+    position: relative;
+    top: -20px;
+  }
+  .nombre2{
+    position: relative;
+    top: -20px;
+  }
+  .botones {
+    flex-direction:row;
+  }
+  .boton2{
+    top: -20px;
+  }
+  .btn-back, .btn-conf {
+    top: 100%;
+    margin: 10px 0;
+  }
+
+  .btn-conf {
+    position: relative;
+    margin-top: 20%;
+    left: 90;
+  }
+  .btn-back {
+    position: relative;
+    top: 60%;
+    left: -30px;
+  }
+
+  .izq1 {
+    position: relative;
+    top: 440px;
+    left: 56px;
+    width: auto;
+  }
+  .hero {
+    margin-top: 150px;
+  }
+
+  .mision {
+    margin-top: 95px;
+  }
+  textarea {
+  margin-top: -10px;
+  height: 50px;
+  }
 }
 </style>

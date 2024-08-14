@@ -1,46 +1,47 @@
 <template>
-    <HeaderView/>
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li>
-            <router-link to="/dashboard" class="active">
-              <i class="fa-solid fa-chart-simple"></i> Dashboard
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/menus">
-              <i class="fa-solid fa-envelope"></i> Menu
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/visualizar">
-              <i class="fa-solid fa-table-cells-large"></i> Visualizar
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/empleados">
-              <i class="fa-solid fa-person"></i> Empleados
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/pagos">
-              <i class="fa-regular fa-credit-card"></i> Métodos de pago
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/proveedores">
-              <i class="fa-solid fa-user-group"></i> Proveedores
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/inventario">
-              <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
-            </router-link>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+  <HeaderView />
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/dashboard" class="active sidebar-link">
+            <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/menus" class="active sidebar-link">
+            <i class="fa-solid fa-envelope"></i> <span>Menu</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/visualizar" class="active sidebar-link">
+            <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/empleados" class="active sidebar-link">
+            <i class="fa-solid fa-person"></i> <span>Empleados</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/pagos" class="active sidebar-link">
+            <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/proveedores" class="active sidebar-link">
+            <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/inventario" class="active sidebar-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- ! Termina el SIDEBAR -->
 
 
     <div class="contenedor-principal">
@@ -122,7 +123,7 @@ export default {
         this.emailContacto = proveedor.emailContacto;
         this.direccion = proveedor.direccion;
         this.ciudad = proveedor.ciudad;
-        this.estado = proveedor.estado;
+        this.estado = proveedor.estado; // Mantenemos "estado" antes de "tipoProducto"
         this.tipoProducto = proveedor.tipoProducto;
       } catch (error) {
         console.error('Error cargando el proveedor', error);
@@ -136,7 +137,7 @@ export default {
           emailContacto: this.emailContacto,
           direccion: this.direccion,
           ciudad: this.ciudad,
-          estado: this.estado,
+          estado: this.estado, // Mantenemos "estado" antes de "tipoProducto"
           tipoProducto: this.tipoProducto
         };
         if (this.isEditing) {
@@ -188,24 +189,23 @@ export default {
 body {
 padding: 0;
 margin: 0;
-background-color: #141313;
 height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
 }
 
 h1{
 color: #000000;
 font-size: 50px;
-padding-left: 140px;
+padding-left: 150px;
 margin-top: 130px;
 margin-bottom: 50px;
-}
-
-label{
-color: #000000;
 }
 .input{
   width: 500px;
 }
+label{
+color: #000000;
+}
+
 input, textarea {
   background-color: #d3d1d1;
   border: 1px solid #000; /* Borde negro */
@@ -260,16 +260,100 @@ margin-right: 10px
 }
 
 .btn-back {
-  margin-left: 40px;
-  background-color: #BBB7B7;
-  width: 200px;
+background-color: #BBB7B7;
+width: 250px;
+margin-left: 40px;
 }
 
 .btn-conf {
-  position: absolute;
-  left: 410px;
-  background-color: #FF7A00;
-  color: #FFFFFF;
-  width: 200px;
+background-color: #FF7A00;
+color: #FFFFFF;
+width: 250px;
+position: absolute;
+margin-left: 300px;
+}
+@media (max-width: 720px) {
+  .sidebar {
+  max-width: 70px;
+}
+
+.sidebar-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.sidebar-link span {
+  display: none;
+}
+
+.sidebar-link i {
+  font-size: 1.5em;
+}
+  .hero {
+    position: relative;
+    top: -280px;
+    left: -220px;
+  }
+
+  .botones {
+    flex-direction: column;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .btn-back, .btn-conf {
+    margin-top: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .btn-back{
+    position: relative;
+    top: 110px;
+    width: 80%;
+    left: -140px;
+    width: 200px !important;
+  }
+  .btn-conf{
+    position: relative;
+    width: 80%;
+    left:  160px;
+    width: 200px !important;
+  }
+  h1{
+    position: relative;
+    white-space: nowrap;
+    font-size: 32px;
+    left: -80px;
+    top: -45px;
+  }
+  input, textarea, select {
+    width: 80%;
+    height: 30px !important; /* Forzar el estilo si es necesario */
+    border-radius: 5px;
+  }
+  .izquierda{
+    margin-top: -101px;
+    margin-left: 70px;
+  }
+  .izquierda .input {
+    margin-bottom: 0; /* Espacio entre cada input */
+  }
+  .izquierda .input:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último input */
+  }
+  .derecha{
+    position: absolute;
+    top: 390px;
+    left: 1px;
+  }
+  .derecha .input{
+    margin-bottom: 0; /* Espacio entre cada input */
+  }
+  .derecha .input:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último input */
+  }
 }
 </style>

@@ -1,87 +1,87 @@
 <template>
-    <HeaderView/>
-    <aside class="sidebar">
+  <HeaderView/>
+  <aside class="sidebar">
   <nav>
-  <ul>
-    <li>
-        <router-link to="/dashboard" class="active">
-            <i class="fa-solid fa-chart-simple"></i> Dashboard
+    <ul>
+      <li>
+        <router-link to="/dashboard" class="active sidebar-link">
+          <i class="fa-solid fa-chart-simple"></i> <span>Dashboard</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/menus">
-            <i class="fa-solid fa-envelope"></i> Menu
+      </li>
+      <li>
+        <router-link to="/menus" class="active sidebar-link">
+          <i class="fa-solid fa-envelope"></i> <span>Menu</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/visualizar">
-        <i class="fa-solid fa-table-cells-large"></i> Visualizar
+      </li>
+      <li>
+        <router-link to="/visualizar" class="active sidebar-link">
+          <i class="fa-solid fa-table-cells-large"></i> <span>Visualizar</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/empleados">
-            <i class="fa-solid fa-person"></i> Empleados
+      </li>
+      <li>
+        <router-link to="/empleados" class="active sidebar-link">
+          <i class="fa-solid fa-person"></i> <span>Empleados</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/pagos">
-            <i class="fa-regular fa-credit-card"></i> Métodos de pago
+      </li>
+      <li>
+        <router-link to="/pagos" class="active sidebar-link">
+          <i class="fa-regular fa-credit-card"></i> <span>Metodos de pago</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/proveedores">
-            <i class="fa-solid fa-user-group"></i> Proveedores
+      </li>
+      <li>
+        <router-link to="/proveedores" class="active sidebar-link">
+          <i class="fa-solid fa-user-group"></i> <span>Proveedores</span>
         </router-link>
-    </li>
-    <li>
-        <router-link to="/inventario">
-            <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+      </li>
+      <li>
+        <router-link to="/inventario" class="active sidebar-link">
+          <i class="fa-solid fa-file-invoice-dollar"></i> <span>Inventario</span>
         </router-link>
-    </li>
+      </li>
     </ul>
   </nav>
-  </aside>
-  <!-- ! Termina el SIDEBAR -->
-  <div class="contenedor-principal">
-    <h1>{{ isEditing ? 'Editar Postre' : 'Creación de Postre' }}</h1>
-    <div>
-      <div class="contenedor">
-        <div class="izquierda">
-          <h4>Nombre del postre</h4>
-          <input v-model="nombre" />
+</aside>
+<!-- ! Termina el SIDEBAR -->
+<div class="contenedor-principal">
+  <h1>{{ isEditing ? 'Editar Postre' : 'Creación de Postre' }}</h1>
+  <div>
+    <div class="contenedor">
+      <div class="izquierda">
+        <h4>Nombre del postre</h4>
+        <input v-model="nombre" />
 
-          <h4>Descripción</h4>
-          <input v-model="descripcion" />
+        <h4>Descripción</h4>
+        <input v-model="descripcion" />
 
-          <h4>Estado</h4>
-        <select v-model="estado">
-          <option value="activo" >Activo</option>
-          <option value="inactivo">Inactivo</option>
-          <option value="agotado">Agotado</option>
-          <option value="fuera de temporada">Fuera de temporada</option>
-        </select>
-      </div>
+        <h4>Estado</h4>
+      <select v-model="estado">
+        <option value="activo" >Activo</option>
+        <option value="inactivo">Inactivo</option>
+        <option value="agotado">Agotado</option>
+        <option value="fuera de temporada">Fuera de temporada</option>
+      </select>
+    </div>
 
-        <div class="derecha">
-          <h4>Precio</h4>
-          <input v-model="precio" />
+      <div class="derecha">
+        <h4>Precio</h4>
+        <input v-model="precio" />
 
-          <h4>Porciones</h4>
-          <input v-model="porciones" />
+        <h4>Porciones</h4>
+        <input v-model="porciones" />
 
-          <h4>Sub Categoría</h4>
-          <input v-model="subCategoria" />
-        </div>
-      </div>
-
-      <div class="botones">
-        <router-link to="/helados">
-          <button class="btn-back">Atrás</button>
-        </router-link>
-        <button class="btn-conf" @click="submitForm">Continuar</button>
+        <h4>Sub Categoría</h4>
+        <input v-model="subCategoria" />
       </div>
     </div>
+
+    <div class="botones">
+      <router-link to="/helados">
+        <button class="btn-back">Atrás</button>
+      </router-link>
+      <button class="btn-conf" @click="submitForm">Continuar</button>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -90,119 +90,119 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
-  name: "verListaHelados",
-  components: {
-    HeaderView,
+name: "verListaHelados",
+components: {
+  HeaderView,
+},
+data() {
+  return {
+    nombre: "",
+    descripcion: "",
+    precio: null,
+    estado: "",
+    porciones: "", // Añadido porciones
+    subCategoria: "", // Añadida subCategoría
+    isEditing: false
+  };
+},
+props: ['idHelado'],
+created() {
+  if (this.idHelado) {
+    this.isEditing = true;
+    this.loadHelado();
+  }
+},
+methods: {
+  validateForm() {
+    if (!this.nombre || !this.descripcion || !this.precio || !this.estado || !this.porciones || !this.subCategoria) {
+      return 'Todos los campos son obligatorios';
+    }
+    return null; // Indica que no hay errores
   },
-  data() {
-    return {
-      nombre: "",
-      descripcion: "",
-      precio: null,
-      estado: "",
-      porciones: "", // Añadido porciones
-      subCategoria: "", // Añadida subCategoría
-      isEditing: false
-    };
-  },
-  props: ['idHelado'],
-  created() {
-    if (this.idHelado) {
-      this.isEditing = true;
-      this.loadHelado();
+  async loadHelado() {
+    try {
+      const response = await axios.get(`http://localhost:4200/helados/${this.idHelado}`);
+      const helado = response.data;
+      this.nombre = helado.nombre;
+      this.descripcion = helado.descripcion;
+      this.precio = helado.precio;
+      this.estado = helado.estado;
+      this.porciones = helado.porciones; // Cargar porciones
+      this.subCategoria = helado.subCategoria; // Cargar subCategoría
+    } catch (error) {
+      console.error('Error cargando el helado:', error);
     }
   },
-  methods: {
-    validateForm() {
-      if (!this.nombre || !this.descripcion || !this.precio || !this.estado || !this.porciones || !this.subCategoria) {
-        return 'Todos los campos son obligatorios';
-      }
-      return null; // Indica que no hay errores
-    },
-    async loadHelado() {
-      try {
-        const response = await axios.get(`http://localhost:4200/helados/${this.idHelado}`);
-        const helado = response.data;
-        this.nombre = helado.nombre;
-        this.descripcion = helado.descripcion;
-        this.precio = helado.precio;
-        this.estado = helado.estado;
-        this.porciones = helado.porciones; // Cargar porciones
-        this.subCategoria = helado.subCategoria; // Cargar subCategoría
-      } catch (error) {
-        console.error('Error cargando el helado:', error);
-      }
-    },
-    async submitForm() {
-      const validationError = this.validateForm();
-      if (validationError) {
-        Swal.fire({
-          title: 'Error',
-          text: validationError,
-          icon: 'info',
-          confirmButtonText: 'Aceptar'
+  async submitForm() {
+    const validationError = this.validateForm();
+    if (validationError) {
+      Swal.fire({
+        title: 'Error',
+        text: validationError,
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+      });
+      return; // Detener la ejecución si falta algún campo
+    }
+
+    try {
+      const heladoData = {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        precio: this.precio,
+        estado: this.estado,
+        porciones: this.porciones, // Incluir porciones
+        subCategoria: this.subCategoria // Incluir subCategoría
+      };
+
+      if (this.isEditing) {
+        await axios.put(`http://localhost:4200/helados/${this.idHelado}`, heladoData, {
+          headers: {
+            "Content-Type": "application/json"
+          }
         });
-        return; // Detener la ejecución si falta algún campo
-      }
-
-      try {
-        const heladoData = {
-          nombre: this.nombre,
-          descripcion: this.descripcion,
-          precio: this.precio,
-          estado: this.estado,
-          porciones: this.porciones, // Incluir porciones
-          subCategoria: this.subCategoria // Incluir subCategoría
-        };
-
-        if (this.isEditing) {
-          await axios.put(`http://localhost:4200/helados/${this.idHelado}`, heladoData, {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
-        } else {
-          await axios.post("http://localhost:4200/helados", heladoData, {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
-        }
-
-        // Mostrar alerta de éxito
-        Swal.fire({
-          title: 'Éxito',
-          text: this.isEditing ? 'Helado actualizado correctamente' : 'Helado creado correctamente',
-          icon: 'success',
-          confirmButtonText: 'Aceptar'
-        });
-
-        // Limpiar los campos
-        this.nombre = "";
-        this.descripcion = "";
-        this.precio = null;
-        this.estado = "";
-        this.porciones = ""; // Limpiar porciones
-        this.subCategoria = ""; // Limpiar subCategoría
-
-        // Redirigir a la página de helados
-        this.$router.push("/helados");
-      } catch (err) {
-        console.error('Error al enviar el formulario:', err);
-        Swal.fire({
-          title: 'Error',
-          text: 'Hubo un problema al procesar la solicitud. Inténtalo de nuevo.',
-          icon: 'error',
-          confirmButtonText: 'Aceptar'
+      } else {
+        await axios.post("http://localhost:4200/helados", heladoData, {
+          headers: {
+            "Content-Type": "application/json"
+          }
         });
       }
+
+      // Mostrar alerta de éxito
+      Swal.fire({
+        title: 'Éxito',
+        text: this.isEditing ? 'Helado actualizado correctamente' : 'Helado creado correctamente',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+      });
+
+      // Limpiar los campos
+      this.nombre = "";
+      this.descripcion = "";
+      this.precio = null;
+      this.estado = "";
+      this.porciones = ""; // Limpiar porciones
+      this.subCategoria = ""; // Limpiar subCategoría
+
+      // Redirigir a la página de helados
+      this.$router.push("/helados");
+    } catch (err) {
+      console.error('Error al enviar el formulario:', err);
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al procesar la solicitud. Inténtalo de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
+}
 };
 </script>
 
 
-    
+  
 <style scoped>
 body {
 padding: 0;
@@ -297,5 +297,59 @@ margin-top: 10px;
 margin-bottom: 21px;
 padding-left: 10px; /* Espacio a la izquierda del texto */
 padding-right: 10px; /* Espacio a la derecha del texto */
+}
+@media (max-width: 720px) {
+  .sidebar {
+    max-width: 70px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link i {
+    font-size: 1.5em;
+  }
+
+  .contenedor-principal{
+    max-width: 720px;
+  }
+  .contenedor-principal > h1{
+    font-size: 2.3em;
+    margin-left: -50px;
+    margin-top: 90px;
+    margin-bottom: -20px;
+  }
+  .contenedor{
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    margin-top: 20px;
+  }
+  .izquierda, .derecha{
+    margin: auto;
+  }
+
+  input,select{
+    width: 300px;
+    height: 30px;
+  }
+  .btn-back{
+    margin-top: -40px;
+    margin-left: -150px;
+    width: 200px;
+  }
+  .btn-conf{
+    margin-top: -40px;
+    margin-left: 70px;
+    width: 200px;
+  }
 }
 </style>

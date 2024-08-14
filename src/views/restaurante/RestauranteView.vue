@@ -169,22 +169,19 @@ export default {
     position: absolute;
     top: -110px;
     left: 70px;
-    color: #000;
+    color: #ffffff;
     font-size: 25px;
 }
 
 .restaurant-info p {
     margin: 0;
-    position: relative; /* Cambiado de absolute a relative */
-    display: flex; /* Cambiado de flex a block */
-    top: 0; /* Eliminado el posicionamiento de top */
-    left: 0; /* Eliminado el posicionamiento de left */
+    position: relative;
+    display: flex;
     font-size: 18px;
-    color: #000;
-    padding: 10px; /* Agregado para dar algo de espacio alrededor del texto */
-    line-height: 1.5; /* Agregado para mejorar la legibilidad del texto */
+    color: #ffffff;
+    padding: 10px;
+    line-height: 1.5;
 }
-
 
 .restaurant-actions {
     position: absolute;
@@ -194,7 +191,7 @@ export default {
     gap: 10px;
 }
 .restaurant-actions i {
-    font-size: 24px; /* Ajusta este valor según el tamaño que desees */
+    font-size: 24px;
 }
 .restaurant-actions button {
     background-color: #FF7A00;
@@ -207,5 +204,73 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+/* Media Query for screens 720px or smaller */
+@media (max-width: 720px) {
+  .error {
+    margin-left: 50px;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .titulo {
+    top: 100px;
+    left: 190px;
+    font-size: 20px;
+  }
+
+  .line {
+    top: 66px;
+    width: 180%;
+  }
+
+  .superior {
+    margin-top: 190px;
+    margin-left: 420px;
+    width: 40%;
+    height: auto;
+  }
+
+  .superior button {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px ;
+  }
+
+  .restaurant-card {
+    width: 300px;
+    left: 40px;
+    top: 0;
+    margin: 20px 0;
+    box-shadow: none;
+  }
+
+  .restaurant-image img {
+    height: 140px;
+    width: 300px;
+  }
+
+  .restaurant-info h2 {
+    font-size: 20px;
+    top: -50px;
+    left: 10px;
+  }
+
+  .restaurant-info p {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .restaurant-actions {
+    top: 5px;
+    right: 5px;
+    gap: 5px;
+  }
+
+  .restaurant-actions button {
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+  }
 }
 </style>
