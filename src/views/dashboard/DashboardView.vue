@@ -24,11 +24,6 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/pagos">
-          <i class="fa-regular fa-credit-card"></i> Métodos de pago
-        </router-link>
-      </li>
-      <li>
         <router-link to="/proveedores">
           <i class="fa-solid fa-user-group"></i> Proveedores
         </router-link>
@@ -36,6 +31,11 @@
       <li>
         <router-link to="/inventario">
           <i class="fa-solid fa-file-invoice-dollar"></i> Inventario
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/comentarios">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Comentarios
         </router-link>
       </li>
     </ul>

@@ -7,7 +7,6 @@ import EmpleadosView from "../views/empleados/EmpleadosView.vue";
 import ProveedoresView from "../views/proveedores/ProveedoresView.vue"
 import AgregarInventario from '../views/inventario/InventarioAgregarView.vue'
 import AgregarEmpleado from "../views/empleados/EmpleadosAgregarView.vue"
-import MetodosPago from "../views/mPagos/mPagosView.vue"
 import VisualizarMenu from "../views/visualizar/VisualizarView.vue"
 import LoginView from "../views/login/LoginView.vue";
 import RegistroView from "@/views/login/RegistroView.vue";
@@ -15,7 +14,6 @@ import RestaunranteView from "@/views/restaurante/RestauranteView.vue"
 import FormularioView from "@/views/restaurante/RestaraunteFromView.vue"
 import AgregarProveedor from "@/views/proveedores/ProveedoresFormView.vue"
 import RestauranteUpdate from "@/views/restaurante/UpdateRestView.vue"
-import MPagosAgregarView from "@/views/mPagos/mPagosAgregarView.vue";
 import formSopasView from "@/views/sopas/formSopasView.vue";
 import UpdateEmpleado from "@/views/empleados/EmpleadoUpdateView.vue"
 import SopasView from "@/views/sopas/sopasView.vue";
@@ -25,7 +23,6 @@ import HeladosView from "@/views/helados/HeladosView.vue";
 import UpdateHeladosView from "@/views/helados/UpdateHeladosView.vue";
 import updateProveedorView from '@/views/proveedores/UpdateProveedoresView.vue'
 import updateInventario from '@/views/inventario/inventarioUpdateView.vue'
-import updateMPagos from '@/views/mPagos/mPagosUpdateView.vue'
 import FormEntradasView from '@/views/entradas/formEntradasView.vue'
 import EntradasView from "@/views/entradas/EntradasView.vue";
 import UpdateEntrada from "@/views/entradas/UpdateEntradasView.vue";
@@ -33,6 +30,7 @@ import FormBebidasView from "@/views/bebidas/formBebidasView.vue";
 import BebidasView from "@/views/bebidas/BebidasView.vue";
 import UpdateBebidas from '@/views/bebidas/UpdateBebidasView.vue'
 import Error  from "@/views/error/error.vue";
+import ComentarioView from "@/views/comentario/ComentarioView.vue";
 
 function isAuthenticated() {
   return !!localStorage.getItem('token'); // Verifica si el token existe en localStorage
@@ -50,12 +48,10 @@ const routes = [
     { path: '/agregar', component: AgregarInventario, meta: { requiresAuth: true }, props: true },
     { path: '/add', component: AgregarEmpleado, meta: { requiresAuth: true }, props: true },
     { path: "/create", component: AgregarProveedor, meta: { requiresAuth: true } },
-    { path: '/pagos', component: MetodosPago, meta: { requiresAuth: true } },
     { path: '/visualizar', component: VisualizarMenu, meta: { requiresAuth: true } },
     { path: '/restaurante', component: RestaunranteView, meta: { requiresAuth: true }, props: true },
     { path: '/update/:id?', name: "update", component: RestauranteUpdate, meta: { requiresAuth: true }, props: true },
     { path: "/formulario", component: FormularioView, meta: { requiresAuth: true }, props: true },
-    { path: "/addmetodo", component: MPagosAgregarView, meta: { requiresAuth: true }, props: true },
     { path: "/helados", component: HeladosView, props: true, meta: { requiresAuth: true } },
     { path: "/formHelados", component: formHeladosView, meta: { requiresAuth: true }, props: true },
     { path: "/UpdateHelados/:idHelado?", name: "UpdateHelados", component: UpdateHeladosView, meta: { requiresAuth: true }, props: true },
@@ -64,13 +60,13 @@ const routes = [
     { path: "/formSopas", component: formSopasView, meta: { requiresAuth: true }, props: true },
     { path: '/UpdateProveedores/:idProveedores?', name:"UpdateProveedores", component: updateProveedorView, meta: { requiresAuth: true }, props: true},
     { path: '/UpdateInventario/:idInventario?', name:"UpdateInventario", component: updateInventario, meta: { requiresAuth: true }, props: true},
-    { path: '/UpdateMPagos/:idMPagos?', name:"UpdatemPagos", component: updateMPagos, meta: { requiresAuth: true }, props: true},
     { path: '/formEntradas', component: FormEntradasView, meta: { requiresAuth: true }, props: true},
     { path: '/entradas', component: EntradasView, meta: { requiresAuth: true }},
     { path: '/UpdateEntrada/:idEntrada?', name: 'UpdateEntrada', component: UpdateEntrada, meta: { requiresAuth: true }, props: true},
     { path: '/formBebidas', component: FormBebidasView, meta: { requiresAuth: true }, props: true},
     { path: '/bebidas', component: BebidasView, meta: { requiresAuth: true } },
     { path: '/UpdateBebida/:idBebida?', name: 'UpdateBebida', component: UpdateBebidas, meta: { requiresAuth: true }, props: true},
+    { path: '/comentarios', name: 'comentario', component: ComentarioView, meta: { requiresAuth: true }, props: true},
     { path: '/access-denied', name: 'error', component: Error}
 ];
 
